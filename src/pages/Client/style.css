@@ -1,0 +1,50 @@
+.resume-bills {
+  background-color: var(--light-grey);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container-resume-bills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resume-bills-card-bills,
+.table-cards,
+.table-cards-clients {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*TESTE*/
+
+.addNewClient {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  width: 16rem;
+  height: 3.3rem;
+
+  background-color: #da0175;
+  border-radius: 10px;
+
+  font-family: "Nunito";
+  font-size: 1.8rem;
+  line-height: 25px;
+
+  color: #f8f8f9;
+  margin: 0 0 0 20rem;
+}
+
+.clientContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

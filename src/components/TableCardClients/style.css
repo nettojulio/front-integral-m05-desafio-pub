@@ -1,0 +1,125 @@
+.container-table-clients {
+  margin-right: 32px;
+  margin-bottom: 37px;
+  border-radius: 30px;
+}
+
+.footer-table-clients,
+.title-table-clients {
+  width: 556px;
+  height: 58px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(172, 217, 197, 0.25);
+}
+
+.title-table-clients {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.head-card-table-clients {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 7px;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.head-card-table-clients-icon {
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.head-card-table-clients-title {
+  margin-left: 8px;
+
+  font-size: 18px;
+}
+.head-card-table-clients-card-value {
+  width: 50px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.head-card-table-clients-card-value.paid {
+  background-color: var(--light-green-paid);
+}
+
+.head-card-table-clients-card-value.overdue {
+  background-color: var(--light-salmon-overdue);
+}
+
+.head-card-table-clients-card-value span {
+  font-size: 16px;
+}
+.head-card-table-clients-card-value span.overdue {
+  background-color: var(--light-salmon-overdue);
+  color: var(--red-overdue);
+}
+.head-card-table-clients-card-value span.paid {
+  background-color: var(--light-green-paid);
+  color: var(--green-paid);
+}
+
+.footer-table-clients {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.footer-table-clients span {
+  color: var(--pink);
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  text-decoration: underline;
+}
+.footer-table-clients span:hover {
+  cursor: pointer;
+}
+
+.MuiTableRow-root.MuiTableRow-head.css-1q1u3t4-MuiTableRow-root {
+  border: none;
+}
+
+.MuiTableCell-root.MuiTableCell-head,
+.MuiTableCell-root.MuiTableCell-body {
+  font-family: 'Nunito';
+  font-style: normal;
+  letter-spacing: 0.005em;
+  padding: 8px;
+}
+
+.MuiTableCell-root.MuiTableCell-head:first-child,
+.MuiTableCell-root.MuiTableCell-body:first-child {
+  padding-left: 25px;
+}
+
+.MuiTableCell-root.MuiTableCell-head:last-child,
+.MuiTableCell-root.MuiTableCell-body:last-child {
+  padding-right: 25px;
+}
+/*font subtitle*/
+.MuiTableCell-root.MuiTableCell-head {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 50px;
+
+  color: #3f3f55;
+}
+
+/*font list items*/
+.MuiTableCell-root.MuiTableCell-body {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 40px;
+
+  color: #6e6e85;
+}
