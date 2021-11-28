@@ -98,7 +98,7 @@ export default function CustomizedTimeline() {
             >
               Cadastro realizado com sucesso
             </Typography>
-            <Typography variant="body1" sx={{ fontSize: "1.5rem" }}>
+            <Typography variant="body1">
               E-mail e senha cadastrados com sucesso
             </Typography>
           </TimelineContent>

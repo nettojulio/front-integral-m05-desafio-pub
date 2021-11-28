@@ -175,26 +175,26 @@ function ClientModal() {
 
   return (
     openClientModal && (
-      <div className="containerModal">
-        <div className="backdrop" />
-        <div className="userModal">
-          <div className="titleModalContainer">
+      <div className="containerClientModal">
+        <div className="backdropClientModal" />
+        <div className="clientModal">
+          <div className="titleClientModalContainer">
             <img
               className="customerIcon"
               src={customerScreen}
               alt="Ícone de Clientes"
             />
-            <span className="modalTitle">Cadastro do Cliente</span>
+            <span className="clientModalTitle">Cadastro do Cliente</span>
           </div>
           <img
-            className="closeModal"
+            className="closeClientModal"
             onClick={() => setOpenClientModal(false)}
             src={closeIcon}
             alt="Fechar"
           />
-          <form className="editUserForm" onSubmit={handleSubmit}>
-            <div className="formGroup">
-              <label htmlFor="nome" className="formLabels">
+          <form className="editClientForm" onSubmit={handleSubmit}>
+            <div className="clientFormGroup">
+              <label htmlFor="nome" className="clientFormLabels">
                 Nome*
                 <input
                   id="nome"
@@ -203,15 +203,15 @@ function ClientModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={nameErrorMessage ? "errorSinalization" : undefined}
+                  className={`inputClient ${nameErrorMessage ? "clientErrorSinalization" : undefined}`}
                 />
                 {nameErrorMessage && (
-                  <p className="errorMessage">{nameErrorMessage}</p>
+                  <p className="clientErrorMessage">{nameErrorMessage}</p>
                 )}
               </label>
             </div>
-            <div className="formGroup">
-              <label htmlFor="email" className="formLabels">
+            <div className="clientFormGroup">
+              <label htmlFor="email" className="clientFormLabels">
                 E-mail*
                 <input
                   id="email"
@@ -220,17 +220,16 @@ function ClientModal() {
                   placeholder="Digite seu e-mail"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
-                  className={
-                    emailErrorMessage ? "errorSinalization" : undefined
-                  }
+                  className={`inputClient ${emailErrorMessage ? "clientErrorSinalization" : undefined}
+                  `}
                 />
                 {emailErrorMessage && (
-                  <p className="errorMessage">{emailErrorMessage}</p>
+                  <p className="clientErrorMessage">{emailErrorMessage}</p>
                 )}
               </label>
             </div>
-            <div className="formGroup">
-              <label htmlFor="cpf" className="formLabels split">
+            <div className="clientFormGroup">
+              <label htmlFor="cpf" className="clientFormLabels split">
                 CPF:*
                 <InputMask
                   id="cpf"
@@ -239,13 +238,13 @@ function ClientModal() {
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
-                  className={cpfErrorMessage ? "errorSinalization" : undefined}
+                  className={`inputClient ${cpfErrorMessage ? "clientErrorSinalization" : undefined}`}
                 />
                 {cpfErrorMessage && (
-                  <p className="errorMessage">{cpfErrorMessage}</p>
+                  <p className="clientErrorMessage">{cpfErrorMessage}</p>
                 )}
               </label>
-              <label htmlFor="telefone" className="formLabels split">
+              <label htmlFor="telefone" className="clientFormLabels split">
                 Telefone:*
                 <InputMask
                   id="telefone"
@@ -254,17 +253,17 @@ function ClientModal() {
                   value={formEditUserModalInputs.telefone}
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
-                  className={
-                    telefoneErrorMessage ? "errorSinalization" : undefined
-                  }
+                  className={`inputClient
+                    ${telefoneErrorMessage ? "clientErrorSinalization" : undefined}
+                  `}
                 />
                 {telefoneErrorMessage && (
-                  <p className="errorMessage">{telefoneErrorMessage}</p>
+                  <p className="clientErrorMessage">{telefoneErrorMessage}</p>
                 )}
               </label>
             </div>
-            <div className="formGroup">
-              <label htmlFor="endereco" className="formLabels">
+            <div className="clientFormGroup">
+              <label htmlFor="endereco" className="clientFormLabels">
                 Endereço
                 <input
                   id="endereco"
@@ -273,9 +272,10 @@ function ClientModal() {
                   placeholder="Digite o endereço"
                   value={formEditUserModalInputs.endereco}
                   onChange={(e) => handleChange(e.target)}
+                  className="inputClient"
                 />
               </label>
-              <label htmlFor="complemento" className="formLabels">
+              <label htmlFor="complemento" className="clientFormLabels">
                 Complemento
                 <input
                   id="complemento"
@@ -284,10 +284,11 @@ function ClientModal() {
                   placeholder="Digite o complemento"
                   value={formEditUserModalInputs.complemento}
                   onChange={(e) => handleChange(e.target)}
+                  className="inputClient"
                 />
               </label>
-              <div className="splitContainer">
-                <label htmlFor="cep" className="formLabels split">
+              <div className="splitClientContainer">
+                <label htmlFor="cep" className="clientFormLabels split">
                   CEP:
                   <InputMask
                     id="cep"
@@ -296,9 +297,10 @@ function ClientModal() {
                     value={formEditUserModalInputs.cep}
                     onChange={(e) => handleChange(e.target)}
                     mask="99999-999"
+                    className="inputClient"
                   />
                 </label>
-                <label htmlFor="bairro" className="formLabels split">
+                <label htmlFor="bairro" className="clientFormLabels split">
                   Bairro
                   <input
                     id="bairro"
@@ -307,11 +309,12 @@ function ClientModal() {
                     placeholder="Digite o Bairro"
                     value={formEditUserModalInputs.bairro}
                     onChange={(e) => handleChange(e.target)}
+                    className="inputClient"
                   />
                 </label>
               </div>
-              <div className="splitContainer">
-                <label htmlFor="cidade" className="formLabels split cidadeForm">
+              <div className="splitClientContainer">
+                <label htmlFor="cidade" className="clientFormLabels split cidadeForm">
                   Cidade
                   <input
                     id="cidade"
@@ -320,9 +323,10 @@ function ClientModal() {
                     placeholder="Digite a cidade"
                     value={formEditUserModalInputs.cidade}
                     onChange={(e) => handleChange(e.target)}
+                    className="inputClient"
                   />
                 </label>
-                <label htmlFor="uf" className="formLabels split ufForm">
+                <label htmlFor="uf" className="clientFormLabels split ufForm">
                   UF
                   <input
                     id="uf"
@@ -331,19 +335,20 @@ function ClientModal() {
                     placeholder="Digite a UF"
                     value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
+                    className="inputClient"
                   />
                 </label>
               </div>
             </div>
           </form>
-          <div className="splitButtonsContainer">
+          <div className="splitClientButtonsContainer">
             <button
               onClick={() => setOpenClientModal(false)}
-              className="cancelEditUserChanges"
+              className="cancelEditClientChanges"
             >
               Cancelar
             </button>
-            <button onClick={handleSubmit} className="applyEditUserChanges">
+            <button onClick={handleSubmit} className="applyEditClientChanges">
               Aplicar
             </button>
           </div>

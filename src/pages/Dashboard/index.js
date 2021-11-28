@@ -3,19 +3,28 @@ import NavBar from "../../components/NavBar";
 import ResumeBills from "../ResumeBills";
 import Client from "../Client";
 import Charge from "../Charge";
-import { Routes, Route } from "react-router-dom";
+
+import ClientModal from "../../components/ClientModal";
+
+import "./style.css";
+import useSignup from "../../hooks/useSignup";
 
 function Dashboard() {
+  const { changePages, openClientModal } = useSignup();
+
   return (
-    <>
-      <NavBar />
-      <SideBar />
-      <Routes>
-        <Route path="/resume" element={<ResumeBills />} />
-        <Route path="/client" element={<Client />} />
-        <Route path="/charge" element={<Charge />} />
-      </Routes>
-    </>
+    <div className="main">
+      <div className="first-div">
+        <SideBar />
+      </div>
+      <div className="second-div">
+        <NavBar />
+        {changePages === "resume" && <ResumeBills />}
+        {changePages === "client" && <Client />}
+        {changePages === "charge" && <Charge />}
+        {openClientModal && <ClientModal />}
+      </div>
+    </div>
   );
 }
 

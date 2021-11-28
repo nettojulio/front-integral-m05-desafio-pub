@@ -17,7 +17,8 @@ function UserModal() {
     confirmarSenha: "",
   };
   const { token, openUserModal, setOpenUserModal, userData } = useSignup();
-  const [formEditUserModalInputs, setFormEditUserModalInputs] = useState(initialForm);
+  const [formEditUserModalInputs, setFormEditUserModalInputs] =
+    useState(initialForm);
   const [visibleTypingPassword, setVisibleTypingPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -34,27 +35,6 @@ function UserModal() {
     setFormEditUserModalInputs(userData);
     // eslint-disable-next-line
   }, [openUserModal]);
-
-  // async function loadUserProfile() {
-  //   try {
-  //     const response = await fetch("https://api-teste-desafio.herokuapp.com/usuario", {
-  //       method: 'GET',
-  //       headers: {
-  //         'Authorization': `Bearer ${token}`
-  //       }
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (!response.ok) {
-  //       throw new Error(data)
-  //     }
-
-  //     setFormEditUserModalInputs(data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // } 
 
   async function editUserProfile(body) {
     try {
@@ -76,6 +56,10 @@ function UserModal() {
         throw new Error(result);
       }
       setComplete(true);
+      setInterval(() => {
+        setComplete(false);
+        setOpenUserModal(false);
+      }, 5000);
     } catch (error) {
       updateValidations(error);
     }
@@ -101,7 +85,10 @@ function UserModal() {
 
   function handleChange(target) {
     handleClearValidations();
-    setFormEditUserModalInputs({ ...formEditUserModalInputs, [target.name]: target.value });
+    setFormEditUserModalInputs({
+      ...formEditUserModalInputs,
+      [target.name]: target.value,
+    });
   }
 
   async function handleSubmit(event) {
@@ -175,127 +162,140 @@ function UserModal() {
 
   return (
     <div className={`backdrop ${!openUserModal && "hidden"}`}>
-      {!complete &&  <div className="userModal">
-        <img
-          className="closeModal"
-          onClick={() => setOpenUserModal(false)}
-          src={closeIcon}
-          alt="Fechar"
-        />
-        <span className="modalTitle">Edite seu cadastro</span>
-        <form className="editUserForm" onSubmit={handleSubmit}>
-          <div className="formGroup">
-            <label htmlFor="nome" className="formLabels">
-              Nome*
-              <input
-                id="nome"
-                type="text"
-                name="nome"
-                placeholder="Digite seu nome"
-                value={formEditUserModalInputs.nome}
-                onChange={(e) => handleChange(e.target)}
-                className={nameErrorMessage ? "errorSinalization" : undefined}
-              />
-              {nameErrorMessage && (
-                <p className="errorMessage">{nameErrorMessage}</p>
+      {!complete && (
+        <div className="userModal">
+          <img
+            className="closeModal"
+            onClick={() => setOpenUserModal(false)}
+            src={closeIcon}
+            alt="Fechar"
+          />
+          <span className="modalTitle">Edite seu cadastro</span>
+          <form className="editUserForm" onSubmit={handleSubmit}>
+            <div className="formGroup">
+              <label htmlFor="nome" className="formLabels">
+                Nome*
+                <input
+                  id="nome"
+                  type="text"
+                  name="nome"
+                  placeholder="Digite seu nome"
+                  value={formEditUserModalInputs.nome}
+                  onChange={(e) => handleChange(e.target)}
+                  className={nameErrorMessage ? "errorSinalization" : undefined}
+                />
+                {nameErrorMessage && (
+                  <p className="errorMessage">{nameErrorMessage}</p>
+                )}
+              </label>
+            </div>
+            <div className="formGroup">
+              <label htmlFor="email" className="formLabels">
+                E-mail*
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Digite seu e-mail"
+                  value={formEditUserModalInputs.email}
+                  onChange={(e) => handleChange(e.target)}
+                  className={
+                    emailErrorMessage ? "errorSinalization" : undefined
+                  }
+                />
+                {emailErrorMessage && (
+                  <p className="errorMessage">{emailErrorMessage}</p>
+                )}
+              </label>
+            </div>
+            <div className="formGroup">
+              <label htmlFor="cpf" className="formLabels split">
+                CPF
+                <InputMask
+                  id="cpf"
+                  name="cpf"
+                  placeholder="Digite seu CPF"
+                  value={
+                    formEditUserModalInputs.cpf &&
+                    formEditUserModalInputs.cpf.trim()
+                  }
+                  onChange={(e) => handleChange(e.target)}
+                  mask="999.999.999-99"
+                />
+              </label>
+              <label htmlFor="telefone" className="formLabels split">
+                Telefone
+                <InputMask
+                  id="telefone"
+                  name="telefone"
+                  placeholder="Digite seu Telefone"
+                  value={formEditUserModalInputs.telefone}
+                  onChange={(e) => handleChange(e.target)}
+                  mask="(99) 99999-9999"
+                />
+              </label>
+            </div>
+            <div className="formGroup">
+              <label htmlFor="senha" className="formLabels">
+                Nova Senha*
+                <input
+                  id="senha"
+                  type={visibleTypingPassword ? "text" : "password"}
+                  name="senha"
+                  placeholder="Digite a nova senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={
+                    passwordErrorMessage ? "errorSinalization" : undefined
+                  }
+                />
+                <img
+                  className="passwordVisibilityToggle"
+                  onClick={() =>
+                    setVisibleTypingPassword(!visibleTypingPassword)
+                  }
+                  src={visibleTypingPassword ? exposed : secure}
+                  alt="Alterar visibilidade da senha"
+                />
+              </label>
+              <label htmlFor="confirmarSenha" className="formLabels">
+                Confirmar Senha*
+                <input
+                  id="confirmarSenha"
+                  type={visibleTypingPassword ? "text" : "password"}
+                  name="confirmarSenha"
+                  placeholder="Repita a nova senha"
+                  value={repeatPassword}
+                  onChange={(e) => setRepeatPassword(e.target.value)}
+                  className={
+                    passwordErrorMessage ? "errorSinalization" : undefined
+                  }
+                />
+                <img
+                  className="passwordVisibilityToggle"
+                  onClick={() =>
+                    setVisibleTypingPassword(!visibleTypingPassword)
+                  }
+                  src={visibleTypingPassword ? exposed : secure}
+                  alt="Alterar visibilidade da senha"
+                />
+              </label>
+              {passwordErrorMessage && (
+                <p className="errorMessage errorMessagePassword">
+                  {passwordErrorMessage}
+                </p>
               )}
-            </label>
-          </div>
-          <div className="formGroup">
-            <label htmlFor="email" className="formLabels">
-              E-mail*
-              <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="Digite seu e-mail"
-                value={formEditUserModalInputs.email}
-                onChange={(e) => handleChange(e.target)}
-                className={emailErrorMessage ? "errorSinalization" : undefined}
-              />
-              {emailErrorMessage && (
-                <p className="errorMessage">{emailErrorMessage}</p>
-              )}
-            </label>
-          </div>
-          <div className="formGroup">
-            <label htmlFor="cpf" className="formLabels split">
-              CPF
-              <InputMask
-                id="cpf"
-                name="cpf"
-                placeholder="Digite seu CPF"
-                value={formEditUserModalInputs.cpf && formEditUserModalInputs.cpf.trim() }
-                onChange={(e) => handleChange(e.target)}
-                mask="999.999.999-99"
-              />
-            </label>
-            <label htmlFor="telefone" className="formLabels split">
-              Telefone
-              <InputMask
-                id="telefone"
-                name="telefone"
-                placeholder="Digite seu Telefone"
-                value={formEditUserModalInputs.telefone}
-                onChange={(e) => handleChange(e.target)}
-                mask="(99) 99999-9999"
-              />
-            </label>
-          </div>
-          <div className="formGroup">
-            <label htmlFor="senha" className="formLabels">
-              Nova Senha*
-              <input
-                id="senha"
-                type={visibleTypingPassword ? "text" : "password"}
-                name="senha"
-                placeholder="Digite a nova senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={
-                  passwordErrorMessage ? "errorSinalization" : undefined
-                }
-              />
-              <img
-                className="passwordVisibilityToggle"
-                onClick={() => setVisibleTypingPassword(!visibleTypingPassword)}
-                src={visibleTypingPassword ? exposed : secure}
-                alt="Alterar visibilidade da senha"
-              />
-            </label>
-            <label htmlFor="confirmarSenha" className="formLabels">
-              Confirmar Senha*
-              <input
-                id="confirmarSenha"
-                type={visibleTypingPassword ? "text" : "password"}
-                name="confirmarSenha"
-                placeholder="Repita a nova senha"
-                value={repeatPassword}
-                onChange={(e) => setRepeatPassword(e.target.value)}
-                className={
-                  passwordErrorMessage ? "errorSinalization" : undefined
-                }
-              />
-              <img
-                className="passwordVisibilityToggle"
-                onClick={() => setVisibleTypingPassword(!visibleTypingPassword)}
-                src={visibleTypingPassword ? exposed : secure}
-                alt="Alterar visibilidade da senha"
-              />
-            </label>
-            {passwordErrorMessage && (
-              <p className="errorMessage errorMessagePassword">
-                {passwordErrorMessage}
-              </p>
-            )}
-          </div>
-          <button className="applyEditUserChanges">Aplicar</button>
-        </form>
-      </div>}
-      {complete &&  <div className="editComplete">
-        <img src={checkIcon} alt="Check Icon" />
-        <span className="message">Cadastro Alterado com sucesso!</span>
-      </div>}
+            </div>
+            <button className="applyEditUserChanges">Aplicar</button>
+          </form>
+        </div>
+      )}
+      {complete && (
+        <div className="editComplete">
+          <img src={checkIcon} alt="Check Icon" />
+          <span className="message">Cadastro Alterado com sucesso!</span>
+        </div>
+      )}
     </div>
   );
 }

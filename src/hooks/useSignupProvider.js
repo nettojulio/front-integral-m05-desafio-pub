@@ -15,6 +15,7 @@ function useSignupProvider() {
   const [formsLogin, SetFormsLogin] = useState({ email: "", senha: "" });
   const [open, setOpen] = useState(false);
   const [messageAlert, setMessageAlert] = useState(false);
+  const [changePages, setChangePages] = useState("resume");
   /*TESTE*/
   const [token, setToken, removeToken] = useLocalStorage("token", "");
   const [openClientModal, setOpenClientModal] = useState(false);
@@ -121,17 +122,20 @@ function useSignupProvider() {
 
   async function loadUserProfile() {
     try {
-      const response = await fetch("https://api-teste-desafio.herokuapp.com/usuario", {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/usuario",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data)
+        throw new Error(data);
       }
 
       setUserData(data);
@@ -140,9 +144,9 @@ function useSignupProvider() {
     }
   }
 
-  function handleLogout(){
+  function handleLogout() {
     removeToken();
-    navigate('signin');
+    navigate("signin");
   }
 
   return {
@@ -172,8 +176,10 @@ function useSignupProvider() {
     setOpenUserModal,
     loadUserProfile,
     handleLogout,
-    userData, 
+    userData,
     setUserData,
+    changePages,
+    setChangePages,
   };
 }
 

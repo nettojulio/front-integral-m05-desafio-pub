@@ -17,7 +17,6 @@ function SignIn() {
       setMessageAlert("Erro: Existem alguns campos em branco!");
       return;
     }
-
     handleLogin();
   }
 

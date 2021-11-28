@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -23,6 +29,9 @@ body {
   --light-green: #eef6f6;
   --light-salmon: #ffefef;
   --light-yellow: #fcf6dc;
+  --light-green-paid: #eef6f6;
+  --light-salmon-overdue: #ffefef;
+  --light-yellow-expected: #fcf6dc;
 
   --pink: #da0175;
   --red: #971d1d;
@@ -30,6 +39,8 @@ body {
   --green: #1fa7af;
 
   --check-green: #0e8750;
+  /* COLOCADO PARA PADRONIZAR SCROLAGEM */
+  overflow-y: scroll;
 }
 
 code {

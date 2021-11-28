@@ -1,22 +1,31 @@
-import './style.css';
-
-import NavBar from '../../components/NavBar' ;
-import SideBar from '../../components/SideBar';
-import ClientModal from '../../components/ClientModal';
+import "./style.css";
+import ClientModal from "../../components/ClientModal";
 import useSignup from "../../hooks/useSignup";
+import search from '../../assets/search.svg';
+import customerScreen from '../../assets/customerScreen.svg';
+
 
 function Client() {
-  const { openClientModal, setOpenClientModal } = useSignup();
-  
+  const { setOpenClientModal } = useSignup();
+
   return (
-    <div className="clientContainer">
-    <NavBar/>
-    <SideBar/>
-    <div>Client</div>
-    <button onClick={() => setOpenClientModal(true)} className="addNewClient">Add Client</button>
-    {openClientModal && <ClientModal/>}
+    <div className="clients-page">
+      <div className="container-clients-page">
+        <div className="clients-page-icon">
+          <img src={customerScreen} alt="Customers" />
+          <span>Clientes</span>
+        </div>
+        <div className="clients-page-info">
+          <button onClick={() => setOpenClientModal(true)} className="btn add-btn">+ Adicionar cliente</button>
+          <div className="input-search">
+            <span>Pesquisar</span>
+            <img src={search} alt="Search" />
+          </div>
+        </div>
+      </div>
     </div>
-  )
+
+  );
 }
 
 export default Client;

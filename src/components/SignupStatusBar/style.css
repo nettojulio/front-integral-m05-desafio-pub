@@ -16,8 +16,12 @@
 
 .MuiTypography-root.MuiTypography-body1 {
   font-family: "Nunito", sans-serif;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 130%;
+
+  color: #3f3f55;
 }
 
 .MuiTypography-body1 {
