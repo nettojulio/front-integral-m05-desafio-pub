@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Charge from "./pages/Charge";
 import Dashboard from "./pages/Dashboard";
 
 // import SideBar from "./components/SideBar";

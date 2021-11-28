@@ -1,5 +1,4 @@
 import "./style.css";
-import ClientModal from "../../components/ClientModal";
 import useSignup from "../../hooks/useSignup";
 import search from '../../assets/search.svg';
 import customerScreen from '../../assets/customerScreen.svg';

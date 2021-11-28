@@ -1,0 +1,26 @@
+body {
+  --light-grey: #f8f8f9;
+  --grey: #f0f0f5;
+
+  --light-green: #eef6f6;
+  --light-salmon: #ffefef;
+  --light-yellow: #fcf6dc;
+
+  --pink: #da0175;
+  --red: #971d1d;
+  --yellow: #c5a605;
+  --green: #1fa7af;
+
+  --check-green: #0e8750;
+}
+
+.btn {
+  all: unset;
+  box-sizing: border-box;
+
+  padding: 6px 40px;
+  border-radius: 10px;
+
+  text-align: center;
+  cursor: pointer;
+}
