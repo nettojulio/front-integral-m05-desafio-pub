@@ -1,6 +1,6 @@
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../../../hooks/useSignup";
 
 function ToastAlert() {
   const { open, handleClose, messageAlert, stateAlert } = useSignup();

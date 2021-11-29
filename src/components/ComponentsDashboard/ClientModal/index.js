@@ -1,8 +1,8 @@
 import { useState } from "react";
 import InputMask from "react-input-mask";
-import closeIcon from "../../assets/closeIcon.svg";
-import customerScreen from "../../assets/customerScreen.svg";
-import useSignup from "../../hooks/useSignup";
+import closeIcon from "../../../assets/closeIcon.svg";
+import customerScreen from "../../../assets/customerScreen.svg";
+import useSignup from "../../../hooks/useSignup";
 import "./styles.css";
 
 function ClientModal() {

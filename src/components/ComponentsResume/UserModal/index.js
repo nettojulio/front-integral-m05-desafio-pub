@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
-import closeIcon from "../../assets/closeIcon.svg";
-import secure from "../../assets/eye-hide.svg";
-import exposed from "../../assets/eye.svg";
+import closeIcon from "../../../assets/closeIcon.svg";
+import secure from "../../../assets/eye-hide.svg";
+import exposed from "../../../assets/eye.svg";
 import "./styles.css";
-import checkIcon from "../../assets/check-icon.svg";
-import useSignup from "../../hooks/useSignup";
+import checkIcon from "../../../assets/check-icon.svg";
+import useSignup from "../../../hooks/useSignup";
 
 function UserModal() {
   const initialForm = {
@@ -16,7 +16,8 @@ function UserModal() {
     senha: "",
     confirmarSenha: "",
   };
-  const { token, openUserModal, setOpenUserModal, userData, loadUserProfile } = useSignup();
+  const { token, openUserModal, setOpenUserModal, userData, loadUserProfile } =
+    useSignup();
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
   const [visibleTypingPassword, setVisibleTypingPassword] = useState(false);

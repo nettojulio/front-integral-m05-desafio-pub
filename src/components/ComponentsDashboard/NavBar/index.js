@@ -1,8 +1,8 @@
 import "./style.css";
-import arrowDown from "../../assets/arrowDown.svg";
-import edit from "../../assets/edit.svg";
-import logOut from "../../assets/logOut.svg";
-import UserModal from "../UserModal";
+import arrowDown from "../../../assets/arrowDown.svg";
+import edit from "../../../assets/edit.svg";
+import logOut from "../../../assets/logOut.svg";
+import UserModal from "../../ComponentsResume/UserModal";
 import useSignup from "../../../hooks/useSignup";
 import { useState, useEffect } from "react";
 

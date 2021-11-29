@@ -1,9 +1,9 @@
 import "./style.css";
-import { ReactComponent as Home } from "../../assets/home.svg";
-import { ReactComponent as HomeSelected } from "../../assets/homeSelected.svg";
-import { ReactComponent as CustomersSidebar } from "../../assets/customersSidebar.svg";
-import { ReactComponent as CustomersSidebarSelected } from "../../assets/customersSidebarSelected.svg";
-import { ReactComponent as Billings } from "../../assets/billings.svg";
+import { ReactComponent as Home } from "../../../assets/home.svg";
+import { ReactComponent as HomeSelected } from "../../../assets/homeSelected.svg";
+import { ReactComponent as CustomersSidebar } from "../../../assets/customersSidebar.svg";
+import { ReactComponent as CustomersSidebarSelected } from "../../../assets/customersSidebarSelected.svg";
+import { ReactComponent as Billings } from "../../../assets/billings.svg";
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";

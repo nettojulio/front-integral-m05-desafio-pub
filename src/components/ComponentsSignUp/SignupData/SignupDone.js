@@ -1,7 +1,7 @@
 import "./style.css";
-import checkIcon from "../../assets/check-icon.svg";
+import checkIcon from "../../../assets/check-icon.svg";
 import { useNavigate } from "react-router";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../../../hooks/useSignup";
 
 function SignupDone() {
   let navigate = useNavigate();

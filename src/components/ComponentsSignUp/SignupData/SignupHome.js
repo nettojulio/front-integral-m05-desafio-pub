@@ -1,5 +1,5 @@
 import "./style.css";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../../../hooks/useSignup";
 import { Link } from "react-router-dom";
 
 function SignupData() {
