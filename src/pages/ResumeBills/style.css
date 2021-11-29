@@ -1,0 +1,22 @@
+.resume-bills {
+  background-color: var(--light-grey);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container-resume-bills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.resume-bills-card-bills,
+.table-cards,
+.table-cards-clients {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

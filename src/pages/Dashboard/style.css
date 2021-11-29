@@ -1,0 +1,17 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--light-grey);
+}
+
+.first-div {
+  min-height: 100vh;
+}
+
+.second-div {
+  flex-grow: 1;
+}
+
+h1 {
+  font-size: 3rem;
+}

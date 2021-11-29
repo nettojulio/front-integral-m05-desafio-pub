@@ -1,0 +1,42 @@
+.container-card-bills {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.card-bills.paid {
+  background-color: var(--light-green-paid);
+}
+
+.card-bills.overdue {
+  background-color: var(--light-salmon-overdue);
+}
+
+.card-bills.expected {
+  background-color: var(--light-yellow-expected);
+}
+
+.card-bills {
+  display: flex;
+  width: 360px;
+  margin-right: 36px;
+  padding: 23px 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+.card-bills img {
+  margin-right: 54px;
+}
+
+h3.paid-bills {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 11px;
+}
+
+p.paid-bills-value {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}

@@ -1,0 +1,36 @@
+.container-signup {
+  background-color: var(--grey);
+  display: flex;
+  width: 500px;
+  padding: 49px;
+}
+
+/*typography*/
+.MuiTypography-root.MuiStepLabel-label.MuiTypography-body2.MuiTypography-displayBlock,
+.MuiTypography-root.MuiStepLabel-label.MuiStepLabel-active.MuiTypography-body2.MuiTypography-displayBlock {
+  color: var(--check-green);
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.MuiTypography-root.MuiTypography-body1 {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 130%;
+
+  color: #3f3f55;
+}
+
+.MuiTypography-body1 {
+  font-size: 1.5rem;
+  height: 5.4rem;
+}
+
+/* .MuiStepConnector-root.MuiStepConnector-vertical.Mui-disabled  */
+
+.css-ha3bif-MuiTimelineItem-root:before {
+  display: none;
+}
