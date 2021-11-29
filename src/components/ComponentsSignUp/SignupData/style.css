@@ -116,7 +116,8 @@
 .password-img-toggle {
   cursor: pointer;
   position: relative;
-  width: 40px;
-  bottom: 43px;
-  left: 295px;
+  width: 20px;
+  height: 20px;
+  bottom: 39px;
+  left: 310px;
 }
