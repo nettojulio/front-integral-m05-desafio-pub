@@ -2,7 +2,7 @@
   background-color: var(--light-grey);
   width: calc(100vw - 125px);
   height: 100vh;
-  
+
   /*TESTE*/
   /* margin-top: 30px; */
   /* padding: 0 164px 0 208px; */
@@ -25,13 +25,17 @@
 }
 
 .clients-page-icon span {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 26px;
   font-weight: 600;
 }
 
 .clients-page-info {
-  width: 600px;
+  min-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
 }
 
 .add-btn {
@@ -39,8 +43,9 @@
   display: flex;
 
   color: var(--light-grey);
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 18px;
+  white-space: nowrap;
 }
 
 .input-search {
@@ -50,10 +55,25 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px;
-  margin-left: 16px;
+  /* margin-left: 16px; */
   border-radius: 10px;
 
   color: #747488;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 18px;
+}
+
+.clientSettings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+
+
+  width: 40px;
+  height: 40px;
+
+  background: #ffffff;
+  border-radius: 10px;
+
 }
