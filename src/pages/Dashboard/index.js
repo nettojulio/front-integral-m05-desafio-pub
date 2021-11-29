@@ -1,3 +1,4 @@
+// import { useEffect } from "react";
 import SideBar from "../../components/SideBar";
 import NavBar from "../../components/NavBar";
 import ResumeBills from "../ResumeBills";
@@ -11,6 +12,12 @@ import useSignup from "../../hooks/useSignup";
 
 function Dashboard() {
   const { changePages, openClientModal } = useSignup();
+
+  // useEffect(() => {
+  //   if (token) {
+  //     loadUserProfile();
+  //   }
+  // }, []);
 
   return (
     <div className="main">

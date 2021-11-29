@@ -56,6 +56,7 @@ function UserModal() {
         throw new Error(result);
       }
       setComplete(true);
+
       setInterval(() => {
         setComplete(false);
         setOpenUserModal(false);

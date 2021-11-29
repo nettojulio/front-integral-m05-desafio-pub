@@ -5,11 +5,19 @@ import useSignup from "../../hooks/useSignup";
 import eye from "../../assets/eye.svg";
 import eyeHide from "../../assets/eye-hide.svg";
 import ToastAlert from "../../components/ToastAlert";
+// import { useNavigate } from "react-router";
 
 function SignIn() {
   const [openPass, setOpenPass] = useState(false);
-  const { setOpen, setMessageAlert, handleLogin, formsLogin, SetFormsLogin } =
-    useSignup();
+  const { setOpen, setMessageAlert, handleLogin, formsLogin, SetFormsLogin } = useSignup();
+  // let navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate("/dashboard");
+  //   }
+  //   // eslint-disable-next-line
+  // }, [])
 
   function handleSubmitLogin() {
     if (!formsLogin.email || !formsLogin.senha) {
@@ -58,14 +66,18 @@ function SignIn() {
             src={openPass ? eye : eyeHide}
             alt="Hide Password"
           />
-          <button className="sign-in-button" onClick={() => handleSubmitLogin()}>Entrar</button>
+          <button
+            className="sign-in-button"
+            onClick={() => handleSubmitLogin()}
+          >
+            Entrar
+          </button>
 
           <span>
             Ainda não possui uma conta? <Link to={"/signup"}>Cadastre-se</Link>
           </span>
         </div>
       </div>
-
       <ToastAlert />
     </div>
   );
