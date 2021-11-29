@@ -1,6 +1,27 @@
 #vertical-tabpanel-0 {
   display: none;
 }
+/*cor da barra na verceu*/
+.css-7ozjwe {
+  background-color: #da0175;
+}
+
+/*cor do span das paginas na verceu*/
+.css-1tnnsql.Mui-selected {
+  background-color: #da0175;
+}
+
+.MuiTabs-indicator {
+  color: #da0175;
+}
+
+.MuiButtonBase-root.MuiTab-root.MuiTab-labelIcon.MuiTab-textColorPrimary.Mui-selected.css-aym9vq-MuiButtonBase-root-MuiTab-root {
+  color: #da0175;
+}
+
+.MuiTab-iconWrapper {
+  color: #da0175;
+}
 
 span.MuiTabs-indicator.css-10d9dml-MuiTabs-indicator {
   background-color: #da0175;

@@ -86,7 +86,6 @@ export default function SideBar() {
         }}
       >
         <Tab
-          style={{ color: "#343447" }}
           label="Home"
           {...a11yProps(0)}
           icon={
@@ -95,7 +94,6 @@ export default function SideBar() {
           onClick={() => handleChangePages("resume")}
         />
         <Tab
-          style={{ color: "#343447" }}
           label="Clientes"
           {...a11yProps(1)}
           icon={
@@ -108,7 +106,6 @@ export default function SideBar() {
           onClick={() => handleChangePages("client")}
         />
         <Tab
-          style={{ color: "#343447" }}
           label="Cobrança"
           {...a11yProps(2)}
           icon={<Billings />}
