@@ -55,11 +55,13 @@ function UserModal() {
       if (!response.ok) {
         throw new Error(result);
       }
+
       setComplete(true);
-      setInterval(() => {
+      const tasks = setInterval(() => {
         loadUserProfile();
         setComplete(false);
         setOpenUserModal(false);
+        clearInterval(tasks);
       }, 5000);
     } catch (error) {
       updateValidations(error);
