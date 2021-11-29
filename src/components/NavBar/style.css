@@ -17,7 +17,7 @@
   margin-bottom: 24px;
 }
 .navbar-info h1 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 26px;
   font-weight: 600;
 }
@@ -26,12 +26,11 @@
   width: 150px;
 
   color: #0e8750;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-weight: 600;
 
   /*TESTE*/
   position: relative;
-
 }
 
 .navbar-icon {
@@ -56,7 +55,7 @@
 }
 
 .divisor {
-  border: 1px solid #acd9c5;
+  border-bottom: 2px solid #acd9c5;
 }
 
 /*TESTE*/
@@ -97,7 +96,7 @@
 }
 
 .userOptionLabel {
-  font-family: "Nunito";
+  font-family: 'Nunito';
   font-style: normal;
   font-weight: 600;
   font-size: 0.8rem;
