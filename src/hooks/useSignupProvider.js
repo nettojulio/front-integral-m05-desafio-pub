@@ -15,6 +15,7 @@ function useSignupProvider() {
   const [formsLogin, SetFormsLogin] = useState({ email: "", senha: "" });
   const [open, setOpen] = useState(false);
   const [messageAlert, setMessageAlert] = useState(false);
+  const [stateAlert, setStateAlert] = useState("");
   const [changePages, setChangePages] = useState("resume");
   /*TESTE*/
   const [token, setToken, removeToken] = useLocalStorage("token", "");
@@ -42,12 +43,14 @@ function useSignupProvider() {
       !formSignUp.senhaRepetida
     ) {
       setOpen(true);
+      setStateAlert("error");
       setMessageAlert("Erro: Existem alguns campos em branco!");
       return;
     }
 
     if (formSignUp.senha !== formSignUp.senhaRepetida) {
       setOpen(true);
+      setStateAlert("error");
       setMessageAlert("Erro: As senhas digitadas são diferentes!");
       return;
     }
@@ -78,6 +81,7 @@ function useSignupProvider() {
 
       if (!response.ok) {
         setOpen(true);
+        setStateAlert("error");
         setMessageAlert(`Erro: ${data}`);
       } else {
         setTogglePage("signupDone");
@@ -109,6 +113,7 @@ function useSignupProvider() {
 
       if (!response.ok) {
         setOpen(true);
+        setStateAlert("error");
         setMessageAlert(`Erro: ${data}`);
       } else {
         setToken(data.token);
@@ -179,6 +184,8 @@ function useSignupProvider() {
     setUserData,
     changePages,
     setChangePages,
+    stateAlert,
+    setStateAlert,
   };
 }
 

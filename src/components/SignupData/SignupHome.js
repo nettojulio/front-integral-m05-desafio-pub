@@ -9,12 +9,14 @@ function SignupData() {
     setTogglePage,
     setOpen,
     setMessageAlert,
+    setStateAlert,
   } = useSignup();
 
   function handleNextPage(e) {
     e.preventDefault();
     if (!formSignUp.email || !formSignUp.nome) {
       setOpen(true);
+      setStateAlert("error");
       setMessageAlert("Erro: Existem alguns campos em branco!");
       return;
     }

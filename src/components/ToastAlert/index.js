@@ -3,7 +3,7 @@ import Snackbar from "@mui/material/Snackbar";
 import useSignup from "../../hooks/useSignup";
 
 function ToastAlert() {
-  const { open, handleClose, messageAlert } = useSignup();
+  const { open, handleClose, messageAlert, stateAlert } = useSignup();
 
   return (
     <Snackbar
@@ -15,7 +15,7 @@ function ToastAlert() {
     >
       <Alert
         onClose={handleClose}
-        severity="error"
+        severity={stateAlert}
         sx={{ width: "100%", fontSize: "1.6rem" }}
       >
         {messageAlert}

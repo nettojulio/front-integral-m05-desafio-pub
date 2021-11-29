@@ -19,8 +19,16 @@ function ClientModal() {
     uf: "",
   };
 
-  const { token, openClientModal, setOpenClientModal } = useSignup();
-  const [formEditUserModalInputs, setFormEditUserModalInputs] = useState(initialForm);
+  const {
+    token,
+    openClientModal,
+    setOpenClientModal,
+    setOpen,
+    setMessageAlert,
+    setStateAlert,
+  } = useSignup();
+  const [formEditUserModalInputs, setFormEditUserModalInputs] =
+    useState(initialForm);
   const [nameErrorMessage, setNameErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [cpfErrorMessage, setCpfErrorMessage] = useState("");
@@ -57,7 +65,11 @@ function ClientModal() {
       if (!response.ok) {
         throw new Error(result);
       }
+
       setOpenClientModal(false);
+      setOpen(true);
+      setStateAlert("success");
+      setMessageAlert("Sucesso: Cliente adicionado!");
     } catch (error) {
       updateValidations(error);
     }
@@ -203,7 +215,9 @@ function ClientModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${nameErrorMessage ? "clientErrorSinalization" : undefined}`}
+                  className={`inputClient ${
+                    nameErrorMessage ? "clientErrorSinalization" : undefined
+                  }`}
                 />
                 {nameErrorMessage && (
                   <p className="clientErrorMessage">{nameErrorMessage}</p>
@@ -220,7 +234,9 @@ function ClientModal() {
                   placeholder="Digite seu e-mail"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${emailErrorMessage ? "clientErrorSinalization" : undefined}
+                  className={`inputClient ${
+                    emailErrorMessage ? "clientErrorSinalization" : undefined
+                  }
                   `}
                 />
                 {emailErrorMessage && (
@@ -238,7 +254,9 @@ function ClientModal() {
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
-                  className={`inputClient ${cpfErrorMessage ? "clientErrorSinalization" : undefined}`}
+                  className={`inputClient ${
+                    cpfErrorMessage ? "clientErrorSinalization" : undefined
+                  }`}
                 />
                 {cpfErrorMessage && (
                   <p className="clientErrorMessage">{cpfErrorMessage}</p>
@@ -254,7 +272,11 @@ function ClientModal() {
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
                   className={`inputClient
-                    ${telefoneErrorMessage ? "clientErrorSinalization" : undefined}
+                    ${
+                      telefoneErrorMessage
+                        ? "clientErrorSinalization"
+                        : undefined
+                    }
                   `}
                 />
                 {telefoneErrorMessage && (
@@ -314,7 +336,10 @@ function ClientModal() {
                 </label>
               </div>
               <div className="splitClientContainer">
-                <label htmlFor="cidade" className="clientFormLabels split cidadeForm">
+                <label
+                  htmlFor="cidade"
+                  className="clientFormLabels split cidadeForm"
+                >
                   Cidade
                   <input
                     id="cidade"

@@ -1,8 +1,8 @@
 import "./style.css";
 import useSignup from "../../hooks/useSignup";
-import search from '../../assets/search.svg';
-import customerScreen from '../../assets/customerScreen.svg';
-
+import search from "../../assets/search.svg";
+import customerScreen from "../../assets/customerScreen.svg";
+import ToastAlert from "../../components/ToastAlert";
 
 function Client() {
   const { setOpenClientModal } = useSignup();
@@ -15,15 +15,21 @@ function Client() {
           <span>Clientes</span>
         </div>
         <div className="clients-page-info">
-          <button onClick={() => setOpenClientModal(true)} className="btn add-btn">+ Adicionar cliente</button>
+          <button
+            onClick={() => setOpenClientModal(true)}
+            className="btn add-btn"
+          >
+            + Adicionar cliente
+          </button>
           <div className="input-search">
             <span>Pesquisar</span>
             <img src={search} alt="Search" />
           </div>
         </div>
       </div>
-    </div>
 
+      <ToastAlert />
+    </div>
   );
 }
 

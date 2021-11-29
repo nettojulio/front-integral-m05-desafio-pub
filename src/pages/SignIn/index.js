@@ -9,19 +9,28 @@ import { useNavigate } from "react-router";
 
 function SignIn() {
   const [openPass, setOpenPass] = useState(false);
-  const { setOpen, setMessageAlert, handleLogin, formsLogin, SetFormsLogin, token } = useSignup();
+  const {
+    setOpen,
+    setMessageAlert,
+    handleLogin,
+    formsLogin,
+    SetFormsLogin,
+    token,
+    setStateAlert,
+  } = useSignup();
   let navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
-      navigate("/dashboard");
+      navigate("/resume");
     }
     // eslint-disable-next-line
-  }, [])
+  }, []);
 
   function handleSubmitLogin() {
     if (!formsLogin.email || !formsLogin.senha) {
       setOpen(true);
+      setStateAlert("error");
       setMessageAlert("Erro: Existem alguns campos em branco!");
       return;
     }
