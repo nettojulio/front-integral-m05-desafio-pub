@@ -1,11 +1,11 @@
 import "./style.css";
 import "../../styles/global.css";
-import SignupStatusBar from "../../components/SignupStatusBar";
-import SignupHome from "../../components/SignupData/SignupHome";
-import SignupPassword from "../../components/SignupData/SignupPassword";
-import SignupDone from "../../components/SignupData/SignupDone";
+import SignupStatusBar from "../../components/ComponentsSignUp/SignupStatusBar";
+import SignupHome from "../../components/ComponentsSignUp/SignupData/SignupHome";
+import SignupPassword from "../../components/ComponentsSignUp/SignupData/SignupPassword";
+import SignupDone from "../../components/ComponentsSignUp/SignupData/SignupDone";
 import useSignup from "../../hooks/useSignup";
-import ToastAlert from "../../components/ToastAlert";
+import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
 
 function SignUp() {
   const { togglePage } = useSignup();

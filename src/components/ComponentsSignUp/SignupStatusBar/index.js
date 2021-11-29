@@ -9,7 +9,7 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import CircleIcon from "@mui/icons-material/Circle";
 import Typography from "@mui/material/Typography";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../../../hooks/useSignup";
 
 export default function CustomizedTimeline() {
   const { togglePage } = useSignup();

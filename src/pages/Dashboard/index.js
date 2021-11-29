@@ -1,11 +1,11 @@
 // import { useEffect } from "react";
-import SideBar from "../../components/SideBar";
-import NavBar from "../../components/NavBar";
+import SideBar from "../../components/ComponentsDashboard/SideBar";
+import NavBar from "../../components/ComponentsDashboard/NavBar";
 import ResumeBills from "../ResumeBills";
 import Client from "../Client";
 import Charge from "../Charge";
 
-import ClientModal from "../../components/ClientModal";
+import ClientModal from "../../components/ComponentsDashboard/ClientModal";
 
 import "./style.css";
 import useSignup from "../../hooks/useSignup";

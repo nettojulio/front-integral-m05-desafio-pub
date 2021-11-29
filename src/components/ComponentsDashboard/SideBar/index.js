@@ -11,7 +11,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../../../hooks/useSignup";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

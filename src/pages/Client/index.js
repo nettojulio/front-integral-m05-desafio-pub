@@ -2,7 +2,7 @@ import "./style.css";
 import useSignup from "../../hooks/useSignup";
 import search from "../../assets/search.svg";
 import customerScreen from "../../assets/customerScreen.svg";
-import ToastAlert from "../../components/ToastAlert";
+import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
 import customersSettings from "../../assets/customersSettings.svg";
 
 function Client() {

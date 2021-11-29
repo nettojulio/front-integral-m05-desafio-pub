@@ -1,7 +1,7 @@
 import "./style.css";
-import CardBills from "../../components/CardBills";
-import TableCard from "../../components/TableCard";
-import TableCardClients from "../../components/TableCardClients";
+import CardBills from "../../components/ComponentsResume/CardBills";
+import TableCard from "../../components/ComponentsResume/TableCard";
+import TableCardClients from "../../components/ComponentsResume/TableCardClients";
 import paidBillings from "../../assets/paidBillings.svg";
 import expiredBillings from "../../assets/expiredBillings.svg";
 import expectedBillings from "../../assets/expectedBillings.svg";

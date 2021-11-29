@@ -3,7 +3,7 @@ import arrowDown from "../../assets/arrowDown.svg";
 import edit from "../../assets/edit.svg";
 import logOut from "../../assets/logOut.svg";
 import UserModal from "../UserModal";
-import useSignup from "../../hooks/useSignup";
+import useSignup from "../../../hooks/useSignup";
 import { useState, useEffect } from "react";
 
 const NavBar = () => {
@@ -18,7 +18,7 @@ const NavBar = () => {
   const [openOptions, setOpenOptions] = useState(false);
   const [display, setDisplay] = useState({});
 
-  useEffect(()=> {
+  useEffect(() => {
     loadUserProfile();
     // eslint-disable-next-line
   }, []);
@@ -31,23 +31,23 @@ const NavBar = () => {
   function adjustName(userName) {
     /*TO DO - Não carrega ao acessar endereço manualmente*/
     if (!userName) {
-      setDisplay({avatar: "", complete: ""})
+      setDisplay({ avatar: "", complete: "" });
       return;
     }
     /*TO DO - Não carrega ao acessar endereço manualmente*/
-    
+
     if (userName.nome.includes(" ")) {
       const names = userName.nome.split(" ");
       const namesData = {
         avatar: names[0].slice(0, 1) + names[1].slice(0, 1),
-        complete: names[0]
-      }
+        complete: names[0],
+      };
       setDisplay(namesData);
     } else {
       const namesData = {
         avatar: userName.nome.slice(0, 1),
-        complete: userName.nome
-      }
+        complete: userName.nome,
+      };
       setDisplay(namesData);
     }
   }
