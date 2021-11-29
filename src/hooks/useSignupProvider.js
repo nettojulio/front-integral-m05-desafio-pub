@@ -23,6 +23,8 @@ function useSignupProvider() {
   const [openUserModal, setOpenUserModal] = useState(false);
   const [userData, setUserData] = useState("");
 
+  const [openOptions, setOpenOptions] = useState(false);
+
   /*TESTE*/
   let navigate = useNavigate();
 
@@ -186,6 +188,8 @@ function useSignupProvider() {
     setChangePages,
     stateAlert,
     setStateAlert,
+    openOptions,
+    setOpenOptions,
   };
 }
 

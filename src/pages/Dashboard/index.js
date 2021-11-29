@@ -11,7 +11,7 @@ import "./style.css";
 import useSignup from "../../hooks/useSignup";
 
 function Dashboard() {
-  const { changePages, openClientModal } = useSignup();
+  const { changePages, openClientModal, setOpenOptions } = useSignup();
 
   // useEffect(() => {
   //   if (token) {
@@ -20,7 +20,7 @@ function Dashboard() {
   // }, []);
 
   return (
-    <div className="main">
+    <div className="main" onClick={() => setOpenOptions(false)}>
       <div className="first-div">
         <SideBar />
       </div>

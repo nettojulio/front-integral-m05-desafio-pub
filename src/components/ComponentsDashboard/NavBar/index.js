@@ -14,8 +14,10 @@ const NavBar = () => {
     userData,
     changePages,
     loadUserProfile,
+    openOptions,
+    setOpenOptions,
   } = useSignup();
-  const [openOptions, setOpenOptions] = useState(false);
+
   const [display, setDisplay] = useState({});
 
   useEffect(() => {
@@ -52,6 +54,11 @@ const NavBar = () => {
     }
   }
 
+  function handleModalOptions(e) {
+    e.stopPropagation();
+    setOpenOptions(!openOptions);
+  }
+
   return (
     <div className="navbar">
       <div className="navbar-info">
@@ -66,7 +73,7 @@ const NavBar = () => {
           <div className="navbar-icon">{display.avatar}</div>
           <span className="navbar-username">{display.complete}</span>
           <img
-            onClick={() => setOpenOptions(!openOptions)}
+            onClick={(e) => handleModalOptions(e)}
             src={arrowDown}
             alt="Arrow Down"
           />
