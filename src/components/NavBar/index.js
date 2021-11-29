@@ -20,6 +20,7 @@ const NavBar = () => {
 
   useEffect(()=> {
     loadUserProfile();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const NavBar = () => {
     if (userName.nome.includes(" ")) {
       const names = userName.nome.split(" ");
       const namesData = {
-        avatar: names[0].slice(0, 1) + ' ' + names[1].slice(0, 1),
+        avatar: names[0].slice(0, 1) + names[1].slice(0, 1),
         complete: names[0]
       }
       setDisplay(namesData);
