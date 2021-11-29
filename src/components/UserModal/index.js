@@ -16,7 +16,7 @@ function UserModal() {
     senha: "",
     confirmarSenha: "",
   };
-  const { token, openUserModal, setOpenUserModal, userData } = useSignup();
+  const { token, openUserModal, setOpenUserModal, userData, loadUserProfile } = useSignup();
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
   const [visibleTypingPassword, setVisibleTypingPassword] = useState(false);
@@ -56,8 +56,8 @@ function UserModal() {
         throw new Error(result);
       }
       setComplete(true);
-
       setInterval(() => {
+        loadUserProfile();
         setComplete(false);
         setOpenUserModal(false);
       }, 5000);

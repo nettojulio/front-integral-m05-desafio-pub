@@ -13,9 +13,14 @@ const NavBar = () => {
     handleLogout,
     userData,
     changePages,
+    loadUserProfile,
   } = useSignup();
   const [openOptions, setOpenOptions] = useState(false);
   const [display, setDisplay] = useState({});
+
+  useEffect(()=> {
+    loadUserProfile();
+  }, []);
 
   useEffect(() => {
     adjustName(userData);

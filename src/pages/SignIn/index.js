@@ -1,23 +1,23 @@
 import "./style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useSignup from "../../hooks/useSignup";
 import eye from "../../assets/eye.svg";
 import eyeHide from "../../assets/eye-hide.svg";
 import ToastAlert from "../../components/ToastAlert";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 function SignIn() {
   const [openPass, setOpenPass] = useState(false);
-  const { setOpen, setMessageAlert, handleLogin, formsLogin, SetFormsLogin } = useSignup();
-  // let navigate = useNavigate();
+  const { setOpen, setMessageAlert, handleLogin, formsLogin, SetFormsLogin, token } = useSignup();
+  let navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (token) {
-  //     navigate("/dashboard");
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
+  useEffect(() => {
+    if (token) {
+      navigate("/dashboard");
+    }
+    // eslint-disable-next-line
+  }, [])
 
   function handleSubmitLogin() {
     if (!formsLogin.email || !formsLogin.senha) {

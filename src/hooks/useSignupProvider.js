@@ -137,7 +137,6 @@ function useSignupProvider() {
       if (!response.ok) {
         throw new Error(data);
       }
-
       setUserData(data);
     } catch (error) {
       console.log(error.message);
