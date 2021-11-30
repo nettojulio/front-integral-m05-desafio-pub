@@ -8,6 +8,7 @@
 .title-table {
   width: 360px;
   height: 58px;
+  padding: 0 24px;
 
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(172, 217, 197, 0.25);
