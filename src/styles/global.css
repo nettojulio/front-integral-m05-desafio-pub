@@ -59,6 +59,10 @@ code {
   cursor: pointer;
 }
 
+.btn:hover {
+  cursor: pointer;
+}
+
 button {
   all: unset;
   cursor: pointer;
