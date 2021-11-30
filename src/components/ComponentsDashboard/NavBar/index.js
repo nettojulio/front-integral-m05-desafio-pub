@@ -62,12 +62,14 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <div className="navbar-info">
-        <h1>
+        <h1 className={
+          changePages === "client" ? 'title-client' : ''
+        }>
           {changePages === "resume"
             ? "Resumo das cobranças"
             : changePages === "client"
-            ? "Clientes"
-            : "Cobrança"}
+              ? "Clientes"
+              : "Cobrança"}
         </h1>
         <div className="navbar-info-profile">
           <div className="navbar-icon">{display.avatar}</div>

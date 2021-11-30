@@ -16,10 +16,17 @@
   padding: 0px 50px;
   margin-bottom: 24px;
 }
+
 .navbar-info h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 26px;
   font-weight: 600;
+}
+
+h1.title-client {
+  color: #0e8750;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
 }
 
 .navbar-info-profile {
