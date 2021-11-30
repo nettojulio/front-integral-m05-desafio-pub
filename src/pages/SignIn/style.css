@@ -64,10 +64,10 @@
   cursor: pointer;
   position: relative;
   margin-top: 10px;
-  width: 20px;
-  height: 20px;
-  bottom: 50px;
-  left: 150px;
+  width: 2.4rem;
+  height: 2.4rem;
+  bottom: 5rem;
+  left: 15rem;
 }
 
 label {
