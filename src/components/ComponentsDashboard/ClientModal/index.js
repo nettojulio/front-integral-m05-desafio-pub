@@ -106,13 +106,11 @@ function ClientModal() {
     event.preventDefault();
     handleClearValidations();
 
-    if (!formEditUserModalInputs.nome) {
-      setNameErrorMessage("Este campo deve ser preenchido");
-      return;
-    }
-
-    if (!formEditUserModalInputs.email) {
-      setEmailErrorMessage("Este campo deve ser preenchido");
+    if (!formEditUserModalInputs.nome || !formEditUserModalInputs.email || !formEditUserModalInputs.cpf || !formEditUserModalInputs.telefone) {
+      !formEditUserModalInputs.nome && setNameErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.email && setEmailErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.cpf && setCpfErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.telefone && setTelefoneErrorMessage("Este campo deve ser preenchido");
       return;
     }
 

@@ -24,8 +24,8 @@ function UserModal() {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState(false);
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(false);
   const [complete, setComplete] = useState(false);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function UserModal() {
         setComplete(false);
         setOpenUserModal(false);
         clearInterval(tasks);
-      }, 5000);
+      }, 3000);
     } catch (error) {
       updateValidations(error);
     }
@@ -99,13 +99,9 @@ function UserModal() {
     event.preventDefault();
     handleClearValidations();
 
-    if (!formEditUserModalInputs.nome) {
-      setNameErrorMessage("Este campo deve ser preenchido");
-      return;
-    }
-
-    if (!formEditUserModalInputs.email) {
-      setEmailErrorMessage("Este campo deve ser preenchido");
+    if (!formEditUserModalInputs.nome || !formEditUserModalInputs.email) {
+      !formEditUserModalInputs.nome && setNameErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.email && setEmailErrorMessage("Este campo deve ser preenchido");
       return;
     }
 
@@ -145,7 +141,7 @@ function UserModal() {
       telefone: formEditUserModalInputs.telefone,
     };
 
-    if (password) {
+    if (password || repeatPassword) {
       if (password !== repeatPassword) {
         setPasswordErrorMessage("As senhas não coincidem");
         return;
@@ -155,7 +151,10 @@ function UserModal() {
       }
       updateUser.senha = password;
     }
-    editUserProfile(updateUser);
+    console.log(password);
+    console.log(repeatPassword);
+    return
+    // editUserProfile(updateUser);
   }
 
   function handleClearValidations() {
@@ -285,9 +284,9 @@ function UserModal() {
                 />
               </label>
               {passwordErrorMessage && (
-                <p className="errorMessage errorMessagePassword">
+                <div className="errorMessage errorMessagePassword">
                   {passwordErrorMessage}
-                </p>
+                </div>
               )}
             </div>
             <button className="applyEditUserChanges">Aplicar</button>
