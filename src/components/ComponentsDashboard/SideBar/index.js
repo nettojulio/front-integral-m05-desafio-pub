@@ -4,6 +4,7 @@ import { ReactComponent as HomeSelected } from "../../../assets/homeSelected.svg
 import { ReactComponent as CustomersSidebar } from "../../../assets/customersSidebar.svg";
 import { ReactComponent as CustomersSidebarSelected } from "../../../assets/customersSidebarSelected.svg";
 import { ReactComponent as Billings } from "../../../assets/billings.svg";
+import { ReactComponent as BillingsSelected } from "../../../assets/billingsSelected.svg";
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -116,7 +117,13 @@ export default function SideBar() {
         <Tab
           label="Cobrança"
           {...a11yProps(2)}
-          icon={<Billings />}
+          icon={
+            window.location.pathname === "/charge" ? (
+              <BillingsSelected />
+            ) : (
+              <Billings />
+            )
+          }
           onClick={() => handleChangePages("charge")}
         />
       </Tabs>
