@@ -151,10 +151,7 @@ function UserModal() {
       }
       updateUser.senha = password;
     }
-    console.log(password);
-    console.log(repeatPassword);
-    return
-    // editUserProfile(updateUser);
+    editUserProfile(updateUser);
   }
 
   function handleClearValidations() {
