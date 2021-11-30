@@ -38,3 +38,7 @@ span.MuiTabs-indicator.css-10d9dml-MuiTabs-indicator {
 .css-13b5x29-MuiButtonBase-root-MuiTab-root.Mui-selected label {
   background-color: #da0175;
 }
+
+.css-1tnnsql.Mui-selected {
+  color: #da0175;
+}
