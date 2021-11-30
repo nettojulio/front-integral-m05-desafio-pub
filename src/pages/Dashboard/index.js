@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import SideBar from "../../components/ComponentsDashboard/SideBar";
 import NavBar from "../../components/ComponentsDashboard/NavBar";
 import ResumeBills from "../ResumeBills";
@@ -10,14 +10,15 @@ import ClientModal from "../../components/ComponentsDashboard/ClientModal";
 import "./style.css";
 import useSignup from "../../hooks/useSignup";
 
-function Dashboard() {
-  const { changePages, openClientModal, setOpenOptions } = useSignup();
+function Dashboard({ renderPage }) {
+  const { changePages, setChangePages, openClientModal, setOpenOptions } =
+    useSignup();
 
-  // useEffect(() => {
-  //   if (token) {
-  //     loadUserProfile();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (renderPage) {
+      setChangePages(renderPage);
+    }
+  }, [renderPage, setChangePages]);
 
   return (
     <div className="main" onClick={() => setOpenOptions(false)}>
