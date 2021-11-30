@@ -8,7 +8,7 @@ function MainRoutes() {
   function ProtectedRoutes(props) {
     const { token } = useSignup();
 
-    return token ? props.children : <Navigate to="/login" />;
+    return token ? props.children : <Navigate to="/signin" />;
   }
 
   function RedirectRoutes(props) {
@@ -49,7 +49,7 @@ function MainRoutes() {
           path="/resume"
           element={
             <ProtectedRoutes>
-              <Dashboard />
+              <Dashboard renderPage={"resume"} />
             </ProtectedRoutes>
           }
         />
@@ -57,7 +57,7 @@ function MainRoutes() {
           path="/client"
           element={
             <ProtectedRoutes>
-              <Dashboard />
+              <Dashboard renderPage={"client"} />
             </ProtectedRoutes>
           }
         />
@@ -65,7 +65,7 @@ function MainRoutes() {
           path="/charge"
           element={
             <ProtectedRoutes>
-              <Dashboard />
+              <Dashboard renderPage={"charge"} />
             </ProtectedRoutes>
           }
         />
