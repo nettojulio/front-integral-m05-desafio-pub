@@ -21,6 +21,8 @@ function UserModal() {
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
   const [visibleTypingPassword, setVisibleTypingPassword] = useState(false);
+  const [visibleTypingRepeatPassword, setVisibleTypingRepeatPassword] =
+    useState(false);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState(false);
@@ -100,8 +102,10 @@ function UserModal() {
     handleClearValidations();
 
     if (!formEditUserModalInputs.nome || !formEditUserModalInputs.email) {
-      !formEditUserModalInputs.nome && setNameErrorMessage("Este campo deve ser preenchido");
-      !formEditUserModalInputs.email && setEmailErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.nome &&
+        setNameErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.email &&
+        setEmailErrorMessage("Este campo deve ser preenchido");
       return;
     }
 
@@ -166,7 +170,10 @@ function UserModal() {
   }
 
   return (
-    <div className={`backdrop ${!openUserModal && "hidden"}`} onClick={(e) => handleModalOptions(e)}>
+    <div
+      className={`backdrop ${!openUserModal && "hidden"}`}
+      onClick={(e) => handleModalOptions(e)}
+    >
       {!complete && (
         <div className="userModal">
           <img
@@ -279,7 +286,7 @@ function UserModal() {
                 <img
                   className="passwordVisibilityToggle"
                   onClick={() =>
-                    setVisibleTypingPassword(!visibleTypingPassword)
+                    setVisibleTypingRepeatPassword(!visibleTypingRepeatPassword)
                   }
                   src={visibleTypingPassword ? exposed : secure}
                   alt="Alterar visibilidade da senha"
