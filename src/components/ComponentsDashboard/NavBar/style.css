@@ -1,0 +1,119 @@
+.navbar {
+  background-color: var(--light-grey);
+  padding-top: 40px;
+}
+
+.navbar-info,
+.navbar-info-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*TESTE*/
+  margin: 0 2rem;
+}
+
+.navbar-info {
+  padding: 0px 50px;
+  margin-bottom: 24px;
+}
+
+.navbar-info h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+h1.title-client {
+  color: #0e8750;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+.navbar-info-profile {
+  min-width: 150px;
+
+  color: #0e8750;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+
+  /*TESTE*/
+  position: relative;
+}
+
+.navbar-icon {
+  background-color: #dedee9;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  margin-right: 16px;
+  flex-shrink: 0;
+
+  font-size: 22px;
+}
+
+.navbar-username {
+  font-size: 1.8rem;
+}
+
+.userOptionsGateway {
+  cursor: pointer;
+}
+
+.divisor {
+  border-bottom: 2px solid #acd9c5;
+}
+
+/*TESTE*/
+
+.userOptions {
+  position: absolute;
+  width: 9.2rem;
+  height: 5.1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  top: 3.5rem;
+  right: -6.7rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.arrowUpUserOptions {
+  position: absolute;
+  top: -0.9rem;
+  left: 0.5rem;
+  width: 0;
+  height: 0;
+  border-left: 0.8rem solid transparent;
+  border-right: 0.8rem solid transparent;
+  border-bottom: 1rem solid #ffffff;
+}
+
+.userOptionsButtons {
+  width: 2.4rem;
+  height: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5rem;
+  cursor: pointer;
+}
+
+.userOptionLabel {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.8rem;
+  line-height: 1.1rem;
+
+  color: #747488;
+}
+
+.userOptionsContainer {
+  position: relative;
+  display: flex;
+}

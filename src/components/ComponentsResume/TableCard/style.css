@@ -1,0 +1,124 @@
+.container-table {
+  margin-right: 32px;
+  margin-bottom: 32px;
+  border-radius: 30px;
+}
+
+.footer-table,
+.title-table {
+  width: 360px;
+  height: 58px;
+  padding: 0 24px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(172, 217, 197, 0.25);
+}
+
+.title-table {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.head-card-table {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 7px;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.head-card-table-title {
+  margin-left: 44px;
+
+  font-size: 18px;
+}
+.head-card-table-card-value {
+  background-color: var(--light-green-paid);
+  width: 50px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.head-card-table-card-value.paid {
+  background-color: var(--light-green-paid);
+}
+.head-card-table-card-value.expected {
+  background-color: var(--light-yellow-expected);
+}
+.head-card-table-card-value.overdue {
+  background-color: var(--light-salmon-overdue);
+}
+
+.head-card-table-card-value span {
+  font-size: 16px;
+}
+.head-card-table-card-value span.paid {
+  color: var(--green-paid);
+}
+.head-card-table-card-value span.expected {
+  color: var(--yellow-expected);
+}
+.head-card-table-card-value span.overdue {
+  color: var(--red-overdue);
+}
+
+.footer-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.footer-table span {
+  color: var(--pink);
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  text-decoration: underline;
+}
+.footer-table span:hover {
+  cursor: pointer;
+}
+
+.MuiTableRow-root.MuiTableRow-head.css-1q1u3t4-MuiTableRow-root {
+  border: none;
+}
+
+.MuiTableCell-root.MuiTableCell-head,
+.MuiTableCell-root.MuiTableCell-body {
+  font-family: 'Nunito';
+  font-style: normal;
+  letter-spacing: 0.005em;
+  padding: 8px;
+}
+
+.MuiTableCell-root.MuiTableCell-head:first-child,
+.MuiTableCell-root.MuiTableCell-body:first-child {
+  padding-left: 25px;
+}
+
+.MuiTableCell-root.MuiTableCell-head:last-child,
+.MuiTableCell-root.MuiTableCell-body:last-child {
+  padding-right: 25px;
+}
+/*font subtitle*/
+.MuiTableCell-root.MuiTableCell-head {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 50px;
+
+  color: #3f3f55;
+}
+
+/*font list items*/
+.MuiTableCell-root.MuiTableCell-body {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 40px;
+
+  color: #6e6e85;
+}

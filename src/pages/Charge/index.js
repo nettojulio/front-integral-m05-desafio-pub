@@ -1,10 +1,7 @@
 import "./style.css";
 
 function Charge() {
-  return (
-    <>
-    </>
-  );
+  return <></>;
 }
 
 export default Charge;
