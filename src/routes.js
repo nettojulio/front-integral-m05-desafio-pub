@@ -8,7 +8,7 @@ function MainRoutes() {
   function ProtectedRoutes(props) {
     const { token } = useSignup();
 
-    return token ? props.children : <Navigate to="/login" />;
+    return token ? props.children : <Navigate to="#/login" />;
   }
 
   function RedirectRoutes(props) {
@@ -21,7 +21,7 @@ function MainRoutes() {
     <>
       <Routes>
         <Route
-          path="#signup"
+          path="#/signup"
           element={
             <RedirectRoutes>
               <SignUp />
@@ -29,7 +29,7 @@ function MainRoutes() {
           }
         />
         <Route
-          path="#signin"
+          path="#/signin"
           element={
             <RedirectRoutes>
               <SignIn />
