@@ -274,7 +274,7 @@ function UserModal() {
                 Confirmar Senha*
                 <input
                   id="confirmarSenha"
-                  type={visibleTypingPassword ? "text" : "password"}
+                  type={visibleTypingRepeatPassword ? "text" : "password"}
                   name="confirmarSenha"
                   placeholder="Repita a nova senha"
                   value={repeatPassword}
@@ -288,7 +288,7 @@ function UserModal() {
                   onClick={() =>
                     setVisibleTypingRepeatPassword(!visibleTypingRepeatPassword)
                   }
-                  src={visibleTypingPassword ? exposed : secure}
+                  src={visibleTypingRepeatPassword ? exposed : secure}
                   alt="Alterar visibilidade da senha"
                 />
               </label>
