@@ -89,7 +89,15 @@ export default function SideBar() {
           label="Home"
           {...a11yProps(0)}
           icon={
-            window.location.pathname === "/resume" ? <HomeSelected /> : <Home />
+            window.location.pathname === "/resume" ? (
+              <HomeSelected />
+            ) : window.location.pathname === "/dashboard" ? (
+              <HomeSelected />
+            ) : window.location.pathname === "/" ? (
+              <HomeSelected />
+            ) : (
+              <Home />
+            )
           }
           onClick={() => handleChangePages("resume")}
         />
