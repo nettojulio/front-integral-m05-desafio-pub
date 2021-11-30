@@ -1,0 +1,45 @@
+.table-clients {
+  align-self: center;
+}
+
+.status-color {
+  width: 9.9rem;
+  height: 1.9rem;
+
+  background: #ffefef;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 8px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  color: #971d1d;
+}
+
+.btn_detailClient:hover {
+  text-decoration: underline;
+}
+
+.container-Iconbillings {
+  cursor: pointer;
+  width: 35px;
+  height: 38px;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 11px;
+
+  color: #da0175;
+}

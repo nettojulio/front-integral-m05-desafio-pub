@@ -4,6 +4,7 @@ import search from "../../assets/search.svg";
 import customerScreen from "../../assets/customerScreen.svg";
 import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
 import customersSettings from "../../assets/customersSettings.svg";
+import TableClientsExib from "../../components/ComponentsClients/TableClientsExib";
 
 function Client() {
   const { setOpenClientModal } = useSignup();
@@ -31,6 +32,8 @@ function Client() {
           </div>
         </div>
       </div>
+
+      <TableClientsExib />
 
       <ToastAlert />
     </div>

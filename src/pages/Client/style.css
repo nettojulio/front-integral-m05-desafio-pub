@@ -2,6 +2,8 @@
   background-color: var(--light-grey);
   width: calc(100vw - 125px);
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container-clients-page {
