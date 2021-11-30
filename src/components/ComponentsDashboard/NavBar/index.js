@@ -72,32 +72,35 @@ const NavBar = () => {
         <div className="navbar-info-profile">
           <div className="navbar-icon">{display.avatar}</div>
           <span className="navbar-username">{display.complete}</span>
-          <img
-            onClick={(e) => handleModalOptions(e)}
-            src={arrowDown}
-            alt="Arrow Down"
-          />
-          {/* TESTE */}
-          {openOptions && (
-            <div className="userOptions">
-              <div className="arrowUpUserOptions"></div>
-              <div
-                onClick={() => setOpenUserModal(true)}
-                className="userOptionsButtons"
-              >
-                <img src={edit} alt="Editar" />
-                <span className="userOptionLabel">Editar</span>
+          <div className="userOptionsContainer">
+            <img
+              onClick={(e) => handleModalOptions(e)}
+              src={arrowDown}
+              alt="Arrow Down"
+              className="userOptionsGateway"
+            />
+            {/* TESTE */}
+            {openOptions && (
+              <div className="userOptions">
+                <div className="arrowUpUserOptions"></div>
+                <div
+                  onClick={() => setOpenUserModal(true)}
+                  className="userOptionsButtons"
+                >
+                  <img src={edit} alt="Editar" />
+                  <span className="userOptionLabel">Editar</span>
+                </div>
+                <div
+                  onClick={() => handleLogout()}
+                  className="userOptionsButtons"
+                >
+                  <img src={logOut} alt="Sair" />
+                  <span className="userOptionLabel">Sair</span>
+                </div>
               </div>
-              <div
-                onClick={() => handleLogout()}
-                className="userOptionsButtons"
-              >
-                <img src={logOut} alt="Sair" />
-                <span className="userOptionLabel">Sair</span>
-              </div>
-            </div>
-          )}
-          {/* TESTE */}
+            )}
+            {/* TESTE */}
+          </div>
         </div>
       </div>
       <div className="divisor"></div>

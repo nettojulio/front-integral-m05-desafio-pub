@@ -23,7 +23,7 @@
 }
 
 .navbar-info-profile {
-  width: 150px;
+  min-width: 150px;
 
   color: #0e8750;
   font-family: 'Nunito', sans-serif;
@@ -42,15 +42,16 @@
   align-items: center;
   border-radius: 30px;
   margin-right: 16px;
+  flex-shrink: 0;
 
   font-size: 22px;
 }
 
 .navbar-username {
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
-.navbar-info-profile img:hover {
+.userOptionsGateway {
   cursor: pointer;
 }
 
@@ -66,12 +67,11 @@
   height: 5.1rem;
   background-color: #ffffff;
   border-radius: 8px;
-  top: 4.5rem;
+  top: 3.5rem;
   right: -6.7rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  cursor: pointer;
 }
 
 .arrowUpUserOptions {
@@ -93,6 +93,7 @@
   justify-content: center;
   align-items: center;
   row-gap: 0.5rem;
+  cursor: pointer;
 }
 
 .userOptionLabel {
@@ -103,4 +104,9 @@
   line-height: 1.1rem;
 
   color: #747488;
+}
+
+.userOptionsContainer {
+  position: relative;
+  display: flex;
 }
