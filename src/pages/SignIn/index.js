@@ -83,7 +83,7 @@ function SignIn() {
           </button>
 
           <span>
-            Ainda não possui uma conta? <Link to={"#/signup"}>Cadastre-se</Link>
+            Ainda não possui uma conta? <Link to={"/signup"}>Cadastre-se</Link>
           </span>
         </div>
       </div>
