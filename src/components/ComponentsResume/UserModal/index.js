@@ -58,8 +58,8 @@ function UserModal() {
       }
 
       setComplete(true);
+      loadUserProfile();
       const tasks = setInterval(() => {
-        loadUserProfile();
         setComplete(false);
         setOpenUserModal(false);
         clearInterval(tasks);
@@ -160,8 +160,13 @@ function UserModal() {
     setPasswordErrorMessage(false);
   }
 
+  function handleModalOptions(e) {
+    e.stopPropagation();
+    complete && setOpenUserModal(false);
+  }
+
   return (
-    <div className={`backdrop ${!openUserModal && "hidden"}`}>
+    <div className={`backdrop ${!openUserModal && "hidden"}`} onClick={(e) => handleModalOptions(e)}>
       {!complete && (
         <div className="userModal">
           <img
