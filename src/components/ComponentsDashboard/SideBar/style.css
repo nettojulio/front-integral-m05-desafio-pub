@@ -42,3 +42,11 @@ span.MuiTabs-indicator.css-10d9dml-MuiTabs-indicator {
 .css-1tnnsql.Mui-selected {
   color: #da0175;
 }
+
+button.css-aym9vq-MuiButtonBase-root-MuiTab-root {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+}
