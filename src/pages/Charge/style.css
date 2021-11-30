@@ -19,3 +19,62 @@
   align-items: center;
   justify-content: center;
 }
+
+.name-cobranca{
+  margin-right: 566px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+
+.name-cobranca span{
+  color:  #3F3F55;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 130%;
+
+  margin-left: 18px;
+}
+.menu-cobrancas{
+
+  display: flex;
+  width: 1109px;
+}
+
+.container-cobrancas{
+  width: 1109px;
+  margin: 33px 108px 0px 103px;
+  
+}
+
+.settings-cobrancas{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.imagem-filtro{
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.card{
+  background-color: rgb(206, 172, 206);
+  width: 1120px;
+  height: 595px;
+  margin-top: 32px;
+}

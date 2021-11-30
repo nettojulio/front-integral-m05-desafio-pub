@@ -35,6 +35,10 @@ span.MuiTabs-indicator.css-10d9dml-MuiTabs-indicator {
   color: #da0175;
 }
 
+.MuiButtonBase-root.MuiTab-root.MuiTab-labelIcon.Mui-selected {
+  color: #da0175;
+}
+
 .css-13b5x29-MuiButtonBase-root-MuiTab-root.Mui-selected label {
   background-color: #da0175;
 }
