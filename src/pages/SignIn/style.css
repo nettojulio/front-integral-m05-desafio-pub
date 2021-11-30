@@ -63,9 +63,11 @@
 .password-img-toggle-login {
   cursor: pointer;
   position: relative;
-  width: 40px;
-  bottom: 50px;
-  left: 150px;
+  margin-top: 10px;
+  width: 2.4rem;
+  height: 2.4rem;
+  bottom: 5rem;
+  left: 15rem;
 }
 
 label {

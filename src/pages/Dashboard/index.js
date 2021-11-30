@@ -1,26 +1,27 @@
-// import { useEffect } from "react";
-import SideBar from "../../components/SideBar";
-import NavBar from "../../components/NavBar";
+import { useEffect } from "react";
+import SideBar from "../../components/ComponentsDashboard/SideBar";
+import NavBar from "../../components/ComponentsDashboard/NavBar";
 import ResumeBills from "../ResumeBills";
 import Client from "../Client";
 import Charge from "../Charge";
 
-import ClientModal from "../../components/ClientModal";
+import ClientModal from "../../components/ComponentsDashboard/ClientModal";
 
 import "./style.css";
 import useSignup from "../../hooks/useSignup";
 
-function Dashboard() {
-  const { changePages, openClientModal } = useSignup();
+function Dashboard({ renderPage }) {
+  const { changePages, setChangePages, openClientModal, setOpenOptions } =
+    useSignup();
 
-  // useEffect(() => {
-  //   if (token) {
-  //     loadUserProfile();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (renderPage) {
+      setChangePages(renderPage);
+    }
+  }, [renderPage, setChangePages]);
 
   return (
-    <div className="main">
+    <div className="main" onClick={() => setOpenOptions(false)}>
       <div className="first-div">
         <SideBar />
       </div>
