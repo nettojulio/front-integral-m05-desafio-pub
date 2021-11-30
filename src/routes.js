@@ -21,7 +21,7 @@ function MainRoutes() {
     <>
       <Routes>
         <Route
-          path="signup"
+          path="#signup"
           element={
             <RedirectRoutes>
               <SignUp />
@@ -29,7 +29,7 @@ function MainRoutes() {
           }
         />
         <Route
-          path="signin"
+          path="#signin"
           element={
             <RedirectRoutes>
               <SignIn />
@@ -46,7 +46,7 @@ function MainRoutes() {
           }
         />
         <Route
-          path="/resume"
+          path="#/resume"
           element={
             <ProtectedRoutes>
               <Dashboard />
@@ -54,7 +54,7 @@ function MainRoutes() {
           }
         />
         <Route
-          path="/client"
+          path="#/client"
           element={
             <ProtectedRoutes>
               <Dashboard />
@@ -62,7 +62,7 @@ function MainRoutes() {
           }
         />
         <Route
-          path="/charge"
+          path="#/charge"
           element={
             <ProtectedRoutes>
               <Dashboard />
