@@ -74,7 +74,13 @@ const NavBar = () => {
             : changePages === "client"
               ? "Clientes"
               : "Cobrança"}
-          {openClientDetail ? <span>{` > Detalhes do cliente`}</span> : <span></span>}
+          {
+            openClientDetail
+              ? <>
+                <span className="detail-client">{`>`}</span>
+                <span className="detail-client">Detalhes do cliente</span>
+              </>
+              : <span></span>}
         </h1>
         <div className="navbar-info-profile">
           <div className="navbar-icon">{display.avatar}</div>

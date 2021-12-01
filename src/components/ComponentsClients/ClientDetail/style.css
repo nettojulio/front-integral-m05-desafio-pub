@@ -38,12 +38,16 @@
 .client-data-address,
 .charge-data-title {
   display: flex;
+  margin-bottom: 11.5px;
   align-items: center;
   justify-content: space-between;
 }
 .client-data-title,
 .charge-data-title h2 {
   margin-bottom: 18px;
+}
+.charge-data-title {
+  align-items: baseline;
 }
 
 .client-data-title h2,
@@ -97,15 +101,19 @@
 
 .table-icons {
   display: flex;
-  width: 25px;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
+.table-icons-edit {
+  margin-right: 24px;
+}
 .table-icons-edit,
 .table-icons-del {
-  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .table-icons-edit span,
@@ -113,4 +121,27 @@
   font-family: 'Nunito', sans-serif;
   font-size: 8px;
   font-weight: 600;
+}
+.table-filter {
+  display: flex;
+  align-items: center;
+}
+
+.table-status {
+  background-color: var(--light-salmon-overdue);
+  display: flex;
+  width: 67px;
+  height: 19px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+
+  color: var(--red);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.table-btn:hover {
+  cursor: pointer;
 }
