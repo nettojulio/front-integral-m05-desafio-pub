@@ -22,6 +22,16 @@
   font-weight: 600;
 }
 
+.title-client {
+  display: flex;
+  width: 254px;
+  justify-content: space-between;
+}
+
+.detail-client {
+  color: #747488;
+}
+
 h1.title-client {
   color: #0e8750;
   font-family: 'Inter', sans-serif;

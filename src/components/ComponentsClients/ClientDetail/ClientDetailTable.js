@@ -1,7 +1,7 @@
 import "./style.css";
-import edit from '../../../assets/edit.svg';
-// import edit from '../../assets/edit.svg';
-//sortIconHeaders.svg
+import editBillings from '../../../assets/editBillingsCard.svg';
+import deleteBillings from '../../../assets/deleteBillingsCard.svg';
+import sort from '../../../assets/sortIconHeaders.svg';
 
 import * as React from "react";
 import Table from "@mui/material/Table";
@@ -17,47 +17,63 @@ function ClientDetailTable() {
     return { idCob, dataValue, value, status, description };
   }
   const rows = [
-    createData(248563147, "26/01/2021", "R$ 500,00", "Vencida", "lorem ipsum  lorem ipsum lorem ipsuipsum lorem ips"),
-    createData(248563147, "26/01/2021", "R$ 500,00", "Vencida", "lorem ipsum  lorem ipsum lorem ipsuipsum lorem ips"),
-    createData(248563147, "26/01/2021", "R$ 500,00", "Vencida", "lorem ipsum  lorem ipsum lorem ipsuipsum lorem ips"),
+    createData(248563147, "26/01/2021", "R$ 500,00", "Vencida", "lorem ipsum  lorem ipsum lorem ipsuipsum lorem ips..."),
+    createData(248563147, "26/01/2021", "R$ 500,00", "Vencida", "lorem ipsum  lorem ipsum lorem ipsuipsum lorem ips..."),
+    createData(248563147, "26/01/2021", "R$ 500,00", "Vencida", "lorem ipsum  lorem ipsum lorem ipsuipsum lorem ips..."),
   ];
 
   return (
     <div >
       <TableContainer component={Paper} sx={{ border: "none", borderRadius: 0, boxShadow: "none " }}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>ID Cob.</TableCell>
-              <TableCell>Data de venc.</TableCell>
+        <Table sx={{ width: "100%" }} aria-label="simple table">
+          <TableHead >
+            <TableRow >
+              <TableCell>
+                <div className="table-filter">
+                  <img src={sort} alt="Filter" />
+                  <span>
+                    ID Cob.
+                  </span>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="table-filter">
+                  <img src={sort} alt="Filter" />
+                  <span>Data de venc.</span>
+                </div>
+              </TableCell>
               <TableCell>Valor</TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Descrição</TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody >
             {rows.map((row) => (
               <TableRow
                 key={row.idCob}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 }, textAlign: 'center' }}
               >
-                <TableCell component="th" scope="row">
-                  {row.idCob}
-                </TableCell>
+                <TableCell component="th" scope="row">{row.idCob}</TableCell>
                 <TableCell align="left">{row.dataValue}</TableCell>
                 <TableCell align="left">{row.value}</TableCell>
-                <TableCell align="left">{row.status}</TableCell>
-                <TableCell align="left">{row.description}</TableCell>
-                <div className="table-icons">
-                  <div className="table-icons-edit">
-                    <img src={edit} style={{ width: 16 }} alt="Edit" />
-                    <span>Editar</span>
+                <TableCell align="left">
+                  <div className="table-status">{row.status}</div>
+                </TableCell>
+                <TableCell align="left" style={{ width: 348, overflow: 'hidden', whiteSpace: 'nowrap' }}>{row.description}</TableCell>
+                <TableCell align="left">
+                  <div className="table-icons">
+                    <div className="table-icons-edit">
+                      <img className="table-btn" src={editBillings} style={{ width: 16 }} alt="Edit" />
+                      <span>Editar</span>
+                    </div>
+                    <div className="table-icons-del">
+                      <img className="table-btn" src={deleteBillings} style={{ width: 16 }} alt="Edit" />
+                      <span>Deletar</span>
+                    </div>
                   </div>
-                  <div className="table-icons-del">
-                    <img src={edit} style={{ width: 16 }} alt="Edit" />
-                    <span>Deletar</span>
-                  </div>
-                </div>
+
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

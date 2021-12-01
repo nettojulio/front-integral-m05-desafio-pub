@@ -50,7 +50,7 @@ function a11yProps(index) {
 export default function SideBar() {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
-  const { setChangePages } = useSignup();
+  const { setChangePages, setOpenClientDetail } = useSignup();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -59,12 +59,15 @@ export default function SideBar() {
   const handleChangePages = (page) => {
     if (page === "resume") {
       setChangePages(page);
+      setOpenClientDetail(false);
       navigate("/resume");
     } else if (page === "client") {
       setChangePages(page);
+      setOpenClientDetail(false);
       navigate("/client");
     } else {
       setChangePages(page);
+      setOpenClientDetail(false);
       navigate("/charge");
     }
   };
