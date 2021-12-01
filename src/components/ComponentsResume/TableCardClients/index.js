@@ -33,7 +33,7 @@ function TableCardClients({ title, icon, bgColor, txtColor }) {
         </div>
       </div>
 
-      <TableContainer component={Paper} sx={{ width: 556 }}>
+      <TableContainer component={Paper} sx={{ width: 556, border: "none", borderRadius: 0, boxShadow: "none " }}>
         <Table sx={{ minWidth: 556 }} aria-label="simple table">
           <TableHead>
             <TableRow>

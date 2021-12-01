@@ -1,7 +1,6 @@
 import "./style.css";
-import edit from '../../../assets/edit.svg';
-// import edit from '../../assets/edit.svg';
-//sortIconHeaders.svg
+import editBillings from '../../../assets/editBillingsCard.svg';
+import deleteBillings from '../../../assets/deleteBillingsCard.svg';
 
 import * as React from "react";
 import Table from "@mui/material/Table";
@@ -50,11 +49,11 @@ function ClientDetailTable() {
                 <TableCell align="left">{row.description}</TableCell>
                 <div className="table-icons">
                   <div className="table-icons-edit">
-                    <img src={edit} style={{ width: 16 }} alt="Edit" />
+                    <img src={editBillings} style={{ width: 16 }} alt="Edit" />
                     <span>Editar</span>
                   </div>
                   <div className="table-icons-del">
-                    <img src={edit} style={{ width: 16 }} alt="Edit" />
+                    <img src={deleteBillings} style={{ width: 16 }} alt="Edit" />
                     <span>Deletar</span>
                   </div>
                 </div>
