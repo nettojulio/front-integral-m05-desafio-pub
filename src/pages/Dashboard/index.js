@@ -6,12 +6,14 @@ import Client from "../Client";
 import Charge from "../Charge";
 
 import ClientModal from "../../components/ComponentsDashboard/ClientModal";
+import EditClientModal from '../../components/ComponentsDashboard/EditClientModal'
+import ChargeModal from "../../components/ComponentsDashboard/ChargeModal";
 
 import "./style.css";
 import useSignup from "../../hooks/useSignup";
 
 function Dashboard({ renderPage }) {
-  const { changePages, setChangePages, openClientModal, setOpenOptions } =
+  const { changePages, setChangePages, openClientModal, setOpenOptions, openEditClientModal, openChargeModal } =
     useSignup();
 
   useEffect(() => {
@@ -31,6 +33,8 @@ function Dashboard({ renderPage }) {
         {changePages === "client" && <Client />}
         {changePages === "charge" && <Charge />}
         {openClientModal && <ClientModal />}
+        {openEditClientModal && <EditClientModal />}
+        {openChargeModal && <ChargeModal />}
       </div>
     </div>
   );

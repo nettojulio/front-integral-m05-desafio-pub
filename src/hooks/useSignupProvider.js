@@ -20,9 +20,12 @@ function useSignupProvider() {
   /*TESTE*/
   const [token, setToken, removeToken] = useLocalStorage("token", "");
   const [openClientModal, setOpenClientModal] = useState(false);
+  const [openEditClientModal, setOpenEditClientModal] = useState(false);
+  const [openChargeModal, setOpenChargeModal] = useState(false);
   const [openUserModal, setOpenUserModal] = useState(false);
   const [openClientDetail, setOpenClientDetail] = useState(false);
   const [userData, setUserData] = useState("");
+
 
   const [openOptions, setOpenOptions] = useState(false);
 
@@ -179,6 +182,10 @@ function useSignupProvider() {
     setToken,
     openClientModal,
     setOpenClientModal,
+    openEditClientModal,
+    setOpenEditClientModal,
+    openChargeModal,
+    setOpenChargeModal,
     openUserModal,
     setOpenUserModal,
     loadUserProfile,

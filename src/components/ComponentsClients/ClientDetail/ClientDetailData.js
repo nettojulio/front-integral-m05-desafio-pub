@@ -1,12 +1,16 @@
 import "./style.css";
+import ClientDetailTable from "./ClientDetailTable";
+import useSignup from "../../../hooks/useSignup";
 import edit from '../../../assets/editCustomerGreen.svg';
 
 function ClientDetailData() {
+  const { setOpenEditClientModal, openClientDetail } = useSignup();
+
   return (
     <div className="client-data">
       <div className="client-data-title">
         <h2>Dados do cliente</h2>
-        <div className="btn edit-client">
+        <div onClick={() => setOpenEditClientModal(true)} className="btn edit-client">
           <img src={edit} alt="Icon" />
           <span>Editar Cliente</span>
         </div>
