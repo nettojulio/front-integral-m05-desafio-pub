@@ -2,6 +2,7 @@ import "./style.css";
 import billingsSreen from "../../assets/billingsScreen.svg";
 import customersSettings from "../../assets/customersSettings.svg";
 import search from "../../assets/search.svg";
+import TableCobrancasExib from "../../components/ComponentsClients/TableCobrancasExib";
 
 
 function Charge() {
@@ -27,7 +28,9 @@ function Charge() {
 
       </div>
 
-      <div className="card"></div>
+      <div className="card">
+        <TableCobrancasExib />
+      </div>
 
     </div>
   );
