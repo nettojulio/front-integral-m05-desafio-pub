@@ -28,6 +28,7 @@
   flex-direction: column;
   padding: 24px 20px;
   border-radius: 30px;
+  min-width: 60rem;
 }
 .client-data {
   margin-bottom: 24px;
