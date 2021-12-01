@@ -3,7 +3,7 @@ import useSignup from "../../../hooks/useSignup";
 import edit from '../../../assets/editCustomerGreen.svg';
 
 function ClientDetailData() {
-  const { setOpenEditClientModal, openClientDetail } = useSignup();
+  const { setOpenEditClientModal } = useSignup();
 
   return (
     <div className="client-data">
