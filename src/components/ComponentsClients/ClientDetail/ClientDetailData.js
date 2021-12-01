@@ -1,5 +1,5 @@
 import "./style.css";
-import edit from '../../assets/edit.svg';
+import edit from '../../../assets/edit.svg';
 
 function ClientDetailData() {
   return (

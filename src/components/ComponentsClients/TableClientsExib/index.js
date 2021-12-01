@@ -1,5 +1,4 @@
 import "./style.css";
-import * as React from "react";
 import addBilling from "../../../assets/addBilling.svg";
 import sortIconHeaders from "../../../assets/sortIconHeaders.svg";
 import Table from "@mui/material/Table";
@@ -9,8 +8,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import useSignup from "../../../hooks/useSignup";
 
 function TableClientsExib() {
+  const { setOpenClientDetail } = useSignup();
+
   function createData(client, cpf, email, tel, status, iconeCobranca) {
     return { client, cpf, email, tel, status, iconeCobranca };
   }
@@ -87,7 +89,9 @@ function TableClientsExib() {
         <Table sx={{ width: "111.6rem" }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ display: "flex", alignItems: "center" }}>
+              <TableCell
+                sx={{ display: "flex", alignItems: "center" }}
+              >
                 <img src={sortIconHeaders} alt="" />
                 Cliente
               </TableCell>
@@ -105,7 +109,7 @@ function TableClientsExib() {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  <button className="btn_detailClient">{row.client}</button>
+                  <button onClick={() => setOpenClientDetail(true)} className="btn_detailClient">{row.client}</button>
                 </TableCell>
                 <TableCell align="left">{row.cpf}</TableCell>
                 <TableCell align="left">{row.email}</TableCell>

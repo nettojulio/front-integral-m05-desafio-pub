@@ -16,6 +16,8 @@ const NavBar = () => {
     loadUserProfile,
     openOptions,
     setOpenOptions,
+    openClientDetail,
+    setOpenClientDetail
   } = useSignup();
 
   const [display, setDisplay] = useState({});
@@ -62,14 +64,17 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <div className="navbar-info">
-        <h1 className={
-          changePages === "client" ? 'title-client' : ''
-        }>
+        <h1
+          onClick={() => setOpenClientDetail(false)}
+          className={
+            changePages === "client" ? 'title-client' : ''
+          }>
           {changePages === "resume"
             ? "Resumo das cobranças"
             : changePages === "client"
               ? "Clientes"
               : "Cobrança"}
+          {openClientDetail ? <span>{` > Detalhes do cliente`}</span> : <span></span>}
         </h1>
         <div className="navbar-info-profile">
           <div className="navbar-icon">{display.avatar}</div>

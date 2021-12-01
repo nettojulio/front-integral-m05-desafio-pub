@@ -1,5 +1,5 @@
 import "./style.css";
-import customerScreen from "../../assets/customerScreen.svg";
+import customerScreen from "../../../assets/customerScreen.svg";
 import ClientDetailData from './ClientDetailData';
 import ClientDetailCharge from './ClientDetailCharge';
 

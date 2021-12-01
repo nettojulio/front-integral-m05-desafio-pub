@@ -3,6 +3,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
 import useSignup from "./hooks/useSignup";
+import ClientDetail from './components/ComponentsClients/ClientDetail';
 
 function MainRoutes() {
   function ProtectedRoutes(props) {
@@ -66,6 +67,14 @@ function MainRoutes() {
           element={
             <ProtectedRoutes>
               <Dashboard renderPage={"charge"} />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/clientDetail"
+          element={
+            <ProtectedRoutes>
+              <ClientDetail renderPage={"clientDetail"} />
             </ProtectedRoutes>
           }
         />

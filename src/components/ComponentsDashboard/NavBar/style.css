@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /*TESTE*/
   margin: 0 2rem;
 }
 
@@ -27,6 +26,10 @@ h1.title-client {
   color: #0e8750;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
+}
+
+h1.title-client:hover {
+  cursor: pointer;
 }
 
 .navbar-info-profile {
