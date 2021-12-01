@@ -67,7 +67,7 @@ const NavBar = () => {
         <h1
           onClick={() => setOpenClientDetail(false)}
           className={
-            changePages === "client" ? 'title-client' : ''
+            changePages === "resume" ? '' : 'title-client'
           }>
           {changePages === "resume"
             ? "Resumo das cobranças"
