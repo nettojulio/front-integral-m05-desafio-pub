@@ -1,9 +1,11 @@
 .clients-page {
   background-color: var(--light-grey);
   width: calc(100vw - 125px);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* height: 100vh; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin: 1rem auto;
+
 }
 
 .container-clients-page {
