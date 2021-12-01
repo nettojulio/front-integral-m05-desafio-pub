@@ -1,5 +1,4 @@
 import "./style.css";
-import ClientDetailTable from "./ClientDetailTable";
 import useSignup from "../../../hooks/useSignup";
 import edit from '../../../assets/editCustomerGreen.svg';
 
