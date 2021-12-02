@@ -148,7 +148,7 @@ function TableCobrancasExib() {
                     <TableCell align="left">{row.value}</TableCell>
                     <TableCell align="center">{row.dataVenc}</TableCell>
                     <TableCell align="center">
-                    <div className="status-color">{row.status}</div>
+                    <div className={row.status === "Vencida" ? "status-red" : (row.status === "Pendente" ? "status-yellow" :"status-blue") }>{row.status}</div>
                     </TableCell>
                     <TableCell align="left" >
                     {row.descricao}

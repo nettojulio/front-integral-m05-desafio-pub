@@ -47,7 +47,8 @@
 
 .container-cobrancas{
   width: 1109px;
-  margin: 33px 108px 90px 103px;
+  min-height: 100vh;
+  margin: 33px auto;
   
 }
 
@@ -74,7 +75,6 @@
 
 .card{
   
-  width: 100%;
-  height: 595px;
+  width: 1120px;
   margin-top: 32px;
 }
