@@ -160,6 +160,9 @@ function ClientModal() {
     ) {
       return;
     }
+    if (formEditUserModalInputs.uf) {
+      formEditUserModalInputs.uf.toUpperCase();
+    }
 
     const updateUser = {
       nome: formEditUserModalInputs.nome,
@@ -213,9 +216,8 @@ function ClientModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${
-                    nameErrorMessage ? "clientErrorSinalization" : undefined
-                  }`}
+                  className={`inputClient ${nameErrorMessage ? "clientErrorSinalization" : undefined
+                    }`}
                 />
                 {nameErrorMessage && (
                   <p className="clientErrorMessage">{nameErrorMessage}</p>
@@ -232,9 +234,8 @@ function ClientModal() {
                   placeholder="Digite seu e-mail"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${
-                    emailErrorMessage ? "clientErrorSinalization" : undefined
-                  }
+                  className={`inputClient ${emailErrorMessage ? "clientErrorSinalization" : undefined
+                    }
                   `}
                 />
                 {emailErrorMessage && (
@@ -252,9 +253,8 @@ function ClientModal() {
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
-                  className={`inputClient ${
-                    cpfErrorMessage ? "clientErrorSinalization" : undefined
-                  }`}
+                  className={`inputClient ${cpfErrorMessage ? "clientErrorSinalization" : undefined
+                    }`}
                 />
                 {cpfErrorMessage && (
                   <p className="clientErrorMessage">{cpfErrorMessage}</p>
@@ -270,10 +270,9 @@ function ClientModal() {
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
                   className={`inputClient
-                    ${
-                      telefoneErrorMessage
-                        ? "clientErrorSinalization"
-                        : undefined
+                    ${telefoneErrorMessage
+                      ? "clientErrorSinalization"
+                      : undefined
                     }
                   `}
                 />
@@ -351,14 +350,15 @@ function ClientModal() {
                 </label>
                 <label htmlFor="uf" className="clientFormLabels split ufForm">
                   UF
-                  <input
+                  <InputMask
                     id="uf"
                     type="text"
                     name="uf"
                     placeholder="Digite a UF"
                     value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
-                    className="inputClient"
+                    mask="aa"
+                    alwaysShowMask={false}
                   />
                 </label>
               </div>
