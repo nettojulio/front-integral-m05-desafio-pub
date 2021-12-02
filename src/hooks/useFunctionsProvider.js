@@ -244,7 +244,7 @@ export default function useFunctionProvider() {
   async function preloadEmail(body) {
     try {
       const response = await fetch(
-        "http://localhost:3000/preload",
+        "https://api-teste-desafio.herokuapp.com/preload",
         {
           method: "POST",
           headers: {
