@@ -2,7 +2,8 @@ import { useState } from "react";
 import InputMask from "react-input-mask";
 import closeIcon from "../../../assets/closeIcon.svg";
 import customerScreen from "../../../assets/customerScreen.svg";
-import useSignup from "../../../hooks/useSignup";
+import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
 import "./styles.css";
 
 function ClientModal() {
@@ -19,14 +20,10 @@ function ClientModal() {
     uf: "",
   };
 
-  const {
-    token,
-    openClientModal,
-    setOpenClientModal,
-    setOpen,
-    setMessageAlert,
-    setStateAlert,
-  } = useSignup();
+  const { openClientModal, setOpenClientModal } = useGlobal();
+
+  const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
+
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
   const [nameErrorMessage, setNameErrorMessage] = useState("");
@@ -106,11 +103,20 @@ function ClientModal() {
     event.preventDefault();
     handleClearValidations();
 
-    if (!formEditUserModalInputs.nome || !formEditUserModalInputs.email || !formEditUserModalInputs.cpf || !formEditUserModalInputs.telefone) {
-      !formEditUserModalInputs.nome && setNameErrorMessage("Este campo deve ser preenchido");
-      !formEditUserModalInputs.email && setEmailErrorMessage("Este campo deve ser preenchido");
-      !formEditUserModalInputs.cpf && setCpfErrorMessage("Este campo deve ser preenchido");
-      !formEditUserModalInputs.telefone && setTelefoneErrorMessage("Este campo deve ser preenchido");
+    if (
+      !formEditUserModalInputs.nome ||
+      !formEditUserModalInputs.email ||
+      !formEditUserModalInputs.cpf ||
+      !formEditUserModalInputs.telefone
+    ) {
+      !formEditUserModalInputs.nome &&
+        setNameErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.email &&
+        setEmailErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.cpf &&
+        setCpfErrorMessage("Este campo deve ser preenchido");
+      !formEditUserModalInputs.telefone &&
+        setTelefoneErrorMessage("Este campo deve ser preenchido");
       return;
     }
 
@@ -216,8 +222,9 @@ function ClientModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${nameErrorMessage ? "clientErrorSinalization" : undefined
-                    }`}
+                  className={`inputClient ${
+                    nameErrorMessage ? "clientErrorSinalization" : undefined
+                  }`}
                 />
                 {nameErrorMessage && (
                   <p className="clientErrorMessage">{nameErrorMessage}</p>
@@ -234,8 +241,9 @@ function ClientModal() {
                   placeholder="Digite seu e-mail"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${emailErrorMessage ? "clientErrorSinalization" : undefined
-                    }
+                  className={`inputClient ${
+                    emailErrorMessage ? "clientErrorSinalization" : undefined
+                  }
                   `}
                 />
                 {emailErrorMessage && (
@@ -253,8 +261,9 @@ function ClientModal() {
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
-                  className={`inputClient ${cpfErrorMessage ? "clientErrorSinalization" : undefined
-                    }`}
+                  className={`inputClient ${
+                    cpfErrorMessage ? "clientErrorSinalization" : undefined
+                  }`}
                 />
                 {cpfErrorMessage && (
                   <p className="clientErrorMessage">{cpfErrorMessage}</p>
@@ -270,9 +279,10 @@ function ClientModal() {
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
                   className={`inputClient
-                    ${telefoneErrorMessage
-                      ? "clientErrorSinalization"
-                      : undefined
+                    ${
+                      telefoneErrorMessage
+                        ? "clientErrorSinalization"
+                        : undefined
                     }
                   `}
                 />

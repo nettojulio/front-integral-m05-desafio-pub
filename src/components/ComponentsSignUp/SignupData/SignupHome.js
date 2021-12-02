@@ -1,5 +1,5 @@
 import "./style.css";
-import useSignup from "../../../hooks/useSignup";
+import useFunctions from "../../../hooks/useFunctions";
 import { Link } from "react-router-dom";
 
 function SignupData() {
@@ -10,7 +10,7 @@ function SignupData() {
     setOpen,
     setMessageAlert,
     setStateAlert,
-  } = useSignup();
+  } = useFunctions();
 
   function handleNextPage(e) {
     e.preventDefault();

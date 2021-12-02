@@ -1,15 +1,18 @@
 import "./style.css";
-import useSignup from "../../../hooks/useSignup";
-import edit from '../../../assets/editCustomerGreen.svg';
+import useGlobal from "../../../hooks/useGlobal";
+import edit from "../../../assets/editCustomerGreen.svg";
 
 function ClientDetailData() {
-  const { setOpenEditClientModal } = useSignup();
+  const { setOpenEditClientModal } = useGlobal();
 
   return (
     <div className="client-data">
       <div className="client-data-title">
         <h2>Dados do cliente</h2>
-        <div onClick={() => setOpenEditClientModal(true)} className="btn edit-client">
+        <div
+          onClick={() => setOpenEditClientModal(true)}
+          className="btn edit-client"
+        >
           <img src={edit} alt="Icon" />
           <span>Editar Cliente</span>
         </div>
@@ -55,7 +58,6 @@ function ClientDetailData() {
           <h3>UF</h3>
           <span>BA</span>
         </div>
-
       </div>
     </div>
   );

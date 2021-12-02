@@ -6,15 +6,21 @@ import Client from "../Client";
 import Charge from "../Charge";
 
 import ClientModal from "../../components/ComponentsDashboard/ClientModal";
-import EditClientModal from '../../components/ComponentsDashboard/EditClientModal'
+import EditClientModal from "../../components/ComponentsDashboard/EditClientModal";
 import ChargeModal from "../../components/ComponentsDashboard/ChargeModal";
 
 import "./style.css";
-import useSignup from "../../hooks/useSignup";
+import useGlobal from "../../hooks/useGlobal";
 
 function Dashboard({ renderPage }) {
-  const { changePages, setChangePages, openClientModal, setOpenOptions, openEditClientModal, openChargeModal } =
-    useSignup();
+  const {
+    changePages,
+    setChangePages,
+    openClientModal,
+    setOpenOptions,
+    openEditClientModal,
+    openChargeModal,
+  } = useGlobal();
 
   useEffect(() => {
     if (renderPage) {
