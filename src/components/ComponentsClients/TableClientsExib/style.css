@@ -19,8 +19,15 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
+}
 
+.color-red {
+  background: #ffefef;
   color: #971d1d;
+}
+.color-green {
+  background: #eef6f6;
+  color: #1fa7af;
 }
 
 .btn_detailClient:hover {

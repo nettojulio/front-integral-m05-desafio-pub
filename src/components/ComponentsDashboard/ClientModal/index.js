@@ -22,7 +22,8 @@ function ClientModal() {
 
   const { openClientModal, setOpenClientModal } = useGlobal();
 
-  const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
+  const { token, setOpen, setMessageAlert, setStateAlert, loadClients } =
+    useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
@@ -63,6 +64,7 @@ function ClientModal() {
         throw new Error(result);
       }
 
+      loadClients();
       setOpenClientModal(false);
       setOpen(true);
       setStateAlert("success");

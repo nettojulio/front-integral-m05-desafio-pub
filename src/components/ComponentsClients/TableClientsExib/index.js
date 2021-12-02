@@ -9,79 +9,17 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
+import { useEffect } from "react";
 
 function TableClientsExib() {
   const { setOpenClientDetail } = useGlobal();
+  const { loadClients, clientData } = useFunctions();
 
-  function createData(client, cpf, email, tel, status, iconeCobranca) {
-    return { client, cpf, email, tel, status, iconeCobranca };
-  }
-  const rows = [
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-    createData(
-      "Sara Silva",
-      "054 365 255 87",
-      "sarasilva@cubos.io",
-      "71 9 9462 8654",
-      "Inadimplente",
-      addBilling
-    ),
-  ];
+  useEffect(() => {
+    loadClients();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="table-clients">
@@ -101,9 +39,9 @@ function TableClientsExib() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {clientData.map((client) => (
               <TableRow
-                key={row.client}
+                key={client.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
@@ -111,19 +49,27 @@ function TableClientsExib() {
                     onClick={() => setOpenClientDetail(true)}
                     className="btn_detailClient"
                   >
-                    {row.client}
+                    {client.nome}
                   </button>
                 </TableCell>
-                <TableCell align="left">{row.cpf}</TableCell>
-                <TableCell align="left">{row.email}</TableCell>
-                <TableCell align="left">{row.tel}</TableCell>
+                <TableCell align="left">{client.cpf}</TableCell>
+                <TableCell align="left">{client.email}</TableCell>
+                <TableCell align="left">{client.telefone}</TableCell>
                 <TableCell align="left">
-                  <div className="status-color">{row.status}</div>
+                  <div
+                    className={
+                      client.status_cliente === "Inadimplente"
+                        ? "status-color color-red"
+                        : "status-color color-green"
+                    }
+                  >
+                    {client.status_cliente}
+                  </div>
                 </TableCell>
                 <TableCell align="left">
                   <div className="container-Iconbillings">
                     <img
-                      src={row.iconeCobranca}
+                      src={addBilling}
                       className="icon-billing"
                       alt="Ícone de adicionar cobrança"
                     />

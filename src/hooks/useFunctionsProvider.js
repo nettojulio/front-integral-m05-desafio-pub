@@ -17,6 +17,8 @@ export default function useFunctionProvider() {
   const [stateAlert, setStateAlert] = useState("");
   const [togglePage, setTogglePage] = useState("");
   const [userData, setUserData] = useState("");
+  const [clientData, setClientData] = useState([]);
+  const [chargeData, setChargeData] = useState([]);
 
   function handleClose() {
     setOpen(false);
@@ -145,6 +147,54 @@ export default function useFunctionProvider() {
     navigate("signin");
   }
 
+  async function loadClients() {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/clientes",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data);
+      }
+
+      setClientData(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function loadCharges() {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/cobrancas",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data);
+      }
+
+      setChargeData(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return {
     togglePage,
     setTogglePage,
@@ -168,5 +218,9 @@ export default function useFunctionProvider() {
     setUserData,
     stateAlert,
     setStateAlert,
+    loadClients,
+    clientData,
+    loadCharges,
+    chargeData,
   };
 }
