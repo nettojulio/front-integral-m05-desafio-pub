@@ -138,40 +138,64 @@ export default function useFunctionProvider() {
       }
       setUserData(data);
     } catch (error) {
+      handleLogout();
       console.log(error.message);
     }
   }
 
-  function handleLogout() {
-    removeToken();
-    navigate("signin");
-  }
-
-  async function loadClients() {
+  async function editRegisteredClient(body, id) {
     try {
       const response = await fetch(
-        "https://api-teste-desafio.herokuapp.com/clientes",
+        `https://api-teste-desafio.herokuapp.com/clientes/${id}`,
         {
-          method: "GET",
+          method: "PUT",
           headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
+          body: JSON.stringify(body),
         }
       );
 
-      const data = await response.json();
+      const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(data);
+        throw new Error(result);
       }
 
-      setClientData(data);
+      console.log(result);
     } catch (error) {
       console.log(error.message);
     }
   }
 
-  async function loadCharges() {
+  async function addBillings(body, id) {
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/cobrancas/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function loadAllBillings() {
     try {
       const response = await fetch(
         "https://api-teste-desafio.herokuapp.com/cobrancas",
@@ -183,16 +207,70 @@ export default function useFunctionProvider() {
         }
       );
 
-      const data = await response.json();
+      const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(data);
+        throw new Error(result);
       }
 
-      setChargeData(data);
+      setChargeData(result);
     } catch (error) {
       console.log(error.message);
     }
+  }
+
+  async function loadAllClients() {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/clientes",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      setClientData(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function preloadEmail(body) {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/preload",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  function handleLogout() {
+    removeToken();
+    navigate("signin");
   }
 
   return {
@@ -218,9 +296,12 @@ export default function useFunctionProvider() {
     setUserData,
     stateAlert,
     setStateAlert,
-    loadClients,
     clientData,
-    loadCharges,
     chargeData,
+    editRegisteredClient,
+    addBillings,
+    loadAllBillings,
+    loadAllClients,
+    preloadEmail,
   };
 }

@@ -14,10 +14,10 @@ import { useEffect } from "react";
 
 function TableClientsExib() {
   const { setOpenClientDetail } = useGlobal();
-  const { loadClients, clientData } = useFunctions();
+  const { loadAllClients, clientData } = useFunctions();
 
   useEffect(() => {
-    loadClients();
+    loadAllClients();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

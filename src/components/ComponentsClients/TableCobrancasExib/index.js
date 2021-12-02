@@ -13,10 +13,10 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableCobrancasExib() {
-  const { loadCharges, chargeData } = useFunctions();
+  const { loadAllBillings, chargeData } = useFunctions();
 
   useEffect(() => {
-    loadCharges();
+    loadAllBillings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
