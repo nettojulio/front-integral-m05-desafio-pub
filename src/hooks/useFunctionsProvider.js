@@ -140,6 +140,132 @@ export default function useFunctionProvider() {
     }
   }
 
+  async function editRegisteredClient(body, id) {
+
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/clientes/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function addBillings(body, id) {
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/cobrancas/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function loadAllBillings() {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/cobrancas",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function loadAllClients() {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/clientes",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function preloadEmail(body) {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/preload",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  
   function handleLogout() {
     removeToken();
     navigate("signin");
@@ -168,5 +294,10 @@ export default function useFunctionProvider() {
     setUserData,
     stateAlert,
     setStateAlert,
+    editRegisteredClient,
+    addBillings,
+    loadAllBillings,
+    loadAllClients,
+    preloadEmail,
   };
 }
