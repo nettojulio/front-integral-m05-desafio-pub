@@ -3,8 +3,8 @@ import InputMask from "react-input-mask";
 import closeIcon from "../../../assets/closeIcon.svg";
 import billings from "../../../assets/billings.svg";
 import useSignup from "../../../hooks/useSignup";
-import confirmRadio from "../../../assets/confirmRadio.svg"
-import emptyRadio from "../../../assets/emptyRadio.svg";
+//import confirmRadio from "../../../assets/confirmRadio.svg"
+//import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 
 function ChargeModal() {
@@ -17,12 +17,9 @@ function ChargeModal() {
     };
 
     const {
-        token,
         openChargeModal,
         setOpenChargeModal,
-        setOpen,
-        setMessageAlert,
-        setStateAlert,
+
     } = useSignup();
     const [formEditUserModalInputs, setFormEditUserModalInputs] =
         useState(initialForm);
@@ -101,12 +98,6 @@ function ChargeModal() {
             return;
         }
 
-        const updateUser = {
-            nome: formEditUserModalInputs.nome,
-            descricao: formEditUserModalInputs.descricao,
-            vencimento: formEditUserModalInputs.vencimento,
-            status: formEditUserModalInputs.status,
-        };
 
     }
 

@@ -1,12 +1,9 @@
 import "./style.css";
 import ClientDetailTable from "./ClientDetailTable";
 import useSignup from "../../../hooks/useSignup";
-import ToastAlert from "../../ComponentsGlobal/ToastAlert";
-import TableClientsExib from "../../ComponentsClients/TableClientsExib";
-import ClientDetail from "../../ComponentsClients/ClientDetail";
 
 function ClientDetailCharge() {
-  const { setOpenChargeModal, openClientDetail } = useSignup();
+  const { setOpenChargeModal } = useSignup();
 
   return (
 
