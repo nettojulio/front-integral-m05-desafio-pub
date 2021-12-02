@@ -136,6 +136,7 @@ export default function useFunctionProvider() {
       }
       setUserData(data);
     } catch (error) {
+      handleLogout();
       console.log(error.message);
     }
   }
