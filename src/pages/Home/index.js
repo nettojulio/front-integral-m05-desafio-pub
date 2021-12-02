@@ -1,12 +1,14 @@
 import "../../styles/global.css";
 import MainRoutes from "../../routes";
-import { UserProvider } from "../../context/UserContext";
-
+import { GlobalProvider } from "../../context/GlobalContext";
+import { FunctionsProvider } from "../../context/FunctionsContext";
 function Home() {
   return (
-    <UserProvider>
-      <MainRoutes />
-    </UserProvider>
+    <GlobalProvider>
+      <FunctionsProvider>
+        <MainRoutes />
+      </FunctionsProvider>
+    </GlobalProvider>
   );
 }
 

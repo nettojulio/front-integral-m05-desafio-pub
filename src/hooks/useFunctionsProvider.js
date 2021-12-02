@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useLocalStorage } from "react-use";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "react-use";
 
-function useSignupProvider() {
-  const [signupPassword, setSignupPassword] = useState([]);
-  const [signupDone, setSignupDone] = useState([]);
-  const [togglePage, setTogglePage] = useState("");
+export default function useFunctionProvider() {
+  let navigate = useNavigate();
+  const [token, setToken, removeToken] = useLocalStorage("token", "");
+  const [open, setOpen] = useState(false);
   const [formSignUp, setFormSignUp] = useState({
     nome: "",
     email: "",
@@ -13,21 +13,10 @@ function useSignupProvider() {
     senhaRepetida: "",
   });
   const [formsLogin, SetFormsLogin] = useState({ email: "", senha: "" });
-  const [open, setOpen] = useState(false);
   const [messageAlert, setMessageAlert] = useState(false);
   const [stateAlert, setStateAlert] = useState("");
-  const [changePages, setChangePages] = useState("resume");
-  /*TESTE*/
-  const [token, setToken, removeToken] = useLocalStorage("token", "");
-  const [openClientModal, setOpenClientModal] = useState(false);
-  const [openUserModal, setOpenUserModal] = useState(false);
-  const [openClientDetail, setOpenClientDetail] = useState(false);
+  const [togglePage, setTogglePage] = useState("");
   const [userData, setUserData] = useState("");
-
-  const [openOptions, setOpenOptions] = useState(false);
-
-  /*TESTE*/
-  let navigate = useNavigate();
 
   function handleClose() {
     setOpen(false);
@@ -157,10 +146,6 @@ function useSignupProvider() {
   }
 
   return {
-    signupPassword,
-    setSignupPassword,
-    signupDone,
-    setSignupDone,
     togglePage,
     setTogglePage,
     formSignUp,
@@ -177,23 +162,11 @@ function useSignupProvider() {
     handleLogin,
     token,
     setToken,
-    openClientModal,
-    setOpenClientModal,
-    openUserModal,
-    setOpenUserModal,
     loadUserProfile,
     handleLogout,
     userData,
     setUserData,
-    changePages,
-    setChangePages,
     stateAlert,
     setStateAlert,
-    openOptions,
-    setOpenOptions,
-    openClientDetail,
-    setOpenClientDetail
   };
 }
-
-export default useSignupProvider;

@@ -1,5 +1,6 @@
 .table-clients {
-  align-self: center;
+  /* align-self: center; */
+  margin: 0 4.2rem;
 }
 
 .status-color {
@@ -18,7 +19,6 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
-  /* identical to box height */
 
   color: #971d1d;
 }

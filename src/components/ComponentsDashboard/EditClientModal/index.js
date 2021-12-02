@@ -6,7 +6,7 @@ import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 import "./styles.css";
 
-function ClientModal() {
+function EditClientModal() {
   const initialForm = {
     nome: "",
     email: "",
@@ -20,7 +20,7 @@ function ClientModal() {
     uf: "",
   };
 
-  const { openClientModal, setOpenClientModal } = useGlobal();
+  const { openEditClientModal, setOpenEditClientModal } = useGlobal();
 
   const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
 
@@ -63,7 +63,7 @@ function ClientModal() {
         throw new Error(result);
       }
 
-      setOpenClientModal(false);
+      setOpenEditClientModal(false);
       setOpen(true);
       setStateAlert("success");
       setMessageAlert("Sucesso: Cliente adicionado!");
@@ -166,9 +166,6 @@ function ClientModal() {
     ) {
       return;
     }
-    if (formEditUserModalInputs.uf) {
-      formEditUserModalInputs.uf.toUpperCase();
-    }
 
     const updateUser = {
       nome: formEditUserModalInputs.nome,
@@ -193,7 +190,7 @@ function ClientModal() {
   }
 
   return (
-    openClientModal && (
+    openEditClientModal && (
       <div className="containerClientModal">
         <div className="backdropClientModal" />
         <div className="clientModal">
@@ -203,11 +200,11 @@ function ClientModal() {
               src={customerScreen}
               alt="Ícone de Clientes"
             />
-            <span className="clientModalTitle">Cadastro do Cliente</span>
+            <span className="clientModalTitle">Editar Cliente</span>
           </div>
           <img
-            className="closeClientModal"
-            onClick={() => setOpenClientModal(false)}
+            className="closeEditClientModal"
+            onClick={() => setOpenEditClientModal(false)}
             src={closeIcon}
             alt="Fechar"
           />
@@ -360,15 +357,14 @@ function ClientModal() {
                 </label>
                 <label htmlFor="uf" className="clientFormLabels split ufForm">
                   UF
-                  <InputMask
+                  <input
                     id="uf"
                     type="text"
                     name="uf"
                     placeholder="Digite a UF"
                     value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
-                    mask="aa"
-                    alwaysShowMask={false}
+                    className="inputClient"
                   />
                 </label>
               </div>
@@ -376,7 +372,7 @@ function ClientModal() {
           </form>
           <div className="splitClientButtonsContainer">
             <button
-              onClick={() => setOpenClientModal(false)}
+              onClick={() => setOpenEditClientModal(false)}
               className="cancelEditClientChanges"
             >
               Cancelar
@@ -391,4 +387,4 @@ function ClientModal() {
   );
 }
 
-export default ClientModal;
+export default EditClientModal;

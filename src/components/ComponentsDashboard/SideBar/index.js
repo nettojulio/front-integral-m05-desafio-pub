@@ -12,7 +12,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router";
-import useSignup from "../../../hooks/useSignup";
+import useGlobal from "../../../hooks/useGlobal";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,7 +50,7 @@ function a11yProps(index) {
 export default function SideBar() {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
-  const { setChangePages, setOpenClientDetail } = useSignup();
+  const { setChangePages, setOpenClientDetail } = useGlobal();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
