@@ -91,7 +91,7 @@ function TableCobrancasExib() {
             "Darlene Robertson",
             "578563147",
             "R$ 300,00", 
-            "21/01/2021",
+            "22/01/2021",
             "Paga",
             "lorem ipsum lorem ipsum lorem ...",
             editarIcon,
