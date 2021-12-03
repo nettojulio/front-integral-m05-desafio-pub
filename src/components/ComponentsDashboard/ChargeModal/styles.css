@@ -1,4 +1,4 @@
-.containerClientModal {
+.containerChargeModal {
     width: 100%;
     min-height: 100%;
     display: flex;
@@ -10,7 +10,7 @@
     padding: 5rem;
   }
   
-  .backdropClientModal {
+  .backdropChargeModal {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -28,7 +28,7 @@
     z-index: 1;
   }
   
-  .clientModal {
+  .chargeModal {
     position: relative;
     width: 60rem;
   
@@ -41,15 +41,21 @@
     z-index: 2;
   }
   
-  .titleClientModalContainer {
+  .titleChargeModalContainer {
     display: flex;
     align-items: center;
     align-self: flex-start;
     gap: 1.6rem;
     margin: 4rem 0 3.2rem 5.7rem;
   }
-  
-  .clientModalTitle {
+
+  .titleChargeModalTitle {
+    display: flex;
+    align-items: center;
+
+  }
+   
+  .chargeModalTitle {
     font-family: "Montserrat";
     font-weight: 600;
     font-size: 2.6rem;
@@ -58,7 +64,7 @@
     color: #3f3f55;
   }
   
-  .closeClientModal {
+  .closeChargeModal {
     align-self: flex-end;
     position: absolute;
     right: 2.4rem;
@@ -66,7 +72,7 @@
     cursor: pointer;
   }
   
-  .editClientForm {
+  .editChargeForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +80,7 @@
     height: 58.7rem;
   }
   
-  .clientFormGroup {
+  .chargeFormGroup {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -82,14 +88,23 @@
     width: 48.7rem;
     height: 9.1rem;
   }
+
+  .chargeFormGroup.descricao input {
   
-  .clientFormGroup:last-of-type {
+    height: 88px;
+  }
+  .chargeFormGroup.top {
+ margin-top: 35px;
+  }
+  
+  
+  .chargeFormGroup:last-of-type {
     height: 29.6rem;
     flex-direction: column;
     position: static;
   }
   
-  .clientFormLabels {
+  .chargeFormLabels {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -106,17 +121,18 @@
     width: 48%;
   }
   
-  .splitClientContainer {
+  .splitChargeContainer {
     display: flex;
     width: 100%;
     justify-content: space-between;
   }
   
-  .clientFormGroup:last-of-type label {
+  .chargeFormGroup:last-of-type label {
     position: relative;
   }
+
   
-  .inputClient {
+  .inputCharge {
     display: flex;
     align-items: center;
     padding: 10px 16px;
@@ -130,7 +146,7 @@
     margin: 0.4rem 0 0 0;
   }
 
-  .inputStatus {
+  div.status {
     display: flex;
     align-items: center;
     padding: 10px 16px;
@@ -142,27 +158,27 @@
     border-radius: 8px;
   
     margin: 0.4rem 0 0 0;
+    width: 487px;
+    height: 48px;
+   position: relative;
+   gap: 8px;
   }
+
   
   
-  .inputClient:focus-visible {
+  .inputCharge:focus-visible {
     outline: none;
   }
   
-  .inputClient::placeholder {
+  .inputCharge::placeholder {
     font-family: "Inter";
     font-size: 1.6rem;
     line-height: 2.4rem;
   
     color: #667085;
   }
-
-  .clientFormGroup.descricao input {
-    height: 88px;
-    margin-bottom: 16px;
-  }
   
-  .splitClientButtonsContainer {
+  .splitChargeButtonsContainer {
     margin: 3.3rem 0 4rem 0;
     display: flex;
     align-items: center;
@@ -170,8 +186,8 @@
     column-gap: 2rem;
   }
   
-  .applyEditClientChanges,
-  .cancelEditClientChanges {
+  .applyEditChargeChanges,
+  .cancelEditChargeChanges {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,18 +202,18 @@
     line-height: 2.5rem;
   }
   
-  .applyEditClientChanges {
+  .applyEditChargeChanges {
     background-color: #da0175;
     color: #f8f8f9;
   }
   
-  .cancelEditClientChanges {
+  .cancelEditChargeChanges {
     background-color: #f8f8f9;
     border: 1px solid #dedee9;
     color: #0e8750;
   }
   
-  .clientErrorMessage {
+  .chargeErrorMessage {
     font-family: "Inter";
     font-style: normal;
     font-weight: normal;
@@ -217,7 +233,12 @@
     width: 30.3rem;
   }
   
-  .clientErrorSinalization {
+  .chargeErrorSinalization {
     border: 1px solid #e70000;
+  }
+
+  .status {
+    width: 48.7rem;
+    height: 9.1rem;
   }
   

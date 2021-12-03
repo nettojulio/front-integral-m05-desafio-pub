@@ -3,249 +3,262 @@ import InputMask from "react-input-mask";
 import closeIcon from "../../../assets/closeIcon.svg";
 import billings from "../../../assets/billings.svg";
 import useGlobal from "../../../hooks/useGlobal";
+import confirmRadio from "../../../assets/confirmRadio.svg";
+import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 
+
+
 function ChargeModal() {
-  const initialForm = {
-    nome: "",
-    Descrição: "",
-    Vencimento: "",
-    Valor: "",
-    Status: "",
-  };
+    const initialForm = {
+        nome: "",
+        Descrição: "",
+        Vencimento: "",
+        Valor: "",
+        Status: "",
+    };
 
-  const { openChargeModal, setOpenChargeModal } = useGlobal();
+    const [checkPaid, setCheckPaid] = useState(true);
+    const [checkExpected, setCheckExpected] = useState(false);
 
-  const [formEditUserModalInputs, setFormEditUserModalInputs] =
-    useState(initialForm);
-  const [nameErrorMessage, setNameErrorMessage] = useState("");
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
-  const [cpfErrorMessage, setCpfErrorMessage] = useState("");
-  const [telefoneErrorMessage, setTelefoneErrorMessage] = useState("");
-
-  function handleChange(target) {
-    handleClearValidations();
-    setFormEditUserModalInputs({
-      ...formEditUserModalInputs,
-      [target.name]: target.value,
-    });
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-    handleClearValidations();
-
-    if (
-      !formEditUserModalInputs.nome ||
-      !formEditUserModalInputs.email ||
-      !formEditUserModalInputs.cpf ||
-      !formEditUserModalInputs.telefone
-    ) {
-      !formEditUserModalInputs.nome &&
-        setNameErrorMessage("Este campo deve ser preenchido");
-      !formEditUserModalInputs.email &&
-        setEmailErrorMessage("Este campo deve ser preenchido");
-      !formEditUserModalInputs.cpf &&
-        setCpfErrorMessage("Este campo deve ser preenchido");
-      !formEditUserModalInputs.telefone &&
-        setTelefoneErrorMessage("Este campo deve ser preenchido");
-      return;
+    function handleCheckPaid() {
+        setCheckPaid(true);
+        setCheckExpected(false)
     }
 
-    if (formEditUserModalInputs.cpf) {
-      formEditUserModalInputs.cpf = formEditUserModalInputs.cpf
-        .replace(".", "")
-        .replace(".", "")
-        .replace("-", "")
-        .trim();
+    function handleCheckExpected() {
+        setCheckPaid(false);
+        setCheckExpected(true)
     }
 
-    if (isNaN(formEditUserModalInputs.cpf) || !formEditUserModalInputs.cpf) {
-      setCpfErrorMessage("Este campo deve ser preenchido");
-      return;
+    const { openChargeModal, setOpenChargeModal } = useGlobal();
+
+    const [formEditUserModalInputs, setFormEditUserModalInputs] =
+        useState(initialForm);
+    const [nameErrorMessage, setNameErrorMessage] = useState("");
+    const [emailErrorMessage, setEmailErrorMessage] = useState("");
+    const [cpfErrorMessage, setCpfErrorMessage] = useState("");
+    const [telefoneErrorMessage, setTelefoneErrorMessage] = useState("");
+
+    function handleChange(target) {
+        handleClearValidations();
+        setFormEditUserModalInputs({
+            ...formEditUserModalInputs,
+            [target.name]: target.value,
+        });
     }
 
-    if (formEditUserModalInputs.telefone) {
-      formEditUserModalInputs.telefone = formEditUserModalInputs.telefone
-        .replace(" ", "")
-        .replace("(", "")
-        .replace(")", "")
-        .replace("-", "")
-        .replace("_", "");
+    async function handleSubmit(event) {
+        event.preventDefault();
+        handleClearValidations();
+
+        if (
+            !formEditUserModalInputs.nome ||
+            !formEditUserModalInputs.email ||
+            !formEditUserModalInputs.cpf ||
+            !formEditUserModalInputs.telefone
+        ) {
+            !formEditUserModalInputs.nome &&
+                setNameErrorMessage("Este campo deve ser preenchido");
+            !formEditUserModalInputs.email &&
+                setEmailErrorMessage("Este campo deve ser preenchido");
+            !formEditUserModalInputs.cpf &&
+                setCpfErrorMessage("Este campo deve ser preenchido");
+            !formEditUserModalInputs.telefone &&
+                setTelefoneErrorMessage("Este campo deve ser preenchido");
+            return;
+        }
+
+        if (formEditUserModalInputs.cpf) {
+            formEditUserModalInputs.cpf = formEditUserModalInputs.cpf
+                .replace(".", "")
+                .replace(".", "")
+                .replace("-", "")
+                .trim();
+        }
+
+        if (isNaN(formEditUserModalInputs.cpf) || !formEditUserModalInputs.cpf) {
+            setCpfErrorMessage("Este campo deve ser preenchido");
+            return;
+        }
+
+        if (formEditUserModalInputs.telefone) {
+            formEditUserModalInputs.telefone = formEditUserModalInputs.telefone
+                .replace(" ", "")
+                .replace("(", "")
+                .replace(")", "")
+                .replace("-", "")
+                .replace("_", "");
+        }
+
+        if (
+            !formEditUserModalInputs.telefone ||
+            isNaN(Number(formEditUserModalInputs.telefone)) ||
+            (formEditUserModalInputs.telefone.length < 10 &&
+                formEditUserModalInputs.telefone.length !== 0)
+        ) {
+            setTelefoneErrorMessage("Este campo deve ser preenchido");
+            return;
+        }
+
+        if (formEditUserModalInputs.cep) {
+            formEditUserModalInputs.cep = formEditUserModalInputs.cep.replace(
+                "-",
+                ""
+            );
+        }
+
+        if (
+            isNaN(Number(formEditUserModalInputs.cep)) ||
+            (formEditUserModalInputs.cep.length < 8 &&
+                formEditUserModalInputs.cep.length !== 0)
+        ) {
+            return;
+        }
     }
 
-    if (
-      !formEditUserModalInputs.telefone ||
-      isNaN(Number(formEditUserModalInputs.telefone)) ||
-      (formEditUserModalInputs.telefone.length < 10 &&
-        formEditUserModalInputs.telefone.length !== 0)
-    ) {
-      setTelefoneErrorMessage("Este campo deve ser preenchido");
-      return;
+    function handleClearValidations() {
+        setNameErrorMessage(false);
+        setEmailErrorMessage(false);
+        setCpfErrorMessage(false);
+        setTelefoneErrorMessage(false);
     }
 
-    if (formEditUserModalInputs.cep) {
-      formEditUserModalInputs.cep = formEditUserModalInputs.cep.replace(
-        "-",
-        ""
-      );
-    }
 
-    if (
-      isNaN(Number(formEditUserModalInputs.cep)) ||
-      (formEditUserModalInputs.cep.length < 8 &&
-        formEditUserModalInputs.cep.length !== 0)
-    ) {
-      return;
-    }
-  }
+    return (
+        openChargeModal && (
+            <div className="containerChargeModal">
+                <div className="backdropChargeModal" />
+                <div className="chargeModal">
+                    <div className="titleChargeModalContainer">
+                        <div className="titleChargeModalTitle">
+                            <img
+                                className="billingsIcon"
+                                src={billings}
+                                alt="Ícone de Clientes"
+                            />
+                            <span className="chargeModalTitle">Cadastro de Cobrança</span>
+                        </div>
 
-  function handleClearValidations() {
-    setNameErrorMessage(false);
-    setEmailErrorMessage(false);
-    setCpfErrorMessage(false);
-    setTelefoneErrorMessage(false);
-  }
+                        <div className="closeChargeModal">
+                            <img
+                                onClick={() => setOpenChargeModal(false)}
+                                src={closeIcon}
+                                alt="Fechar"
+                            />
+                        </div>
+                    </div>
 
-  return (
-    openChargeModal && (
-      <div className="containerClientModal">
-        <div className="backdropClientModal" />
-        <div className="clientModal">
-          <div className="titleClientModalContainer">
-            <img
-              className="billingsIcon"
-              src={billings}
-              alt="Ícone de Clientes"
-            />
-            <span className="clientModalTitle">Cadastro de Cobrança</span>
-          </div>
-          <img
-            className="closeEditClientModal"
-            onClick={() => setOpenChargeModal(false)}
-            src={closeIcon}
-            alt="Fechar"
-          />
-          <form className="editClientForm" onSubmit={handleSubmit}>
-            <div className="clientFormGroup">
-              <label htmlFor="nome" className="clientFormLabels">
-                Nome*
-                <input
-                  id="nome"
-                  type="text"
-                  name="nome"
-                  placeholder="Digite seu nome"
-                  value={formEditUserModalInputs.nome}
-                  onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${
-                    nameErrorMessage ? "clientErrorSinalization" : undefined
-                  }`}
-                />
-                {nameErrorMessage && (
-                  <p className="clientErrorMessage">{nameErrorMessage}</p>
-                )}
-              </label>
-            </div>
-            <div className="clientFormGroup descricao">
-              <label htmlFor="email" className="clientFormLabels">
-                Descrição*
-                <input
-                  id="descricao"
-                  type="descricao"
-                  name="descricao"
-                  placeholder="Digite a descrição"
-                  value={formEditUserModalInputs.email}
-                  onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${
-                    emailErrorMessage ? "clientErrorSinalization" : undefined
-                  }
+                    <form className="editChargeForm" onSubmit={handleSubmit}>
+                        <div className="chargeFormGroup">
+                            <label htmlFor="nome" className="chargeFormLabels">
+                                Nome*
+                                <input
+                                    disabled
+                                    id="nome"
+                                    type="text"
+                                    name="nome"
+                                    placeholder="Sara Lage Silva"
+                                    value={formEditUserModalInputs.nome}
+                                    onChange={(e) => handleChange(e.target)}
+                                    className={`inputCharge ${nameErrorMessage ? "chargeErrorSinalization" : undefined
+                                        }`}
+                                />
+                                {nameErrorMessage && (
+                                    <p className="chargeErrorMessage">{nameErrorMessage}</p>
+                                )}
+                            </label>
+                        </div>
+                        <div className="chargeFormGroup descricao">
+                            <label htmlFor="descricao" className="chargeFormLabels">
+                                Descrição*
+                                <input
+                                    id="descricao"
+                                    type="descricao"
+                                    name="descricao"
+                                    placeholder="Digite a descrição"
+                                    value={formEditUserModalInputs.email}
+                                    onChange={(e) => handleChange(e.target)}
+                                    className={`inputCharge ${emailErrorMessage ? "chargeErrorSinalization" : undefined
+                                        }
                   `}
-                />
-                {emailErrorMessage && (
-                  <p className="clientErrorMessage">{emailErrorMessage}</p>
-                )}
-              </label>
-            </div>
-            <div className="clientFormGroup">
-              <label
-                htmlFor="dataDeVencimento"
-                className="clientFormLabels split"
-              >
-                Vencimento:*
-                <InputMask
-                  id="dataDeVencimento"
-                  name="dataDeVencimento"
-                  placeholder="Data de Vencimento"
-                  value={formEditUserModalInputs.cpf}
-                  onChange={(e) => handleChange(e.target)}
-                  mask="99-99-9999"
-                  className={`inputClient ${
-                    cpfErrorMessage ? "clientErrorSinalization" : undefined
-                  }`}
-                />
-                {cpfErrorMessage && (
-                  <p className="clientErrorMessage">{cpfErrorMessage}</p>
-                )}
-              </label>
-              <label htmlFor="telefone" className="clientFormLabels split">
-                Valor:*
-                <InputMask
-                  id="telefone"
-                  name="telefone"
-                  placeholder="Digite seu Telefone"
-                  value={formEditUserModalInputs.telefone}
-                  onChange={(e) => handleChange(e.target)}
-                  mask="(99) 99999-9999"
-                  className={`inputClient
-                    ${
-                      telefoneErrorMessage
-                        ? "clientErrorSinalization"
-                        : undefined
-                    }
+                                />
+                                {emailErrorMessage && (
+                                    <p className="chargeErrorMessage">{emailErrorMessage}</p>
+                                )}
+                            </label>
+                        </div>
+                        <div className="chargeFormGroup top">
+                            <label
+                                htmlFor="dataDeVencimento"
+                                className="chargeFormLabels split"
+                            >
+                                Vencimento:*
+                                <InputMask
+                                    id="dataDeVencimento"
+                                    name="dataDeVencimento"
+                                    placeholder="Data de Vencimento"
+                                    value={formEditUserModalInputs.cpf}
+                                    onChange={(e) => handleChange(e.target)}
+                                    mask="99-99-9999"
+                                    className={`inputCharge ${cpfErrorMessage ? "chargeErrorSinalization" : undefined
+                                        }`}
+                                />
+                                {cpfErrorMessage && (
+                                    <p className="chargeErrorMessage">{cpfErrorMessage}</p>
+                                )}
+                            </label>
+                            <label htmlFor="telefone" className="chargeFormLabels split">
+                                Valor:*
+                                <InputMask
+                                    id="valor"
+                                    name="valor"
+                                    placeholder="Digite o valor"
+                                    value={formEditUserModalInputs.telefone}
+                                    onChange={(e) => handleChange(e.target)}
+
+                                    className={`inputCharge
+                    ${telefoneErrorMessage
+                                            ? "chargeErrorSinalization"
+                                            : undefined
+                                        }
                   `}
-                />
-                {telefoneErrorMessage && (
-                  <p className="clientErrorMessage">{telefoneErrorMessage}</p>
-                )}
-              </label>
+                                />
+                                {telefoneErrorMessage && (
+                                    <p className="chargeErrorMessage">{telefoneErrorMessage}</p>
+                                )}
+                            </label>
+                        </div>
+                        <div className="chargeFormGroup">
+                            <label htmlFor="status" className="chargeFormLabels">
+                                Status*
+                                <div className="status">
+                                    <img onClick={handleCheckPaid} src={checkPaid ? confirmRadio : emptyRadio} />
+                                    <span>Cobrança Paga</span>
+                                </div>
+                                <div className="status">
+                                    <img onClick={handleCheckExpected} src={checkExpected ? confirmRadio : emptyRadio} />
+                                    <span>Cobrança Pendete</span>
+                                </div>
+
+                            </label>
+                        </div>
+                    </form>
+                    <div className="splitChargeButtonsContainer">
+                        <button
+                            onClick={() => setOpenChargeModal(false)}
+                            className="cancelEditChargeChanges"
+                        >
+                            Cancelar
+                        </button>
+                        <button onClick={handleSubmit} className="applyEditChargeChanges">
+                            Aplicar
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div className="clientFormGroup ">
-              <label htmlFor="endereco" className="clientFormLabels">
-                Status*
-                <input
-                  id="status"
-                  type="text"
-                  name="status"
-                  value={formEditUserModalInputs.endereco}
-                  onChange={(e) => handleChange(e.target)}
-                  className="inputStatus"
-                />
-                <input
-                  id="status"
-                  type="text"
-                  name="status"
-                  value={formEditUserModalInputs.endereco}
-                  onChange={(e) => handleChange(e.target)}
-                  className="inputStatus"
-                />
-              </label>
-            </div>
-          </form>
-          <div className="splitClientButtonsContainer">
-            <button
-              onClick={() => setOpenChargeModal(false)}
-              className="cancelEditClientChanges"
-            >
-              Cancelar
-            </button>
-            <button onClick={handleSubmit} className="applyEditClientChanges">
-              Aplicar
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  );
+        )
+    );
 }
 
 export default ChargeModal;

@@ -191,26 +191,32 @@ function EditClientModal() {
 
   return (
     openEditClientModal && (
-      <div className="containerClientModal">
-        <div className="backdropClientModal" />
-        <div className="clientModal">
-          <div className="titleClientModalContainer">
-            <img
-              className="customerIcon"
-              src={customerScreen}
-              alt="Ícone de Clientes"
-            />
-            <span className="clientModalTitle">Editar Cliente</span>
+      <div className="containerEditClientModal">
+        <div className="backdropEditClientModal" />
+        <div className="editClientModal">
+          <div className="titleEditClientModalContainer">
+            <div className="titleEditClientModalTitle">
+              <img
+                className="customerIcon"
+                src={customerScreen}
+                alt="Ícone de Clientes"
+              />
+              <span className="editClientModalTitle">Editar Cliente</span>
+            </div>
+            <div className="closeEditClientModal">
+              <img
+                className="closeEditClientModal"
+                onClick={() => setOpenEditClientModal(false)}
+                src={closeIcon}
+                alt="Fechar"
+              />
+            </div>
           </div>
-          <img
-            className="closeEditClientModal"
-            onClick={() => setOpenEditClientModal(false)}
-            src={closeIcon}
-            alt="Fechar"
-          />
+
+
           <form className="editClientForm" onSubmit={handleSubmit}>
-            <div className="clientFormGroup">
-              <label htmlFor="nome" className="clientFormLabels">
+            <div className="editClientFormGroup">
+              <label htmlFor="nome" className="editClientFormLabels">
                 Nome*
                 <input
                   id="nome"
@@ -219,17 +225,16 @@ function EditClientModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${
-                    nameErrorMessage ? "clientErrorSinalization" : undefined
-                  }`}
+                  className={`inputEditClient ${nameErrorMessage ? "editClientErrorSinalization" : undefined
+                    }`}
                 />
                 {nameErrorMessage && (
-                  <p className="clientErrorMessage">{nameErrorMessage}</p>
+                  <p className="editClientErrorMessage">{nameErrorMessage}</p>
                 )}
               </label>
             </div>
-            <div className="clientFormGroup">
-              <label htmlFor="email" className="clientFormLabels">
+            <div className="editClientFormGroup">
+              <label htmlFor="email" className="editClientFormLabels">
                 E-mail*
                 <input
                   id="email"
@@ -238,18 +243,17 @@ function EditClientModal() {
                   placeholder="Digite seu e-mail"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputClient ${
-                    emailErrorMessage ? "clientErrorSinalization" : undefined
-                  }
+                  className={`inputEditClient ${emailErrorMessage ? "editClientErrorSinalization" : undefined
+                    }
                   `}
                 />
                 {emailErrorMessage && (
-                  <p className="clientErrorMessage">{emailErrorMessage}</p>
+                  <p className="editClientErrorMessage">{emailErrorMessage}</p>
                 )}
               </label>
             </div>
-            <div className="clientFormGroup">
-              <label htmlFor="cpf" className="clientFormLabels split">
+            <div className="editClientFormGroup">
+              <label htmlFor="cpf" className="editClientFormLabels split">
                 CPF:*
                 <InputMask
                   id="cpf"
@@ -258,15 +262,14 @@ function EditClientModal() {
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
-                  className={`inputClient ${
-                    cpfErrorMessage ? "clientErrorSinalization" : undefined
-                  }`}
+                  className={`inputClient ${cpfErrorMessage ? "editClientErrorSinalization" : undefined
+                    }`}
                 />
                 {cpfErrorMessage && (
-                  <p className="clientErrorMessage">{cpfErrorMessage}</p>
+                  <p className="editClientErrorMessage">{cpfErrorMessage}</p>
                 )}
               </label>
-              <label htmlFor="telefone" className="clientFormLabels split">
+              <label htmlFor="telefone" className="editClientFormLabels split">
                 Telefone:*
                 <InputMask
                   id="telefone"
@@ -275,21 +278,20 @@ function EditClientModal() {
                   value={formEditUserModalInputs.telefone}
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
-                  className={`inputClient
-                    ${
-                      telefoneErrorMessage
-                        ? "clientErrorSinalization"
-                        : undefined
+                  className={`inputEditClient
+                    ${telefoneErrorMessage
+                      ? "editClientErrorSinalization"
+                      : undefined
                     }
                   `}
                 />
                 {telefoneErrorMessage && (
-                  <p className="clientErrorMessage">{telefoneErrorMessage}</p>
+                  <p className="editClientErrorMessage">{telefoneErrorMessage}</p>
                 )}
               </label>
             </div>
-            <div className="clientFormGroup">
-              <label htmlFor="endereco" className="clientFormLabels">
+            <div className="editClientFormGroup">
+              <label htmlFor="endereco" className="editClientFormLabels">
                 Endereço
                 <input
                   id="endereco"
@@ -298,10 +300,10 @@ function EditClientModal() {
                   placeholder="Digite o endereço"
                   value={formEditUserModalInputs.endereco}
                   onChange={(e) => handleChange(e.target)}
-                  className="inputClient"
+                  className="inputEditClient"
                 />
               </label>
-              <label htmlFor="complemento" className="clientFormLabels">
+              <label htmlFor="complemento" className="editClientFormLabels">
                 Complemento
                 <input
                   id="complemento"
@@ -310,11 +312,11 @@ function EditClientModal() {
                   placeholder="Digite o complemento"
                   value={formEditUserModalInputs.complemento}
                   onChange={(e) => handleChange(e.target)}
-                  className="inputClient"
+                  className="inputEditClient"
                 />
               </label>
-              <div className="splitClientContainer">
-                <label htmlFor="cep" className="clientFormLabels split">
+              <div className="splitEditClientContainer">
+                <label htmlFor="cep" className="editClientFormLabels split">
                   CEP:
                   <InputMask
                     id="cep"
@@ -323,10 +325,10 @@ function EditClientModal() {
                     value={formEditUserModalInputs.cep}
                     onChange={(e) => handleChange(e.target)}
                     mask="99999-999"
-                    className="inputClient"
+                    className="inputEditClient"
                   />
                 </label>
-                <label htmlFor="bairro" className="clientFormLabels split">
+                <label htmlFor="bairro" className="editClientFormLabels split">
                   Bairro
                   <input
                     id="bairro"
@@ -335,14 +337,14 @@ function EditClientModal() {
                     placeholder="Digite o Bairro"
                     value={formEditUserModalInputs.bairro}
                     onChange={(e) => handleChange(e.target)}
-                    className="inputClient"
+                    className="inputEditClient"
                   />
                 </label>
               </div>
-              <div className="splitClientContainer">
+              <div className="splitEditClientContainer">
                 <label
                   htmlFor="cidade"
-                  className="clientFormLabels split cidadeForm"
+                  className="editClientFormLabels split cidadeForm"
                 >
                   Cidade
                   <input
@@ -352,10 +354,10 @@ function EditClientModal() {
                     placeholder="Digite a cidade"
                     value={formEditUserModalInputs.cidade}
                     onChange={(e) => handleChange(e.target)}
-                    className="inputClient"
+                    className="inputEditClient"
                   />
                 </label>
-                <label htmlFor="uf" className="clientFormLabels split ufForm">
+                <label htmlFor="uf" className="editClientFormLabels split ufForm">
                   UF
                   <input
                     id="uf"
@@ -364,13 +366,13 @@ function EditClientModal() {
                     placeholder="Digite a UF"
                     value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
-                    className="inputClient"
+                    className="inputEditClient"
                   />
                 </label>
               </div>
             </div>
           </form>
-          <div className="splitClientButtonsContainer">
+          <div className="splitEditClientButtonsContainer">
             <button
               onClick={() => setOpenEditClientModal(false)}
               className="cancelEditClientChanges"
