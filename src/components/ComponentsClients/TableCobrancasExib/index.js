@@ -52,7 +52,7 @@ function TableCobrancasExib() {
                   {charge.cliente.nome}
                 </TableCell>
                 <TableCell align="left">{charge.id}</TableCell>
-                <TableCell align="left">{charge.valor}</TableCell>
+                <TableCell align="left">{(charge.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</TableCell>
                 <TableCell align="left">
                   {new Date(charge.data_vencimento).toLocaleDateString("pt", {
                     timeZone: "UTC",
@@ -64,8 +64,8 @@ function TableCobrancasExib() {
                       charge.situacao === "Vencida"
                         ? "status-red"
                         : charge.situacao === "Pendente"
-                        ? "status-yellow"
-                        : "status-blue"
+                          ? "status-yellow"
+                          : "status-blue"
                     }
                   >
                     {charge.situacao}

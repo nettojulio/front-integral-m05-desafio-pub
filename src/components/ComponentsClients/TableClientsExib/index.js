@@ -14,7 +14,12 @@ import { useEffect } from "react";
 
 function TableClientsExib() {
   const { setOpenClientDetail } = useGlobal();
-  const { loadAllClients, clientData } = useFunctions();
+  const { loadAllClients, clientData, setClientDetailData } = useFunctions();
+
+  function handleClientDetail(client) {
+    setOpenClientDetail(true);
+    setClientDetailData(client);
+  }
 
   useEffect(() => {
     loadAllClients();
@@ -46,7 +51,7 @@ function TableClientsExib() {
               >
                 <TableCell component="th" scope="row">
                   <button
-                    onClick={() => setOpenClientDetail(true)}
+                    onClick={() => handleClientDetail(client)}
                     className="btn_detailClient"
                   >
                     {client.nome}

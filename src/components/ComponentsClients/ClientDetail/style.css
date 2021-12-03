@@ -146,3 +146,18 @@
 .table-btn:hover {
   cursor: pointer;
 }
+
+.paid {
+  background-color: var(--light-green-paid);
+  color: var(--green);
+}
+
+.overdue {
+  background-color: var(--light-salmon-overdue);
+  color: var(--red);
+}
+
+.expected {
+  background-color: var(--light-yellow-expected);
+  color: var(--yellow);
+}

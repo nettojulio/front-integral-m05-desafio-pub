@@ -1,9 +1,11 @@
 import "./style.css";
 import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
 import edit from "../../../assets/editCustomerGreen.svg";
 
 function ClientDetailData() {
   const { setOpenEditClientModal } = useGlobal();
+  const { clientDetailData } = useFunctions();
 
   return (
     <div className="client-data">
@@ -20,15 +22,15 @@ function ClientDetailData() {
       <div className="client-data-personal">
         <div className="personal-info">
           <h3>E-mail</h3>
-          <span>sarasilva@gmail.com</span>
+          <span>{clientDetailData.email}</span>
         </div>
         <div className="personal-info">
           <h3>Telefone</h3>
-          <span>71 9 9462 8654</span>
+          <span>{clientDetailData.telefone}</span>
         </div>
         <div className="personal-info">
           <h3>CPF</h3>
-          <span>054 365 255 87</span>
+          <span>{clientDetailData.cpf}</span>
         </div>
         <div className="empty-div"></div>
       </div>
@@ -36,27 +38,27 @@ function ClientDetailData() {
       <div className="client-data-address">
         <div className="address-info">
           <h3>Endereço</h3>
-          <span>Rua das Cornélias, n°512</span>
+          <span>{clientDetailData.endereco}</span>
         </div>
         <div className="address-info">
           <h3>Bairro</h3>
-          <span>Oliveiras</span>
+          <span>{clientDetailData.bairro}</span>
         </div>
         <div className="address-info">
           <h3>Complemento</h3>
-          <span>Ap: 502</span>
+          <span>{clientDetailData.complemento}</span>
         </div>
         <div className="address-info">
           <h3>CEP</h3>
-          <span>03100 402</span>
+          <span>{clientDetailData.cep}</span>
         </div>
         <div className="address-info">
           <h3>Cidade</h3>
-          <span>Salvador</span>
+          <span>{clientDetailData.cidade}</span>
         </div>
         <div className="address-info">
           <h3>UF</h3>
-          <span>BA</span>
+          <span>{clientDetailData.uf}</span>
         </div>
       </div>
     </div>
