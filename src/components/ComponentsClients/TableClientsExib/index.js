@@ -13,8 +13,8 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib() {
-  const { setOpenClientDetail } = useGlobal();
-  const { loadAllClients, clientData, setClientDetailData } = useFunctions();
+  const { setOpenClientDetail, setClientDetailData } = useGlobal();
+  const { loadAllClients, clientData } = useFunctions();
 
   function handleClientDetail(client) {
     setOpenClientDetail(true);

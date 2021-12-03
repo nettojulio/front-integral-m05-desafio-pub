@@ -3,7 +3,6 @@ import editBillings from '../../../assets/editBillingsCard.svg';
 import deleteBillings from '../../../assets/deleteBillingsCard.svg';
 import sort from '../../../assets/sortIconHeaders.svg';
 
-import { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,10 +10,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import useFunctions from '../../../hooks/useFunctions';
+import useGlobal from '../../../hooks/useGlobal';
 
 function ClientDetailTable() {
-  const { clientDetailData } = useFunctions();
+  const { clientDetailData } = useGlobal();
 
   return (
     <div >

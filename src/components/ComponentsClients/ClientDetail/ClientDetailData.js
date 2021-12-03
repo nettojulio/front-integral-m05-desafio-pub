@@ -1,11 +1,9 @@
 import "./style.css";
 import useGlobal from "../../../hooks/useGlobal";
-import useFunctions from "../../../hooks/useFunctions";
 import edit from "../../../assets/editCustomerGreen.svg";
 
 function ClientDetailData() {
-  const { setOpenEditClientModal } = useGlobal();
-  const { clientDetailData } = useFunctions();
+  const { setOpenEditClientModal, clientDetailData } = useGlobal();
 
   return (
     <div className="client-data">

@@ -2,10 +2,10 @@ import "./style.css";
 import customerScreen from "../../../assets/customerScreen.svg";
 import ClientDetailData from './ClientDetailData';
 import ClientDetailCharge from './ClientDetailCharge';
-import useFunctions from "../../../hooks/useFunctions";
+import useGlobal from "../../../hooks/useGlobal";
 
 function Client() {
-  const { clientDetailData } = useFunctions();
+  const { clientDetailData } = useGlobal();
 
   return (
     <div className="client-page">
