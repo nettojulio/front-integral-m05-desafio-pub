@@ -14,7 +14,7 @@ export default function useFunctionProvider() {
   });
   const [formsLogin, SetFormsLogin] = useState({ email: "", senha: "" });
   const [messageAlert, setMessageAlert] = useState(false);
-  const [stateAlert, setStateAlert] = useState("");
+  const [stateAlert, setStateAlert] = useState("success");
   const [togglePage, setTogglePage] = useState("");
   const [userData, setUserData] = useState("");
   const [clientData, setClientData] = useState([]);
@@ -305,6 +305,6 @@ export default function useFunctionProvider() {
     loadAllClients,
     preloadEmail,
     clientDetailData,
-    setClientDetailData
+    setClientDetailData,
   };
 }
