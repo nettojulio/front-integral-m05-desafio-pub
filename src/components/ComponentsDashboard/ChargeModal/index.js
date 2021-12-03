@@ -233,11 +233,11 @@ function ChargeModal() {
                             <label htmlFor="status" className="chargeFormLabels">
                                 Status*
                                 <div className="status">
-                                    <img onClick={handleCheckPaid} src={checkPaid ? confirmRadio : emptyRadio} />
+                                    <img onClick={handleCheckPaid} src={checkPaid ? confirmRadio : emptyRadio} alt="" />
                                     <span>Cobrança Paga</span>
                                 </div>
                                 <div className="status">
-                                    <img onClick={handleCheckExpected} src={checkExpected ? confirmRadio : emptyRadio} />
+                                    <img onClick={handleCheckExpected} src={checkExpected ? confirmRadio : emptyRadio} alt="" />
                                     <span>Cobrança Pendete</span>
                                 </div>
 
