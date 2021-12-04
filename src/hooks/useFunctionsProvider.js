@@ -19,7 +19,6 @@ export default function useFunctionProvider() {
   const [userData, setUserData] = useState("");
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
-  const [clientDetailData, setClientDetailData] = useState([]);
   function handleClose() {
     setOpen(false);
   }
@@ -302,8 +301,6 @@ export default function useFunctionProvider() {
     addBillings,
     loadAllBillings,
     loadAllClients,
-    preloadEmail,
-    clientDetailData,
-    setClientDetailData,
+    preloadEmail
   };
 }

@@ -9,10 +9,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import useFunctions from "../../../hooks/useFunctions";
+import useGlobal from "../../../hooks/useGlobal";
 
 function ClientDetailTable() {
-  const { clientDetailData } = useFunctions();
+  const { clientDetailData } = useGlobal();
 
   return (
     <div>
@@ -67,10 +67,10 @@ function ClientDetailTable() {
                 <TableCell align="left">
                   <div
                     className={`table-status ${client.situacao === "Paga"
-                        ? "paid"
-                        : client.situacao === "Pendente"
-                          ? "expected"
-                          : "overdue"
+                      ? "paid"
+                      : client.situacao === "Pendente"
+                        ? "expected"
+                        : "overdue"
                       }`}
                   >
                     {client.situacao}

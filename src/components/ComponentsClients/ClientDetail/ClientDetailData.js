@@ -1,6 +1,7 @@
 import "./style.css";
-import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
 import edit from "../../../assets/editCustomerGreen.svg";
+import useGlobal from "../../../hooks/useGlobal";
 
 function ClientDetailData() {
   const { setOpenEditClientModal, clientDetailData } = useGlobal();

@@ -10,6 +10,7 @@ function useGlobalProvider() {
   const [openUserModal, setOpenUserModal] = useState(false);
   const [openClientDetail, setOpenClientDetail] = useState(false);
   const [openOptions, setOpenOptions] = useState(false);
+  const [clientDetailData, setClientDetailData] = useState([]);
   const [chargeModalValue, setChargeModalValue] = useState([]);
 
   return {
@@ -31,6 +32,8 @@ function useGlobalProvider() {
     setOpenOptions,
     openClientDetail,
     setOpenClientDetail,
+    clientDetailData,
+    setClientDetailData,
     chargeModalValue,
     setChargeModalValue
   };

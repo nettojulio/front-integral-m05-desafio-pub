@@ -2,10 +2,10 @@ import { useState } from "react";
 import InputMask from "react-input-mask";
 import closeIcon from "../../../assets/closeIcon.svg";
 import billings from "../../../assets/billings.svg";
-import useGlobal from "../../../hooks/useGlobal";
 import confirmRadio from "../../../assets/confirmRadio.svg";
 import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
+import useGlobal from "../../../hooks/useGlobal";
 
 function ChargeModal() {
   const [statusValue, setStatusValue] = useState(true);
@@ -244,7 +244,7 @@ function ChargeModal() {
                 </div>
                 <div className="status">
                   <img onClick={handleCheckExpected} src={checkExpected ? confirmRadio : emptyRadio} alt="" />
-                  <span>Cobrança Pendete</span>
+                  <span>Cobrança Pendente</span>
                 </div>
 
               </label>

@@ -71,8 +71,8 @@ function TableCobrancasExib() {
                       charge.situacao === "Vencida"
                         ? "status-red"
                         : charge.situacao === "Pendente"
-                        ? "status-yellow"
-                        : "status-blue"
+                          ? "status-yellow"
+                          : "status-blue"
                     }
                   >
                     {charge.situacao}
