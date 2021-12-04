@@ -13,8 +13,8 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib() {
-  const { setOpenClientDetail, setClientDetailData } = useGlobal();
-  const { loadAllClients, clientData } = useFunctions();
+  const { setOpenClientDetail, setOpenChargeModal } = useGlobal();
+  const { loadAllClients, clientData, setClientDetailData } = useFunctions();
 
   function handleClientDetail(client) {
     setOpenClientDetail(true);
@@ -72,7 +72,10 @@ function TableClientsExib() {
                   </div>
                 </TableCell>
                 <TableCell align="left">
-                  <div className="container-Iconbillings">
+                  <div
+                    className="container-Iconbillings"
+                    onClick={() => setOpenChargeModal(client)}
+                  >
                     <img
                       src={addBilling}
                       className="icon-billing"

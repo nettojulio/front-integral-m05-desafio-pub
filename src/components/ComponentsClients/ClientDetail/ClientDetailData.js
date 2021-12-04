@@ -56,7 +56,7 @@ function ClientDetailData() {
         </div>
         <div className="address-info">
           <h3>UF</h3>
-          <span>{clientDetailData.uf}</span>
+          <span>{clientDetailData.estado}</span>
         </div>
       </div>
     </div>

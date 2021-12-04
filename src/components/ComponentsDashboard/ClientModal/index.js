@@ -22,7 +22,7 @@ function ClientModal() {
 
   const { openClientModal, setOpenClientModal } = useGlobal();
 
-  const { token, setOpen, setMessageAlert, setStateAlert, loadClients } =
+  const { token, setOpen, setMessageAlert, setStateAlert, loadAllClients } =
     useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
@@ -32,17 +32,34 @@ function ClientModal() {
   const [cpfErrorMessage, setCpfErrorMessage] = useState("");
   const [telefoneErrorMessage, setTelefoneErrorMessage] = useState("");
 
-  // useEffect(() => {
-  //   viacep();
-  // }, []);
+  async function handleViaCep(e) {
+    if (e.target.value.includes("_")) {
+      return;
+    }
 
-  // async function viacep(cep) {
-  //   fetch(`https://viacep.com.br/ws/${cep}/json`)
-  //     .then((resposta) => resposta.json())
-  //     .then((dados) => console.log(dados));
-  // }
+    try {
+      const response = await fetch(
+        `https://viacep.com.br/ws/${e.target.value}/json`
+      );
 
-  /* remover*/
+      const result = await response.json();
+
+      const complemento = {
+        nome: formEditUserModalInputs.nome,
+        email: formEditUserModalInputs.email,
+        cpf: formEditUserModalInputs.cpf,
+        telefone: formEditUserModalInputs.telefone,
+        endereco: result.logradouro,
+        complemento: formEditUserModalInputs.complemento,
+        cep: result.cep,
+        bairro: result.bairro,
+        cidade: result.localidade,
+        uf: result.uf,
+      };
+
+      setFormEditUserModalInputs(complemento);
+    } catch (error) {}
+  }
 
   async function addNewClient(body) {
     try {
@@ -64,8 +81,8 @@ function ClientModal() {
         throw new Error(result);
       }
 
-      loadClients();
       setOpenClientModal(false);
+      loadAllClients();
       setOpen(true);
       setStateAlert("success");
       setMessageAlert("Sucesso: Cliente adicionado!");
@@ -182,7 +199,7 @@ function ClientModal() {
       cep: formEditUserModalInputs.cep,
       bairro: formEditUserModalInputs.bairro,
       cidade: formEditUserModalInputs.cidade,
-      uf: formEditUserModalInputs.uf,
+      estado: formEditUserModalInputs.uf,
     };
     addNewClient(updateUser);
   }
@@ -327,6 +344,7 @@ function ClientModal() {
                     placeholder="Digite o CEP"
                     value={formEditUserModalInputs.cep}
                     onChange={(e) => handleChange(e.target)}
+                    onBlur={(e) => handleViaCep(e)}
                     mask="99999-999"
                     className="inputClient"
                   />

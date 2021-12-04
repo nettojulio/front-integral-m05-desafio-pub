@@ -14,12 +14,12 @@ export default function useFunctionProvider() {
   });
   const [formsLogin, SetFormsLogin] = useState({ email: "", senha: "" });
   const [messageAlert, setMessageAlert] = useState(false);
-  const [stateAlert, setStateAlert] = useState("");
+  const [stateAlert, setStateAlert] = useState("success");
   const [togglePage, setTogglePage] = useState("");
   const [userData, setUserData] = useState("");
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
-
+  const [clientDetailData, setClientDetailData] = useState([]);
   function handleClose() {
     setOpen(false);
   }
@@ -302,6 +302,8 @@ export default function useFunctionProvider() {
     addBillings,
     loadAllBillings,
     loadAllClients,
-    preloadEmail
+    preloadEmail,
+    clientDetailData,
+    setClientDetailData,
   };
 }

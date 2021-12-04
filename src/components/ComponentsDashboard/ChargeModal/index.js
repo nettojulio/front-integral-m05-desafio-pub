@@ -7,8 +7,6 @@ import confirmRadio from "../../../assets/confirmRadio.svg";
 import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 
-
-
 function ChargeModal() {
   const [statusValue, setStatusValue] = useState(true);
 
@@ -120,7 +118,6 @@ function ChargeModal() {
       setValorErrorMessage("Valor inválido");
       return;
     }
-
 
   }
 
@@ -238,7 +235,11 @@ function ChargeModal() {
               <label htmlFor="status" className="chargeFormLabels">
                 Status*
                 <div className="status">
-                  <img onClick={handleCheckPaid} src={checkPaid ? confirmRadio : emptyRadio} alt="" />
+                  <img
+                    onClick={handleCheckPaid}
+                    src={checkPaid ? confirmRadio : emptyRadio}
+                    alt=""
+                  />
                   <span>Cobrança Paga</span>
                 </div>
                 <div className="status">
