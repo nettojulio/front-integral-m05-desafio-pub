@@ -267,6 +267,14 @@ export default function useFunctionProvider() {
     }
   }
 
+  function formatToDate(date) {
+    const [dd, mm, yy] = date.split("/");
+    const newrebase = [mm, dd, yy];
+    const preChargeDate = newrebase.join("/");
+    const exportedDateFormat = new Date(preChargeDate);
+    return exportedDateFormat
+  }
+
   function handleLogout() {
     removeToken();
     navigate("signin");
@@ -301,6 +309,7 @@ export default function useFunctionProvider() {
     addBillings,
     loadAllBillings,
     loadAllClients,
-    preloadEmail
+    preloadEmail,
+    formatToDate
   };
 }

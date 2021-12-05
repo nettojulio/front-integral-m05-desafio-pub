@@ -6,21 +6,22 @@ import confirmRadio from "../../../assets/confirmRadio.svg";
 import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
 
 function ChargeModal() {
+  const { addBillings, formatToDate } = useFunctions();
+  const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue } = useGlobal();  
   const [statusValue, setStatusValue] = useState(true);
 
   const initialForm = {
     descricao: "",
-    vencimento: "",
+    data_vencimento: "",
     valor: "",
     status: true
   };
-
+  
   const [checkPaid, setCheckPaid] = useState(true);
   const [checkExpected, setCheckExpected] = useState(false);
-  const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue } = useGlobal();
-
   const [formSignupUserModalInputs, setFormSignupUserModalInputs] = useState(initialForm);
   const [descricaoErrorMessage, setDescricaoErrorMessage] = useState("");
   const [vencimentoErrorMessage, setVencimentoErrorMessage] = useState("");
@@ -51,21 +52,21 @@ function ChargeModal() {
 
     if (
       !formSignupUserModalInputs.descricao ||
-      !formSignupUserModalInputs.vencimento ||
+      !formSignupUserModalInputs.data_vencimento ||
       !formSignupUserModalInputs.valor
     ) {
       !formSignupUserModalInputs.descricao &&
         setDescricaoErrorMessage("Este campo deve ser preenchido");
-      !formSignupUserModalInputs.vencimento &&
+      !formSignupUserModalInputs.data_vencimento &&
         setVencimentoErrorMessage("Este campo deve ser preenchido");
       !formSignupUserModalInputs.valor &&
         setValorErrorMessage("Este campo deve ser preenchido");
       return;
     }
 
-    if (formSignupUserModalInputs.vencimento) {
+    if (formSignupUserModalInputs.data_vencimento) {
 
-      const date = formSignupUserModalInputs.vencimento;
+      const date = formSignupUserModalInputs.data_vencimento;
       let formatedDate = date;
       let previousDate = "";
 
@@ -109,16 +110,18 @@ function ChargeModal() {
       // } else {
       //   setStatusValue('pago');
       // }
-
-      formSignupUserModalInputs.status = statusValue;
-      setOpenChargeModal(false);
     }
-
+    
     if (formSignupUserModalInputs.valor <= 0) {
       setValorErrorMessage("Valor inválido");
       return;
     }
-
+    
+    formSignupUserModalInputs.status = statusValue;
+    formSignupUserModalInputs.valor = formSignupUserModalInputs.valor * 100;
+    formSignupUserModalInputs.data_vencimento = formatToDate(formSignupUserModalInputs.data_vencimento);
+    addBillings(formSignupUserModalInputs, clientDetailData.id);
+    setOpenChargeModal(false);
   }
 
   function handleClearValidations() {
@@ -192,15 +195,15 @@ function ChargeModal() {
             </div>
             <div className="chargeFormGroup top">
               <label
-                htmlFor="dataDeVencimento"
+                htmlFor="data_vencimento"
                 className="chargeFormLabels split"
               >
                 Vencimento:*
                 <InputMask
-                  id="vencimento"
-                  name="vencimento"
+                  id="data_vencimento"
+                  name="data_vencimento"
                   placeholder="Data de Vencimento"
-                  value={formSignupUserModalInputs.vencimento}
+                  value={formSignupUserModalInputs.data_vencimento}
                   onChange={(e) => handleChange(e.target)}
                   mask="99/99/9999"
                   className={`inputCharge ${vencimentoErrorMessage ? "chargeErrorSinalization" : undefined
