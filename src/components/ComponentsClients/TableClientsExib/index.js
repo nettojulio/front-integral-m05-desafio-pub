@@ -17,7 +17,7 @@ function TableClientsExib() {
   const { loadAllClients, clientData, } = useFunctions();
 
   function handleClientDetail(client) {
-    setOpenClientDetail(true);
+    // setOpenClientDetail(true);
     setClientDetailData(client);
   }
 

@@ -10,9 +10,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
+import { useEffect } from "react";
 
 function ClientDetailTable() {
   const { clientDetailData } = useGlobal();
+  const { loadAllBillings } = useFunctions();
+
+  useEffect(() => {
+    loadAllBillings();
+    console.log('mudou')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clientDetailData]);
 
   return (
     <div>
