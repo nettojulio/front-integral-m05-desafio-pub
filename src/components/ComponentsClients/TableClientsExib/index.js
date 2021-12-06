@@ -21,6 +21,11 @@ function TableClientsExib() {
     setClientDetailData(client);
   }
 
+  function handleChargeModal(client) {
+    setOpenChargeModal(client)
+    setClientDetailData(client);
+  }
+
   useEffect(() => {
     loadAllClients();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,7 +79,7 @@ function TableClientsExib() {
                 <TableCell align="left">
                   <div
                     className="container-Iconbillings"
-                    onClick={() => setOpenChargeModal(client)}
+                    onClick={() => handleChargeModal(client)}
                   >
                     <img
                       src={addBilling}

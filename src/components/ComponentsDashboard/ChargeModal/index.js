@@ -10,7 +10,7 @@ import useFunctions from "../../../hooks/useFunctions";
 
 function ChargeModal() {
   const { addBillings, formatToDate } = useFunctions();
-  const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue } = useGlobal();  
+  const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
   const initialForm = {
@@ -19,7 +19,7 @@ function ChargeModal() {
     valor: "",
     status: true
   };
-  
+
   const [checkPaid, setCheckPaid] = useState(true);
   const [checkExpected, setCheckExpected] = useState(false);
   const [formSignupUserModalInputs, setFormSignupUserModalInputs] = useState(initialForm);
@@ -111,12 +111,12 @@ function ChargeModal() {
       //   setStatusValue('pago');
       // }
     }
-    
+
     if (formSignupUserModalInputs.valor <= 0) {
       setValorErrorMessage("Valor inválido");
       return;
     }
-    
+
     formSignupUserModalInputs.status = statusValue;
     formSignupUserModalInputs.valor = formSignupUserModalInputs.valor * 100;
     formSignupUserModalInputs.data_vencimento = formatToDate(formSignupUserModalInputs.data_vencimento);
