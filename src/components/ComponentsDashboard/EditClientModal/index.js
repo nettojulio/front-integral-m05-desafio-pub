@@ -286,7 +286,7 @@ function EditClientModal() {
                 <InputMask
                   id="cpf"
                   name="cpf"
-                  placeholder="Digite seu cpf"
+                  placeholder="Digite seu CPF"
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
@@ -353,7 +353,7 @@ function EditClientModal() {
                   <InputMask
                     id="cep"
                     name="cep"
-                    placeholder="Digite seu cpf"
+                    placeholder="Digite seu CEP"
                     value={formEditUserModalInputs.cep}
                     onChange={(e) => handleChange(e.target)}
                     onBlur={(e) => handleViaCep(e)}
@@ -376,7 +376,7 @@ function EditClientModal() {
                     id="bairro"
                     type="text"
                     name="bairro"
-                    placeholder={clientDetailData.bairro}
+                    placeholder="Digite seu bairro"
                     value={formEditUserModalInputs.bairro}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
@@ -393,7 +393,7 @@ function EditClientModal() {
                     id="cidade"
                     type="text"
                     name="cidade"
-                    placeholder={clientDetailData.cidade}
+                    placeholder="Digite sua cidade"
                     value={formEditUserModalInputs.cidade}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
@@ -408,7 +408,7 @@ function EditClientModal() {
                     id="uf"
                     type="text"
                     name="uf"
-                    placeholder={clientDetailData.uf}
+                    placeholder="Digite sua UF"
                     value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"

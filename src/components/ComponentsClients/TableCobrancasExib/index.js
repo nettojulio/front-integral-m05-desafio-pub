@@ -22,8 +22,17 @@ function TableCobrancasExib() {
 
   return (
     <div className="card-cobrancas">
-      <TableContainer component={Paper} sx={{ borderRadius: "30px" }}>
-        <Table sx={{ width: "111.6rem" }} aria-label="simple table">
+      <TableContainer
+        component={Paper}
+        sx={{
+          borderRadius: "30px",
+          width: "111.6rem",
+          maxHeight: "60rem",
+          overflowX: "hidden",
+          overflowY: "auto",
+        }}
+      >
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>
@@ -71,8 +80,8 @@ function TableCobrancasExib() {
                       charge.situacao === "Vencida"
                         ? "status-red"
                         : charge.situacao === "Pendente"
-                          ? "status-yellow"
-                          : "status-blue"
+                        ? "status-yellow"
+                        : "status-blue"
                     }
                   >
                     {charge.situacao}
