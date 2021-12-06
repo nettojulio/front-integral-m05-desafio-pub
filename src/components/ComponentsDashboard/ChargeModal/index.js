@@ -9,7 +9,7 @@ import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 
 function ChargeModal() {
-  const { addBillings, formatToDate, setOpen, setMessageAlert, setStateAlert } = useFunctions();
+  const { addBillings, formatToDate, setOpen, setMessageAlert, setStateAlert, loadAllClients } = useFunctions();
   const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue, setOpenClientDetail } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
@@ -123,6 +123,7 @@ function ChargeModal() {
     addBillings(formSignupUserModalInputs, clientDetailData.id);
     setOpen(true);
     setStateAlert("success");
+    loadAllClients();
     setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
     setOpenClientDetail(false);
