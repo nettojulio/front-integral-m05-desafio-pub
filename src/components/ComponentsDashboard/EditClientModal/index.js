@@ -199,10 +199,8 @@ function EditClientModal() {
       cep: formEditUserModalInputs.cep,
       bairro: formEditUserModalInputs.bairro,
       cidade: formEditUserModalInputs.cidade,
-      uf: formEditUserModalInputs.uf,
+      estado: formEditUserModalInputs.uf,
     };
-
-    console.log(updateUser.cep);
 
     editRegisteredClient(updateUser, clientDetailData.id);
   }
