@@ -9,20 +9,34 @@ import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 
 function ChargeModal() {
-  const { addBillings, formatToDate, setOpen, setMessageAlert, setStateAlert, loadAllClients } = useFunctions();
-  const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue, setOpenClientDetail } = useGlobal();
+  const {
+    addBillings,
+    formatToDate,
+    setOpen,
+    setMessageAlert,
+    setStateAlert,
+    loadAllClients,
+  } = useFunctions();
+  const {
+    openChargeModal,
+    setOpenChargeModal,
+    clientDetailData,
+    setChargeModalValue,
+    setOpenClientDetail,
+  } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
   const initialForm = {
     descricao: "",
     data_vencimento: "",
     valor: "",
-    status: true
+    status: true,
   };
 
   const [checkPaid, setCheckPaid] = useState(true);
   const [checkExpected, setCheckExpected] = useState(false);
-  const [formSignupUserModalInputs, setFormSignupUserModalInputs] = useState(initialForm);
+  const [formSignupUserModalInputs, setFormSignupUserModalInputs] =
+    useState(initialForm);
   const [descricaoErrorMessage, setDescricaoErrorMessage] = useState("");
   const [vencimentoErrorMessage, setVencimentoErrorMessage] = useState("");
   const [valorErrorMessage, setValorErrorMessage] = useState("");
@@ -65,20 +79,19 @@ function ChargeModal() {
     }
 
     if (formSignupUserModalInputs.data_vencimento) {
-
       const date = formSignupUserModalInputs.data_vencimento;
       let formatedDate = date;
       let previousDate = "";
 
       while (formatedDate !== previousDate) {
         previousDate = formatedDate;
-        formatedDate = formatedDate.replace('_', '');
-        formatedDate = formatedDate.replace('/', '');
+        formatedDate = formatedDate.replace("_", "");
+        formatedDate = formatedDate.replace("/", "");
       }
 
       if (formatedDate.length < 8) {
         setVencimentoErrorMessage("Data incompleta");
-        return
+        return;
       }
       const day = Number(formatedDate.slice(0, 2));
       const month = Number(formatedDate.slice(2, 4));
@@ -119,7 +132,9 @@ function ChargeModal() {
 
     formSignupUserModalInputs.status = statusValue;
     formSignupUserModalInputs.valor = formSignupUserModalInputs.valor * 100;
-    formSignupUserModalInputs.data_vencimento = formatToDate(formSignupUserModalInputs.data_vencimento);
+    formSignupUserModalInputs.data_vencimento = formatToDate(
+      formSignupUserModalInputs.data_vencimento
+    );
     addBillings(formSignupUserModalInputs, clientDetailData.id);
     setOpen(true);
     setStateAlert("success");
@@ -140,7 +155,6 @@ function ChargeModal() {
     handleSubmit();
     setChargeModalValue(formSignupUserModalInputs);
   }
-
 
   return (
     openChargeModal && (
@@ -189,8 +203,11 @@ function ChargeModal() {
                   placeholder="Digite a descrição"
                   value={formSignupUserModalInputs.descricao}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputCharge ${descricaoErrorMessage ? "chargeErrorSinalization" : undefined
-                    }
+                  className={`inputCharge ${
+                    descricaoErrorMessage
+                      ? "chargeErrorSinalization"
+                      : undefined
+                  }
                   `}
                 />
                 {descricaoErrorMessage && (
@@ -211,8 +228,11 @@ function ChargeModal() {
                   value={formSignupUserModalInputs.data_vencimento}
                   onChange={(e) => handleChange(e.target)}
                   mask="99/99/9999"
-                  className={`inputCharge ${vencimentoErrorMessage ? "chargeErrorSinalization" : undefined
-                    }`}
+                  className={`inputCharge ${
+                    vencimentoErrorMessage
+                      ? "chargeErrorSinalization"
+                      : undefined
+                  }`}
                 />
                 {vencimentoErrorMessage && (
                   <p className="chargeErrorMessage">{vencimentoErrorMessage}</p>
@@ -228,10 +248,7 @@ function ChargeModal() {
                   value={formSignupUserModalInputs.valor}
                   onChange={(e) => handleChange(e.target)}
                   className={`inputCharge
-                    ${valorErrorMessage
-                      ? "chargeErrorSinalization"
-                      : undefined
-                    }
+                    ${valorErrorMessage ? "chargeErrorSinalization" : undefined}
                   `}
                 />
                 {valorErrorMessage && (
@@ -242,19 +259,14 @@ function ChargeModal() {
             <div className="chargeFormGroup">
               <label htmlFor="status" className="chargeFormLabels">
                 Status*
-                <div className="status">
-                  <img
-                    onClick={handleCheckPaid}
-                    src={checkPaid ? confirmRadio : emptyRadio}
-                    alt=""
-                  />
+                <div className="status" onClick={handleCheckPaid}>
+                  <img src={checkPaid ? confirmRadio : emptyRadio} alt="" />
                   <span>Cobrança Paga</span>
                 </div>
-                <div className="status">
-                  <img onClick={handleCheckExpected} src={checkExpected ? confirmRadio : emptyRadio} alt="" />
+                <div className="status" onClick={handleCheckExpected}>
+                  <img src={checkExpected ? confirmRadio : emptyRadio} alt="" />
                   <span>Cobrança Pendente</span>
                 </div>
-
               </label>
             </div>
           </form>
