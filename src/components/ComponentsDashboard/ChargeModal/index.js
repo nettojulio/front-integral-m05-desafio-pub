@@ -9,8 +9,8 @@ import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 
 function ChargeModal() {
-  const { addBillings, formatToDate } = useFunctions();
-  const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue } = useGlobal();
+  const { addBillings, formatToDate, setOpen, setMessageAlert, setStateAlert } = useFunctions();
+  const { openChargeModal, setOpenChargeModal, clientDetailData, setChargeModalValue, setOpenClientDetail } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
   const initialForm = {
@@ -121,7 +121,11 @@ function ChargeModal() {
     formSignupUserModalInputs.valor = formSignupUserModalInputs.valor * 100;
     formSignupUserModalInputs.data_vencimento = formatToDate(formSignupUserModalInputs.data_vencimento);
     addBillings(formSignupUserModalInputs, clientDetailData.id);
+    setOpen(true);
+    setStateAlert("success");
+    setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
+    setOpenClientDetail(false);
   }
 
   function handleClearValidations() {
