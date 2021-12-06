@@ -97,6 +97,7 @@ function ClientModal() {
     } else if (
       error.message.includes("Email") ||
       error.message.includes("email")
+      
     ) {
       setEmailErrorMessage(error.message);
     } else if (
@@ -108,7 +109,10 @@ function ClientModal() {
     } else {
       console.log(error.message);
     }
+
+    
   }
+  
 
   function handleChange(target) {
     handleClearValidations();

@@ -20,7 +20,7 @@ function EditClientModal() {
     uf: "",
   };
 
-  const { openEditClientModal, setOpenEditClientModal } = useGlobal();
+  const { openEditClientModal, setOpenEditClientModal, clientDetailData } = useGlobal();
 
   const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
 
@@ -222,7 +222,7 @@ function EditClientModal() {
                   id="nome"
                   type="text"
                   name="nome"
-                  placeholder="Digite seu nome"
+                  placeholder={clientDetailData.nome}
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
                   className={`inputEditClient ${nameErrorMessage ? "editClientErrorSinalization" : undefined
@@ -240,7 +240,7 @@ function EditClientModal() {
                   id="email"
                   type="email"
                   name="email"
-                  placeholder="Digite seu e-mail"
+                  placeholder={clientDetailData.email}
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
                   className={`inputEditClient ${emailErrorMessage ? "editClientErrorSinalization" : undefined
@@ -258,7 +258,7 @@ function EditClientModal() {
                 <InputMask
                   id="cpf"
                   name="cpf"
-                  placeholder="Digite seu CPF"
+                  placeholder={clientDetailData.cpf}
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
@@ -274,7 +274,7 @@ function EditClientModal() {
                 <InputMask
                   id="telefone"
                   name="telefone"
-                  placeholder="Digite seu Telefone"
+                  placeholder={clientDetailData.telefone}
                   value={formEditUserModalInputs.telefone}
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
@@ -297,7 +297,7 @@ function EditClientModal() {
                   id="endereco"
                   type="text"
                   name="endereco"
-                  placeholder="Digite o endereço"
+                  placeholder={clientDetailData.endereco}
                   value={formEditUserModalInputs.endereco}
                   onChange={(e) => handleChange(e.target)}
                   className="inputEditClient"
@@ -309,7 +309,7 @@ function EditClientModal() {
                   id="complemento"
                   type="text"
                   name="complemento"
-                  placeholder="Digite o complemento"
+                  placeholder={clientDetailData.complemento}
                   value={formEditUserModalInputs.complemento}
                   onChange={(e) => handleChange(e.target)}
                   className="inputEditClient"
@@ -321,7 +321,7 @@ function EditClientModal() {
                   <InputMask
                     id="cep"
                     name="cep"
-                    placeholder="Digite o CEP"
+                    placeholder={clientDetailData.cpf}
                     value={formEditUserModalInputs.cep}
                     onChange={(e) => handleChange(e.target)}
                     mask="99999-999"
@@ -334,7 +334,7 @@ function EditClientModal() {
                     id="bairro"
                     type="text"
                     name="bairro"
-                    placeholder="Digite o Bairro"
+                    placeholder={clientDetailData.bairro}
                     value={formEditUserModalInputs.bairro}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
@@ -351,7 +351,7 @@ function EditClientModal() {
                     id="cidade"
                     type="text"
                     name="cidade"
-                    placeholder="Digite a cidade"
+                    pplaceholder={clientDetailData.cidade}
                     value={formEditUserModalInputs.cidade}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
@@ -363,7 +363,7 @@ function EditClientModal() {
                     id="uf"
                     type="text"
                     name="uf"
-                    placeholder="Digite a UF"
+                    placeholder={clientDetailData.uf}
                     value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
