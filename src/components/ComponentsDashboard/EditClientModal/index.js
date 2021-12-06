@@ -6,23 +6,27 @@ import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 import "./styles.css";
 
+
+
 function EditClientModal() {
+  const { openEditClientModal, setOpenEditClientModal, clientDetailData } = useGlobal();
+  console.log(clientDetailData.cep)
+
   const initialForm = {
-    nome: "",
-    email: "",
-    cpf: "",
-    telefone: "",
-    endereco: "",
-    complemento: "",
-    cep: "",
-    bairro: "",
-    cidade: "",
-    uf: "",
+    nome: clientDetailData.nome,
+    email: clientDetailData.email,
+    cpf: clientDetailData.cpf,
+    telefone: clientDetailData.telefone,
+    endereco: clientDetailData.endereco,
+    complemento: clientDetailData.complemento,
+    cep: clientDetailData.cep,
+    bairro: clientDetailData.bairro,
+    cidade: clientDetailData.cidade,
+    uf: clientDetailData.uf,
   };
 
-  const { openEditClientModal, setOpenEditClientModal, clientDetailData } = useGlobal();
 
-  const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
+  const { token, setOpen, setMessageAlert, setStateAlert ,editRegisteredClient } = useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
@@ -43,34 +47,7 @@ function EditClientModal() {
 
   /* remover*/
 
-  async function addNewClient(body) {
-    try {
-      const response = await fetch(
-        "https://api-teste-desafio.herokuapp.com/clientes",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(body),
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result);
-      }
-
-      setOpenEditClientModal(false);
-      setOpen(true);
-      setStateAlert("success");
-      setMessageAlert("Sucesso: Cliente adicionado!");
-    } catch (error) {
-      updateValidations(error);
-    }
-  }
+  
 
   function updateValidations(error) {
     if (error.message.includes("nome") || error.message.includes("Nome")) {
@@ -179,7 +156,9 @@ function EditClientModal() {
       cidade: formEditUserModalInputs.cidade,
       uf: formEditUserModalInputs.uf,
     };
-    addNewClient(updateUser);
+    
+    
+    editRegisteredClient(updateUser, clientDetailData.id);
   }
 
   function handleClearValidations() {
@@ -222,7 +201,7 @@ function EditClientModal() {
                   id="nome"
                   type="text"
                   name="nome"
-                  placeholder={clientDetailData.nome}
+                  placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
                   className={`inputEditClient ${nameErrorMessage ? "editClientErrorSinalization" : undefined
@@ -240,7 +219,7 @@ function EditClientModal() {
                   id="email"
                   type="email"
                   name="email"
-                  placeholder={clientDetailData.email}
+                  placeholder="Digite seu email"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
                   className={`inputEditClient ${emailErrorMessage ? "editClientErrorSinalization" : undefined
@@ -258,7 +237,7 @@ function EditClientModal() {
                 <InputMask
                   id="cpf"
                   name="cpf"
-                  placeholder={clientDetailData.cpf}
+                  placeholder="Digite seu cpf"
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
@@ -274,7 +253,7 @@ function EditClientModal() {
                 <InputMask
                   id="telefone"
                   name="telefone"
-                  placeholder={clientDetailData.telefone}
+                  placeholder="Digite seu telefone"
                   value={formEditUserModalInputs.telefone}
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
@@ -297,7 +276,7 @@ function EditClientModal() {
                   id="endereco"
                   type="text"
                   name="endereco"
-                  placeholder={clientDetailData.endereco}
+                  placeholder="Digite seu endereço"
                   value={formEditUserModalInputs.endereco}
                   onChange={(e) => handleChange(e.target)}
                   className="inputEditClient"
@@ -309,7 +288,7 @@ function EditClientModal() {
                   id="complemento"
                   type="text"
                   name="complemento"
-                  placeholder={clientDetailData.complemento}
+                  placeholder="Digite um Complemento"
                   value={formEditUserModalInputs.complemento}
                   onChange={(e) => handleChange(e.target)}
                   className="inputEditClient"
@@ -321,8 +300,8 @@ function EditClientModal() {
                   <InputMask
                     id="cep"
                     name="cep"
-                    placeholder={clientDetailData.cpf}
-                    value={formEditUserModalInputs.cep}
+                    placeholder="Digite seu cpf"
+                    value={!formEditUserModalInputs.cep ? "" : formEditUserModalInputs.cep}
                     onChange={(e) => handleChange(e.target)}
                     mask="99999-999"
                     className="inputEditClient"
@@ -351,7 +330,7 @@ function EditClientModal() {
                     id="cidade"
                     type="text"
                     name="cidade"
-                    pplaceholder={clientDetailData.cidade}
+                    placeholder={clientDetailData.cidade}
                     value={formEditUserModalInputs.cidade}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"

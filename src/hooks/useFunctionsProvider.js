@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
+import useGlobal from "../hooks/useGlobal";
+
+
 
 export default function useFunctionProvider() {
+  const {  setOpenEditClientModal} = useGlobal();
   let navigate = useNavigate();
   const [token, setToken, removeToken] = useLocalStorage("token", "");
   const [open, setOpen] = useState(false);
@@ -163,6 +167,8 @@ export default function useFunctionProvider() {
       }
 
       console.log(result);
+      setOpenEditClientModal(false);
+      window.location.reload();
     } catch (error) {
       console.log(error.message);
     }
