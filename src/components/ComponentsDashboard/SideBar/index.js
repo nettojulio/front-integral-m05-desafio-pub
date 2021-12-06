@@ -52,6 +52,17 @@ export default function SideBar() {
   const [value, setValue] = React.useState(0);
   const { setChangePages, setOpenClientDetail } = useGlobal();
 
+  React.useEffect(() => {
+    let path = window.location.pathname;
+    if (
+      (path === "/resume" || path === "/" || path === "/dashboard") &&
+      value !== 0
+    )
+      setValue(0);
+    else if (path === "/client" && value !== 1) setValue(1);
+    else if (path === "/charge" && value !== 2) setValue(2);
+  }, [value]);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
