@@ -200,6 +200,7 @@
     font-family: "Nunito";
     font-size: 1.8rem;
     line-height: 2.5rem;
+    cursor: pointer;
   }
   
   .applyEditChargeChanges {
@@ -240,5 +241,6 @@
   .status {
     width: 48.7rem;
     height: 9.1rem;
+    cursor: pointer;
   }
   
