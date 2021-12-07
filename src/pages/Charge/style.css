@@ -1,25 +1,3 @@
-.resume-bills {
-  background-color: var(--light-grey);
-  display: flex;
-  flex-direction: column;
-  font-family: "Montserrat", sans-serif;
-}
-
-.container-resume-bills {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.resume-bills-card-bills,
-.table-cards,
-.table-cards-clients {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .name-cobranca {
   margin-right: 566px;
   width: 100%;
@@ -42,14 +20,13 @@
   max-width: 100vw;
   display: flex;
   justify-content: space-between;
-  margin: 3rem;
+  margin: 3rem auto;
 }
 
-.container-cobrancas{
+.container-cobrancas {
   width: 1109px;
   min-height: 100vh;
   margin: 33px auto;
-  
 }
 
 .settings-cobrancas {
@@ -73,9 +50,6 @@
   margin-right: 16px;
 }
 
-.card{
-  
-  width: 1120px;
+.card {
   margin-top: 32px;
-  height: 595px;
 }
