@@ -30,7 +30,7 @@ function TableCard({ title, bgColor }) {
         </div>
       </div>
 
-      <TableContainer component={Paper} sx={{ width: 360 }}>
+      <TableContainer component={Paper} sx={{ width: 360, border: "none", borderRadius: 0, boxShadow: "none " }}>
         <Table sx={{ minWidth: 360 }} aria-label="simple table">
           <TableHead>
             <TableRow>

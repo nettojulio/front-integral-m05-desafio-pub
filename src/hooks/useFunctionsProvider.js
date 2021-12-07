@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useLocalStorage } from "react-use";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "react-use";
 
-function useSignupProvider() {
-  const [signupPassword, setSignupPassword] = useState([]);
-  const [signupDone, setSignupDone] = useState([]);
-  const [togglePage, setTogglePage] = useState("");
+export default function useFunctionProvider() {
+  let navigate = useNavigate();
+  const [token, setToken, removeToken] = useLocalStorage("token", "");
+  const [open, setOpen] = useState(false);
   const [formSignUp, setFormSignUp] = useState({
     nome: "",
     email: "",
@@ -13,21 +13,12 @@ function useSignupProvider() {
     senhaRepetida: "",
   });
   const [formsLogin, SetFormsLogin] = useState({ email: "", senha: "" });
-  const [open, setOpen] = useState(false);
   const [messageAlert, setMessageAlert] = useState(false);
-  const [stateAlert, setStateAlert] = useState("");
-  const [changePages, setChangePages] = useState("resume");
-  /*TESTE*/
-  const [token, setToken, removeToken] = useLocalStorage("token", "");
-  const [openClientModal, setOpenClientModal] = useState(false);
-  const [openUserModal, setOpenUserModal] = useState(false);
+  const [stateAlert, setStateAlert] = useState("success");
+  const [togglePage, setTogglePage] = useState("");
   const [userData, setUserData] = useState("");
-
-  const [openOptions, setOpenOptions] = useState(false);
-
-  /*TESTE*/
-  let navigate = useNavigate();
-
+  const [clientData, setClientData] = useState([]);
+  const [chargeData, setChargeData] = useState([]);
   function handleClose() {
     setOpen(false);
   }
@@ -146,8 +137,116 @@ function useSignupProvider() {
       }
       setUserData(data);
     } catch (error) {
+      handleLogout();
       console.log(error.message);
     }
+  }
+
+  async function addBillings(body, id) {
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/cobrancas/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function loadAllBillings() {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/cobrancas",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      setChargeData(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function loadAllClients() {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/clientes",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      setClientData(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function preloadEmail(body) {
+    try {
+      const response = await fetch(
+        "https://api-teste-desafio.herokuapp.com/preload",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  function formatToDate(date) {
+    const [dd, mm, yy] = date.split("/");
+    const newrebase = [mm, dd, yy];
+    const preChargeDate = newrebase.join("/");
+    const exportedDateFormat = new Date(preChargeDate);
+    return exportedDateFormat;
   }
 
   function handleLogout() {
@@ -156,10 +255,6 @@ function useSignupProvider() {
   }
 
   return {
-    signupPassword,
-    setSignupPassword,
-    signupDone,
-    setSignupDone,
     togglePage,
     setTogglePage,
     formSignUp,
@@ -176,21 +271,18 @@ function useSignupProvider() {
     handleLogin,
     token,
     setToken,
-    openClientModal,
-    setOpenClientModal,
-    openUserModal,
-    setOpenUserModal,
     loadUserProfile,
     handleLogout,
     userData,
     setUserData,
-    changePages,
-    setChangePages,
     stateAlert,
     setStateAlert,
-    openOptions,
-    setOpenOptions,
+    clientData,
+    chargeData,
+    addBillings,
+    loadAllBillings,
+    loadAllClients,
+    preloadEmail,
+    formatToDate,
   };
 }
-
-export default useSignupProvider;

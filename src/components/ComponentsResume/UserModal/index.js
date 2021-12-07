@@ -5,7 +5,8 @@ import secure from "../../../assets/eye-hide.svg";
 import exposed from "../../../assets/eye.svg";
 import "./styles.css";
 import checkIcon from "../../../assets/check-icon.svg";
-import useSignup from "../../../hooks/useSignup";
+import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
 
 function UserModal() {
   const initialForm = {
@@ -16,8 +17,11 @@ function UserModal() {
     senha: "",
     confirmarSenha: "",
   };
-  const { token, openUserModal, setOpenUserModal, userData, loadUserProfile } =
-    useSignup();
+
+  const { token, userData, loadUserProfile } = useFunctions();
+
+  const { openUserModal, setOpenUserModal } = useGlobal();
+
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
   const [visibleTypingPassword, setVisibleTypingPassword] = useState(false);

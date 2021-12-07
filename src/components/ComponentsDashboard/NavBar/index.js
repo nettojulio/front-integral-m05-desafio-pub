@@ -3,20 +3,23 @@ import arrowDown from "../../../assets/arrowDown.svg";
 import edit from "../../../assets/edit.svg";
 import logOut from "../../../assets/logOut.svg";
 import UserModal from "../../ComponentsResume/UserModal";
-import useSignup from "../../../hooks/useSignup";
+import useGlobal from "../../../hooks/useGlobal";
+import useFunctions from "../../../hooks/useFunctions";
 import { useState, useEffect } from "react";
 
 const NavBar = () => {
+  const { handleLogout, userData, loadUserProfile } = useFunctions();
+
   const {
     openUserModal,
     setOpenUserModal,
-    handleLogout,
-    userData,
     changePages,
-    loadUserProfile,
+
     openOptions,
     setOpenOptions,
-  } = useSignup();
+    openClientDetail,
+    setOpenClientDetail,
+  } = useGlobal();
 
   const [display, setDisplay] = useState({});
 
@@ -62,14 +65,24 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <div className="navbar-info">
-        <h1 className={
-          changePages === "client" ? 'title-client' : ''
-        }>
+        <h1
+          onClick={() => setOpenClientDetail(false)}
+          className={
+            changePages === "resume" ? '' : 'title-client'
+          }>
           {changePages === "resume"
             ? "Resumo das cobranças"
             : changePages === "client"
-              ? "Clientes"
-              : "Cobrança"}
+            ? "Clientes"
+            : "Cobrança"}
+          {openClientDetail ? (
+            <>
+              <span className="detail-client">{`>`}</span>
+              <span className="detail-client">Detalhes do cliente</span>
+            </>
+          ) : (
+            <span></span>
+          )}
         </h1>
         <div className="navbar-info-profile">
           <div className="navbar-icon">{display.avatar}</div>

@@ -1,11 +1,11 @@
 import "./style.css";
 import checkIcon from "../../../assets/check-icon.svg";
 import { useNavigate } from "react-router";
-import useSignup from "../../../hooks/useSignup";
+import useFunctions from "../../../hooks/useFunctions";
 
 function SignupDone() {
   let navigate = useNavigate();
-  const { setTogglePage, setFormSignUp } = useSignup();
+  const { setTogglePage, setFormSignUp } = useFunctions();
 
   function handlePageLogin() {
     navigate("/signin");
