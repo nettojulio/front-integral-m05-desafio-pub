@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
-import useGlobal from "../hooks/useGlobal";
-
-
 
 export default function useFunctionProvider() {
-  const {  setOpenEditClientModal} = useGlobal();
   let navigate = useNavigate();
   const [token, setToken, removeToken] = useLocalStorage("token", "");
   const [open, setOpen] = useState(false);
@@ -146,34 +142,6 @@ export default function useFunctionProvider() {
     }
   }
 
-  async function editRegisteredClient(body, id) {
-    try {
-      const response = await fetch(
-        `https://api-teste-desafio.herokuapp.com/clientes/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(body),
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result);
-      }
-
-      console.log(result);
-      setOpenEditClientModal(false);
-      window.location.reload();
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
   async function addBillings(body, id) {
     try {
       const response = await fetch(
@@ -278,7 +246,7 @@ export default function useFunctionProvider() {
     const newrebase = [mm, dd, yy];
     const preChargeDate = newrebase.join("/");
     const exportedDateFormat = new Date(preChargeDate);
-    return exportedDateFormat
+    return exportedDateFormat;
   }
 
   function handleLogout() {
@@ -311,11 +279,10 @@ export default function useFunctionProvider() {
     setStateAlert,
     clientData,
     chargeData,
-    editRegisteredClient,
     addBillings,
     loadAllBillings,
     loadAllClients,
     preloadEmail,
-    formatToDate
+    formatToDate,
   };
 }
