@@ -12,7 +12,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router";
-import useSignup from "../../../hooks/useSignup";
+import useGlobal from "../../../hooks/useGlobal";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,7 +50,18 @@ function a11yProps(index) {
 export default function SideBar() {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
-  const { setChangePages } = useSignup();
+  const { setChangePages, setOpenClientDetail } = useGlobal();
+
+  React.useEffect(() => {
+    let path = window.location.pathname;
+    if (
+      (path === "/resume" || path === "/" || path === "/dashboard") &&
+      value !== 0
+    )
+      setValue(0);
+    else if (path === "/client" && value !== 1) setValue(1);
+    else if (path === "/charge" && value !== 2) setValue(2);
+  }, [value]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -59,12 +70,15 @@ export default function SideBar() {
   const handleChangePages = (page) => {
     if (page === "resume") {
       setChangePages(page);
+      setOpenClientDetail(false);
       navigate("/resume");
     } else if (page === "client") {
       setChangePages(page);
+      setOpenClientDetail(false);
       navigate("/client");
     } else {
       setChangePages(page);
+      setOpenClientDetail(false);
       navigate("/charge");
     }
   };

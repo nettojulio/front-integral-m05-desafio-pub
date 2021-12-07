@@ -1,0 +1,53 @@
+.table-clients {
+  /* align-self: center; */
+  margin: 0 4.2rem;
+}
+
+.status-color {
+  width: 9.9rem;
+  height: 1.9rem;
+
+  background: #ffefef;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 8px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.color-red {
+  background: #ffefef;
+  color: #971d1d;
+}
+.color-green {
+  background: #eef6f6;
+  color: #1fa7af;
+}
+
+.btn_detailClient:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.container-Iconbillings {
+  cursor: pointer;
+  width: 35px;
+  height: 38px;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 11px;
+
+  color: #da0175;
+}

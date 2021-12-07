@@ -1,0 +1,210 @@
+.containerEditClientModal {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5rem;
+  }
+  
+  .backdropEditClientModal {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: rgba(145, 154, 150, 0.3);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+  
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  
+    z-index: 1;
+  }
+  
+  .editClientModal {
+    position: relative;
+    width: 60rem;
+  
+    background: #ffffff;
+    border-radius: 30px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .titleEditClientModalContainer {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 1.6rem;
+    margin: 4rem 0 3.2rem 5.7rem;
+  }
+
+  .titleEditClientModalTitle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .editClientModalTitle {
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 2.6rem;
+    line-height: 130%;
+  
+    color: #3f3f55;
+  }
+  
+  .closeEditClientModal {
+    align-self: flex-end;
+    position: absolute;
+    right: 2.4rem;
+    top: 2.4rem;
+    cursor: pointer;
+  }
+  
+  .editClientForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 58.7rem;
+  }
+  
+  .editClientFormGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  
+    width: 48.7rem;
+    height: 9.1rem;
+  }
+  
+  .editClientFormGroup:last-of-type {
+    height: 29.6rem;
+    flex-direction: column;
+    position: static;
+  }
+  
+  .editClientFormLabels {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    font-family: "Nunito";
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  
+    color: #344054;
+  }
+  
+  .split {
+    width: 48%;
+  }
+  
+  .splitEditClientContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .editClientFormGroup:last-of-type label {
+    position: relative;
+  }
+  
+  .inputEditClient {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+  
+    background-color: #ffffff;
+    border: 1px solid #d0d5dd;
+  
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+  
+    margin: 0.4rem 0 0 0;
+  }
+  
+  
+  .inputEditClient:focus-visible {
+    outline: none;
+  }
+  
+  .inputEditClient::placeholder {
+    font-family: "Inter";
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  
+    color: #667085;
+  }
+  
+  .splitEditClientButtonsContainer {
+    margin: 3.3rem 0 4rem 0;
+    display: flex;
+    align-items: center;
+    width: 48.7rem;
+    column-gap: 2rem;
+  }
+  
+  .applyEditClientChanges,
+  .cancelEditClientChanges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 23.3rem;
+    padding: 0.6rem;
+  
+    border-radius: 10px;
+  
+    font-family: "Nunito";
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    cursor: pointer;
+  }
+  
+  .applyEditClientChanges {
+    background-color: #da0175;
+    color: #f8f8f9;
+  }
+  
+  .cancelEditClientChanges {
+    background-color: #f8f8f9;
+    border: 1px solid #dedee9;
+    color: #0e8750;
+  }
+  
+  .editClientErrorMessage {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  
+    color: #e70000;
+  
+    margin: 0.4rem 0 0 0;
+  }
+  
+  .ufForm {
+    width: 16rem;
+  }
+  
+  .cidadeForm {
+    width: 30.3rem;
+  }
+  
+  .editClientErrorSinalization {
+    border: 1px solid #e70000;
+  }
+  

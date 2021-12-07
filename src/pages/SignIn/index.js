@@ -1,7 +1,7 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useSignup from "../../hooks/useSignup";
+import useFunctions from "../../hooks/useFunctions";
 import eye from "../../assets/eye.svg";
 import eyeHide from "../../assets/eye-hide.svg";
 import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
@@ -17,7 +17,7 @@ function SignIn() {
     SetFormsLogin,
     token,
     setStateAlert,
-  } = useSignup();
+  } = useFunctions();
   let navigate = useNavigate();
 
   useEffect(() => {

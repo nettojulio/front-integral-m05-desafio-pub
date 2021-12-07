@@ -1,0 +1,163 @@
+.client-page {
+  background-color: var(--light-grey);
+  width: calc(100vw - 125px);
+  padding: 2.5rem 10rem 6rem 10rem;
+
+  color: #3f3f55;
+}
+
+.client-page-icon {
+  display: flex;
+  max-width: 100vw;
+  align-items: flex-start;
+}
+
+.client-page-icon span {
+  margin-left: 16px;
+  margin-bottom: 24px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.client-data,
+.client-charge {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  border-radius: 30px;
+  min-width: 60rem;
+}
+.client-data {
+  margin-bottom: 24px;
+}
+
+.client-data-title,
+.client-data-personal,
+.client-data-address,
+.charge-data-title {
+  display: flex;
+  margin-bottom: 11.5px;
+  align-items: center;
+  justify-content: space-between;
+}
+.client-data-title,
+.charge-data-title h2 {
+  margin-bottom: 18px;
+}
+.charge-data-title {
+  align-items: baseline;
+}
+
+.client-data-title h2,
+.charge-data-title h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn.edit-client {
+  display: flex;
+  padding: 4px 60px;
+  background: #f8f8f9;
+  border: 1px solid #dedee9;
+  border-radius: 10px;
+}
+
+.btn.edit-client span {
+  color: #0e8750;
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+}
+
+.empty-div,
+.personal-info {
+  width: 50%;
+  margin-bottom: 55px;
+}
+
+.personal-info h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.personal-info span {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+}
+
+.btn.add-charge {
+  background-color: var(--pink);
+  display: flex;
+  padding: 4px 56px;
+  border-radius: 10px;
+
+  color: #f8f8f9;
+  font-family: 'Nunito';
+  font-size: 18px;
+}
+
+.table-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.table-icons-edit {
+  margin-right: 24px;
+}
+.table-icons-edit,
+.table-icons-del {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table-icons-edit span,
+.table-icons-del span {
+  font-family: 'Nunito', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+}
+.table-filter {
+  display: flex;
+  align-items: center;
+}
+
+.table-status {
+  background-color: var(--light-salmon-overdue);
+  display: flex;
+  width: 67px;
+  height: 19px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+
+  color: var(--red);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.table-btn:hover {
+  cursor: pointer;
+}
+
+.paid {
+  background-color: var(--light-green-paid);
+  color: var(--green);
+}
+
+.overdue {
+  background-color: var(--light-salmon-overdue);
+  color: var(--red);
+}
+
+.expected {
+  background-color: var(--light-yellow-expected);
+  color: var(--yellow);
+}

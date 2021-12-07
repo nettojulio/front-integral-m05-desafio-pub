@@ -2,14 +2,14 @@ import "./style.css";
 import eye from "../../../assets/eye.svg";
 import eyeHide from "../../../assets/eye-hide.svg";
 import { useState } from "react";
-import useSignup from "../../../hooks/useSignup";
+import useFunctions from "../../../hooks/useFunctions";
 import { Link } from "react-router-dom";
 
 function SignupPassword() {
   const [openFirst, setOpenFirst] = useState(false);
   const [openSecond, setOpenSecond] = useState(false);
   const { handleSubmitSignUp, formSignUp, handleFormInput, setTogglePage } =
-    useSignup();
+    useFunctions();
 
   return (
     <div className="signup-data">

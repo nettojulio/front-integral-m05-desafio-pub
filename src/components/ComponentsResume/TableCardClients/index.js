@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import sort from '../../../assets/sortIconHeaders.svg';
 
 function TableCardClients({ title, icon, bgColor, txtColor }) {
   function createData(client, dataValue, value) {
@@ -33,11 +34,14 @@ function TableCardClients({ title, icon, bgColor, txtColor }) {
         </div>
       </div>
 
-      <TableContainer component={Paper} sx={{ width: 556 }}>
+      <TableContainer component={Paper} sx={{ width: 556, border: "none", borderRadius: 0, boxShadow: "none " }}>
         <Table sx={{ minWidth: 556 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Cliente</TableCell>
+              <TableCell>
+                <img src={sort} alt="Filter" />
+                Cliente
+              </TableCell>
               <TableCell>Data de Vencimento</TableCell>
               <TableCell>Valor</TableCell>
             </TableRow>
