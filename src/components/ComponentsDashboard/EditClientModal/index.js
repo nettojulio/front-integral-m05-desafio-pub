@@ -313,7 +313,7 @@ function EditClientModal() {
                     id="bairro"
                     type="text"
                     name="bairro"
-                    placeholder={clientDetailData.bairro}
+                    placeholder="Digite seu bairro"
                     value={formEditUserModalInputs.bairro}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
