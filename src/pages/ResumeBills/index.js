@@ -59,8 +59,6 @@ function ResumeBills() {
   ];
 
   return (
-    /* TESTE FRAGMENT */
-    /* TESTE FRAGMENT */
     <>
       <div className="resume-bills">
         <div className="container-resume-bills">

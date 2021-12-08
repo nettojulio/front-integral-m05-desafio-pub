@@ -66,12 +66,13 @@ function ClientDetailTable() {
                 </TableCell>
                 <TableCell align="left">
                   <div
-                    className={`table-status ${client.situacao === "Paga"
-                      ? "paid"
-                      : client.situacao === "Pendente"
+                    className={`table-status ${
+                      client.situacao === "Paga"
+                        ? "paid"
+                        : client.situacao === "Pendente"
                         ? "expected"
                         : "overdue"
-                      }`}
+                    }`}
                   >
                     {client.situacao}
                   </div>
@@ -110,33 +111,6 @@ function ClientDetailTable() {
                 </TableCell>
               </TableRow>
             ))}
-            {/* {rows.map((row) => (
-        <TableRow
-          key={row.idCob}
-          sx={{ "&:last-child td, &:last-child th": { border: 0 }, textAlign: 'center' }}
-        >
-          <TableCell component="th" scope="row">{row.idCob}</TableCell>
-          <TableCell align="left">{row.dataValue}</TableCell>
-          <TableCell align="left">{row.value}</TableCell>
-          <TableCell align="left">
-            <div className="table-status">{row.status}</div>
-          </TableCell>
-          <TableCell align="left" style={{ width: 348, overflow: 'hidden', whiteSpace: 'nowrap' }}>{row.description}</TableCell>
-          <TableCell align="left">
-            <div className="table-icons">
-              <div className="table-icons-edit">
-                <img className="table-btn" src={editBillings} style={{ width: 16 }} alt="Edit" />
-                <span>Editar</span>
-              </div>
-              <div className="table-icons-del">
-                <img className="table-btn" src={deleteBillings} style={{ width: 16 }} alt="Edit" />
-                <span>Deletar</span>
-              </div>
-            </div>
-
-          </TableCell>
-        </TableRow>
-      ))} */}
           </TableBody>
         </Table>
       </TableContainer>
