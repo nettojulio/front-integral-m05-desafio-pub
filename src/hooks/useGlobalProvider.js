@@ -35,7 +35,7 @@ function useGlobalProvider() {
     clientDetailData,
     setClientDetailData,
     chargeModalValue,
-    setChargeModalValue
+    setChargeModalValue,
   };
 }
 

@@ -17,7 +17,7 @@
 }
 
 .navbar-info h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 26px;
   font-weight: 600;
 }
@@ -34,7 +34,7 @@
 
 h1.title-client {
   color: #0e8750;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
 }
 
@@ -46,10 +46,9 @@ h1.title-client:hover {
   min-width: 150px;
 
   color: #0e8750;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 600;
 
-  /*TESTE*/
   position: relative;
 }
 
@@ -78,8 +77,6 @@ h1.title-client:hover {
 .divisor {
   border-bottom: 2px solid #acd9c5;
 }
-
-/*TESTE*/
 
 .userOptions {
   position: absolute;
@@ -117,7 +114,7 @@ h1.title-client:hover {
 }
 
 .userOptionLabel {
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-style: normal;
   font-weight: 600;
   font-size: 0.8rem;

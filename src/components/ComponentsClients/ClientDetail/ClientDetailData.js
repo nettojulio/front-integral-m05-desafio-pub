@@ -1,5 +1,4 @@
 import "./style.css";
-// import useFunctions from "../../../hooks/useFunctions";
 import edit from "../../../assets/editCustomerGreen.svg";
 import useGlobal from "../../../hooks/useGlobal";
 

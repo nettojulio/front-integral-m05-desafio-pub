@@ -8,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 function TableCard({ title, bgColor }) {
-
   function createData(client, idCob, value) {
     return { client, idCob, value };
   }
@@ -23,14 +22,17 @@ function TableCard({ title, bgColor }) {
     <div className="container-table">
       <div className="title-table">
         <div className="head-card-table">
-          <span className="head-card-table-title" >{title}</span>
+          <span className="head-card-table-title">{title}</span>
           <div className={`head-card-table-card-value ${bgColor}`}>
             <span className={bgColor}>10</span>
           </div>
         </div>
       </div>
 
-      <TableContainer component={Paper} sx={{ width: 360, border: "none", borderRadius: 0, boxShadow: "none " }}>
+      <TableContainer
+        component={Paper}
+        sx={{ width: 360, border: "none", borderRadius: 0, boxShadow: "none " }}
+      >
         <Table sx={{ minWidth: 360 }} aria-label="simple table">
           <TableHead>
             <TableRow>

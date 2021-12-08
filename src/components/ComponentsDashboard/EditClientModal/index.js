@@ -24,7 +24,7 @@ function EditClientModal() {
     cep: clientDetailData.cep,
     bairro: clientDetailData.bairro,
     cidade: clientDetailData.cidade,
-    uf: clientDetailData.uf,
+    uf: clientDetailData.estado,
   };
 
   const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
@@ -406,7 +406,7 @@ function EditClientModal() {
                     id="uf"
                     type="text"
                     name="uf"
-                    placeholder="Digite sua UF"
+                    placeholder="Digite a UF"
                     value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"

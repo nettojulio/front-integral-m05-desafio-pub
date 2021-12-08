@@ -86,7 +86,7 @@
 .formGroup:last-of-type {
   height: 16rem;
   flex-direction: column;
-  position: static;  
+  position: static;
 }
 
 .formGroup:last-of-type label {

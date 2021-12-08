@@ -13,8 +13,9 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib() {
-  const { setOpenClientDetail, setOpenChargeModal, setClientDetailData } = useGlobal();
-  const { loadAllClients, clientData, } = useFunctions();
+  const { setOpenClientDetail, setOpenChargeModal, setClientDetailData } =
+    useGlobal();
+  const { loadAllClients, clientData } = useFunctions();
 
   function handleClientDetail(client) {
     // setOpenClientDetail(true);
@@ -22,7 +23,7 @@ function TableClientsExib() {
   }
 
   function handleChargeModal(client) {
-    setOpenChargeModal(client)
+    setOpenChargeModal(client);
     setClientDetailData(client);
   }
 

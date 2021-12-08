@@ -43,7 +43,6 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
-  /* identical to box height */
 
   color: #971d1d;
 }
@@ -64,7 +63,6 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
-  /* identical to box height */
 
   color: var(--yellow);
 }
@@ -85,7 +83,6 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
-  /* identical to box height */
 
   color: var(--green);
 }
