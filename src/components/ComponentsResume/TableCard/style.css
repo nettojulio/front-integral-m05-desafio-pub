@@ -72,6 +72,13 @@
   color: var(--red-overdue);
 }
 
+.table-card {
+  padding: 100px 150px;
+}
+.circular-progress {
+  position: absolute;
+}
+
 .footer-table {
   display: flex;
   align-items: center;

@@ -11,6 +11,7 @@ import sort from "../../../assets/sortIconHeaders.svg";
 import useFunctions from "../../../hooks/useFunctions";
 import { useNavigate } from "react-router-dom";
 import useGlobal from "../../../hooks/useGlobal";
+import CircularProgress from '@mui/material/CircularProgress';
 
 function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
 
@@ -55,28 +56,30 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {situation.map((row) => (
-              <TableRow
-                key={row.cliente.nome}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell
-                  component="th"
-                  scope="row"
-                  sx={{ whiteSpace: 'nowrap', maxWidth: 100 }}
-                  className="format-values"
+            {situation.length === 0
+              ? <div className="table-card-clients circular-progress"><CircularProgress sx={{ color: 'var(--pink)' }} /></div>
+              : situation.map((row) => (
+                <TableRow
+                  key={row.cliente.nome}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  {row.cliente.nome}
-                </TableCell>
-                <TableCell className="format-values" align="left">{new Date(row.data_vencimento).toLocaleDateString("pt", {
-                  timeZone: "UTC",
-                })}</TableCell>
-                <TableCell className="format-values" align="left">{(row.valor / 100).toLocaleString("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                })}</TableCell>
-              </TableRow>
-            ))}
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    sx={{ whiteSpace: 'nowrap', maxWidth: 100 }}
+                    className="format-values"
+                  >
+                    {row.cliente.nome}
+                  </TableCell>
+                  <TableCell className="format-values" align="left">{new Date(row.data_vencimento).toLocaleDateString("pt", {
+                    timeZone: "UTC",
+                  })}</TableCell>
+                  <TableCell className="format-values" align="left">{(row.valor / 100).toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}</TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

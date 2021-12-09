@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router";
 import useFunctions from "../../../hooks/useFunctions";
 import useGlobal from "../../../hooks/useGlobal";
+import CircularProgress from '@mui/material/CircularProgress';
 
 function TableCard({ title, bgColor, situation, total }) {
 
@@ -47,27 +48,29 @@ function TableCard({ title, bgColor, situation, total }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {situation.map((row) => (
-              <TableRow
-                key={row.cliente.nome}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell
-                  component="th"
-                  scope="row"
-                  sx={{ whiteSpace: 'nowrap', maxWidth: 100 }}
-                  className="format-values">
-                  {row.cliente.nome}
-                </TableCell>
-                <TableCell className="format-values" align="left">{String(row.id).padStart(9, 0)}</TableCell>
-                <TableCell className="format-values" align="left">{
-                  (row.valor / 100)
-                    .toLocaleString("pt-BR", {
-                      style: "currency",
-                      currency: "BRL",
-                    })}</TableCell>
-              </TableRow>
-            ))}
+            {situation.length === 0
+              ? <div className="table-card circular-progress"><CircularProgress sx={{ color: 'var(--pink)' }} /></div>
+              : situation.map((row) => (
+                <TableRow
+                  key={row.cliente.nome}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    sx={{ whiteSpace: 'nowrap', maxWidth: 100 }}
+                    className="format-values">
+                    {row.cliente.nome}
+                  </TableCell>
+                  <TableCell className="format-values" align="left">{String(row.id).padStart(9, 0)}</TableCell>
+                  <TableCell className="format-values" align="left">{
+                    (row.valor / 100)
+                      .toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}</TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
