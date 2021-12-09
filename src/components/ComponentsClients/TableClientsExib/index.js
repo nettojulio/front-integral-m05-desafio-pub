@@ -13,11 +13,12 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib() {
-  const { setOpenChargeModal, setClientDetailData, openFilteredCard } = useGlobal();
+  const { setOpenChargeModal, setClientDetailData, openFilteredCard, setOpenClientDetail } = useGlobal();
   const { loadAllClients, loadAllBillings, clientData } = useFunctions();
 
 
   function handleClientDetail(client) {
+    setOpenClientDetail(true);
     setClientDetailData(client);
   }
 
