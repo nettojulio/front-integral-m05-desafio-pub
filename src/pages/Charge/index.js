@@ -5,6 +5,7 @@ import search from "../../assets/search.svg";
 import TableCobrancasExib from "../../components/ComponentsClients/TableCobrancasExib";
 
 function Charge() {
+
   return (
     <div className="container-cobrancas">
       <div className="menu-cobrancas">

@@ -10,13 +10,16 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import useFunctions from "../../../hooks/useFunctions";
+import useGlobal from "../../../hooks/useGlobal";
 import { useEffect } from "react";
 
 function TableCobrancasExib() {
-  const { loadAllBillings, chargeData } = useFunctions();
+  const { loadAllBillings, loadAllClients, chargeData } = useFunctions();
+  const { openFilteredCard } = useGlobal();
 
   useEffect(() => {
-    loadAllBillings();
+    openFilteredCard && loadAllBillings();
+    loadAllClients();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -80,8 +83,8 @@ function TableCobrancasExib() {
                       charge.situacao === "Vencida"
                         ? "status-red"
                         : charge.situacao === "Pendente"
-                        ? "status-yellow"
-                        : "status-blue"
+                          ? "status-yellow"
+                          : "status-blue"
                     }
                   >
                     {charge.situacao}

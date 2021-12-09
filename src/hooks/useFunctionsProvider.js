@@ -284,5 +284,7 @@ export default function useFunctionProvider() {
     loadAllClients,
     preloadEmail,
     formatToDate,
+    setClientData,
+    setChargeData
   };
 }

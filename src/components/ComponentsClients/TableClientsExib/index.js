@@ -13,12 +13,11 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib() {
-  const { setOpenClientDetail, setOpenChargeModal, setClientDetailData } =
-    useGlobal();
-  const { loadAllClients, clientData } = useFunctions();
+  const { setOpenChargeModal, setClientDetailData, openFilteredCard } = useGlobal();
+  const { loadAllClients, loadAllBillings, clientData } = useFunctions();
+
 
   function handleClientDetail(client) {
-    // setOpenClientDetail(true);
     setClientDetailData(client);
   }
 
@@ -28,7 +27,8 @@ function TableClientsExib() {
   }
 
   useEffect(() => {
-    loadAllClients();
+    openFilteredCard && loadAllClients();
+    loadAllBillings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -4,6 +4,12 @@
   border-radius: 30px;
 }
 
+.format-values {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .footer-table,
 .title-table {
   width: 360px;
@@ -25,7 +31,7 @@
   justify-content: space-between;
   padding: 18px 7px;
 
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-weight: bold;
 }
 
@@ -76,7 +82,7 @@
 
 .footer-table span {
   color: var(--pink);
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
   text-decoration: underline;
 }
@@ -90,7 +96,7 @@
 
 .MuiTableCell-root.MuiTableCell-head,
 .MuiTableCell-root.MuiTableCell-body {
-  font-family: "Nunito";
+  font-family: 'Nunito';
   font-style: normal;
   letter-spacing: 0.005em;
   padding: 8px;

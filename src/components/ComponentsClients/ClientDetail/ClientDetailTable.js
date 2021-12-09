@@ -19,7 +19,6 @@ function ClientDetailTable() {
 
   useEffect(() => {
     loadAllBillings();
-    console.log('mudou')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientDetailData]);
 
@@ -75,13 +74,12 @@ function ClientDetailTable() {
                 </TableCell>
                 <TableCell align="left">
                   <div
-                    className={`table-status ${
-                      client.situacao === "Paga"
-                        ? "paid"
-                        : client.situacao === "Pendente"
+                    className={`table-status ${client.situacao === "Paga"
+                      ? "paid"
+                      : client.situacao === "Pendente"
                         ? "expected"
                         : "overdue"
-                    }`}
+                      }`}
                   >
                     {client.situacao}
                   </div>
