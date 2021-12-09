@@ -49,18 +49,18 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
             <TableRow>
               <TableCell>
                 <img src={sort} alt="Filter" />
-                Cliente
+                Clientes
               </TableCell>
-              <TableCell>Data de Vencimento</TableCell>
-              <TableCell>Valor</TableCell>
+              <TableCell>ID do Clie.</TableCell>
+              <TableCell>CPF</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {situation.length === 0
+            {seeAll.length === 0
               ? <div className="table-card-clients circular-progress"><CircularProgress sx={{ color: 'var(--pink)' }} /></div>
-              : situation.map((row) => (
+              : seeAll.map((row) => (
                 <TableRow
-                  key={row.cliente.nome}
+                  key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell
@@ -69,15 +69,10 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
                     sx={{ whiteSpace: 'nowrap', maxWidth: 100 }}
                     className="format-values"
                   >
-                    {row.cliente.nome}
+                    {row.nome}
                   </TableCell>
-                  <TableCell className="format-values" align="left">{new Date(row.data_vencimento).toLocaleDateString("pt", {
-                    timeZone: "UTC",
-                  })}</TableCell>
-                  <TableCell className="format-values" align="left">{(row.valor / 100).toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}</TableCell>
+                  <TableCell className="format-values" align="left">{String(row.id).padStart(9, 0)}</TableCell>
+                  <TableCell className="format-values" align="left">{row.cpf}</TableCell>
                 </TableRow>
               ))}
           </TableBody>
