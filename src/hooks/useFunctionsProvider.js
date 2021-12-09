@@ -241,6 +241,57 @@ export default function useFunctionProvider() {
     }
   }
 
+  async function editBillings(body, id) {
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/cobrancas/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function deleteBillings(id) {
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/cobrancas/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   function formatToDate(date) {
     const [dd, mm, yy] = date.split("/");
     const newrebase = [mm, dd, yy];
@@ -285,6 +336,8 @@ export default function useFunctionProvider() {
     preloadEmail,
     formatToDate,
     setClientData,
-    setChargeData
+    setChargeData,
+    editBillings,
+    deleteBillings,
   };
 }
