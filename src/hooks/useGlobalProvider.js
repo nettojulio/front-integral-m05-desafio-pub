@@ -13,6 +13,7 @@ function useGlobalProvider() {
   const [clientDetailData, setClientDetailData] = useState([]);
   const [chargeModalValue, setChargeModalValue] = useState([]);
   const [openFilteredCard, setOpenFilteredCard] = useState(true);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   return {
     signupPassword,
@@ -38,7 +39,9 @@ function useGlobalProvider() {
     chargeModalValue,
     setChargeModalValue,
     openFilteredCard,
-    setOpenFilteredCard
+    setOpenFilteredCard,
+    openDeleteModal,
+    setOpenDeleteModal
   };
 }
 
