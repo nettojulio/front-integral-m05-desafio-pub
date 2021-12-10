@@ -13,9 +13,8 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib() {
-  const { setOpenChargeModal, setClientDetailData, openFilteredCard, setOpenClientDetail } = useGlobal();
+  const { setOpenChargeModal, setClientDetailData, openFilteredCard, setOpenClientDetail, orderClient, setOrderClient } = useGlobal();
   const { loadAllClients, loadAllBillings, clientData } = useFunctions();
-
 
   function handleClientDetail(client) {
     setOpenClientDetail(true);
@@ -33,13 +32,21 @@ function TableClientsExib() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (orderClient === 'asc') {
+      clientData.sort((a, b) => (a.nome).localeCompare(b.nome));
+    } else {
+      clientData.sort((a, b) => (b.nome).localeCompare(a.nome));
+    }
+  }, [orderClient]);
+
   return (
     <div className="table-clients">
       <TableContainer component={Paper} sx={{ borderRadius: "30px" }}>
         <Table sx={{ width: "111.6rem" }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ display: "flex", alignItems: "center" }}>
+              <TableCell className="cursor-pointer" onClick={() => setOrderClient(orderClient === 'asc' ? 'desc' : 'asc')} sx={{ display: "flex", alignItems: "center" }}>
                 <img src={sortIconHeaders} alt="" />
                 Cliente
               </TableCell>

@@ -16,17 +16,61 @@ import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
 
 function TableCobrancasExib() {
   const { loadAllBillings, loadAllClients, chargeData } = useFunctions();
-  const { openFilteredCard, openDeleteModal, setOpenDeleteModal } = useGlobal();
-
-  // function handleDelete() {
-  //   ;
-  // }
+  const { openFilteredCard, openDeleteModal, setOpenDeleteModal, orderCharge, setOrderCharge, filter, setFilter } = useGlobal();
 
   useEffect(() => {
     openFilteredCard && loadAllBillings();
     loadAllClients();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log(filter, orderCharge);
+    if (filter === 'clients') {
+      orderCharge === 'asc' ? handleOrderAsc() : handleOrderDesc();
+    }
+    if (filter === 'idCob') {
+      orderCharge === 'asc' ? handleOrderAsc() : handleOrderDesc();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter, orderCharge]);
+
+  function handleOrderAsc() {
+    chargeData.sort((a, b) => orderColumnAsc(a, b, filter));
+  }
+
+  function handleOrderDesc() {
+    chargeData.sort((a, b) => orderColumnDesc(a, b, filter));
+  }
+
+  function handleChangeFilter(type) {
+    setFilter(type);
+    setOrderCharge(orderCharge === 'asc' ? 'desc' : 'asc');
+    console.log('clicou')
+  }
+
+  function orderColumnAsc(a, b, by) {
+
+    if (by === 'clients') {
+      return (a.cliente.nome).localeCompare(b.cliente.nome);
+    }
+
+    if (by === 'idCob') {
+      return [a.id] - [b.id];
+    }
+  }
+
+  function orderColumnDesc(a, b, by) {
+
+    if (by === 'clients') {
+      return (b.cliente.nome).localeCompare(a.cliente.nome);
+    }
+
+    if (by === 'idCob') {
+      return [b.id] - [a.id];
+    }
+  }
 
   return (
     <>
@@ -47,11 +91,11 @@ function TableCobrancasExib() {
               <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>
+                    <TableCell className="cursor-pointer" onClick={() => handleChangeFilter('clients')} >
                       <img src={inverter} alt="" />
                       Cliente
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="cursor-pointer" onClick={() => handleChangeFilter('idCob')}>
                       <img src={inverter} alt="" />
                       ID Cob.
                     </TableCell>

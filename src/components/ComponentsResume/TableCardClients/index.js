@@ -7,7 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import sort from "../../../assets/sortIconHeaders.svg";
 import useFunctions from "../../../hooks/useFunctions";
 import { useNavigate } from "react-router-dom";
 import useGlobal from "../../../hooks/useGlobal";
@@ -48,7 +47,6 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
           <TableHead>
             <TableRow>
               <TableCell>
-                <img src={sort} alt="Filter" />
                 Cliente
               </TableCell>
               <TableCell>Data de Vencimento</TableCell>
