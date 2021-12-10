@@ -93,7 +93,7 @@ function ResumeBills() {
       icon: defaultingCustomers,
       bgColor: "overdue",
       situation: overdueSituation,
-      total: overdueSituation.length,
+      total: overdueClientResume.length,
       seeAll: overdueClientResume
     },
     {
@@ -101,7 +101,7 @@ function ResumeBills() {
       icon: okCustomers,
       bgColor: "paid",
       situation: inTimeSituation,
-      total: inTimeSituation.length,
+      total: inTimeClientResume.length,
       seeAll: inTimeClientResume
     },
   ];
