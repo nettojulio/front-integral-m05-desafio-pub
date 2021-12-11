@@ -38,7 +38,9 @@ function TableClientsExib() {
     } else {
       clientData.sort((a, b) => (b.nome).localeCompare(a.nome));
     }
+    // eslint-disable-next-line
   }, [orderClient]);
+  // eslint-disable-next-line
 
   return (
     <div className="table-clients">

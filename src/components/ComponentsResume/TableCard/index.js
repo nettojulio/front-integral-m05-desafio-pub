@@ -53,7 +53,7 @@ function TableCard({ title, bgColor, situation, total }) {
               ? <div className="table-card circular-progress"><CircularProgress sx={{ color: 'var(--pink)' }} /></div>
               : situation.map((row) => (
                 <TableRow
-                  key={row.cliente.nome}
+                  key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell
