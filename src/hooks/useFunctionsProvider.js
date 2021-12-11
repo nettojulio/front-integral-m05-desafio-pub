@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
+import useGlobal from "./useGlobal";
 
 export default function useFunctionProvider() {
   let navigate = useNavigate();
@@ -19,6 +20,8 @@ export default function useFunctionProvider() {
   const [userData, setUserData] = useState("");
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
+  const [currentCharge, setCurrentCharge] = useState({});
+  const { setOpenDeleteModal } = useGlobal();
   function handleClose() {
     setOpen(false);
   }
@@ -216,8 +219,6 @@ export default function useFunctionProvider() {
     }
   }
 
-
-
   async function preloadEmail(body) {
     try {
       const response = await fetch(
@@ -307,6 +308,30 @@ export default function useFunctionProvider() {
     navigate("signin");
   }
 
+  function handleDeleteCharge(charge) {
+    setOpenDeleteModal(true);
+    setCurrentCharge(charge);
+  }
+
+  function handleConfirmDeleteCharge(charge) {
+    if (charge.situacao === "Paga" || charge.situacao === "Vencida") {
+      setOpenDeleteModal(false);
+      setOpen(true);
+      setStateAlert("error");
+      setMessageAlert(
+        `Esta cobrança não pode ser excluída! Status: "${charge.situacao}" `
+      );
+      return;
+    }
+
+    deleteBillings(charge.id);
+    loadAllBillings();
+    setOpenDeleteModal(false);
+    setOpen(true);
+    setStateAlert("success");
+    setMessageAlert("Cobrança excluída com sucesso");
+  }
+
   return {
     togglePage,
     setTogglePage,
@@ -341,5 +366,9 @@ export default function useFunctionProvider() {
     setChargeData,
     editBillings,
     deleteBillings,
+    currentCharge,
+    setCurrentCharge,
+    handleDeleteCharge,
+    handleConfirmDeleteCharge,
   };
 }
