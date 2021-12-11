@@ -9,17 +9,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useEffect } from "react";
 
 function Charge() {
-  const { search, setSearch, inputValue, setInputValue } = useGlobal();
-  const { loadAllBillings, chargeData, setChargeData } = useFunctions();
-
+  const { searchCharge, setSearchCharge, inputValue, setInputValue } = useGlobal();
+  const { chargeData } = useFunctions();
 
   useEffect(() => {
-    loadAllBillings();
-    setSearch(chargeData);
-    // console.log(search)
-  }, []);
-
-  // const base = chargeData;
+    setSearchCharge(chargeData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchCharge]);
 
   function handleSearch(e) {
     setInputValue(e.target.value);
@@ -30,20 +26,17 @@ function Charge() {
     const cliente = [];
     chargeData.filter(client => {
       if (inputValue === '') {
-        loadAllBillings();
+        setSearchCharge(chargeData)
         return;
       } else if (
         client.cliente.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
         client.id.toString().includes(inputValue)
       ) {
         cliente.push(client);
-        setChargeData(cliente);
       }
       setInputValue('');
-    })
-    // .map(client => (
-    //   setChargeData(client)
-    // ));
+      setSearchCharge(cliente);
+    });
   }
 
   return (
@@ -54,7 +47,7 @@ function Charge() {
           <span>Cobranças</span>
         </div>
         <div className="settings-cobrancas">
-          <div className="imagem-filtro">
+          <div onClick={() => setSearchCharge(chargeData)} className="imagem-filtro">
             <img src={customersSettings} alt="Search" />
           </div>
 

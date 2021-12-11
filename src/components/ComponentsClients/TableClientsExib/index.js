@@ -13,7 +13,7 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib() {
-  const { setOpenChargeModal, setClientDetailData, openFilteredCard, setOpenClientDetail, orderClient, setOrderClient } = useGlobal();
+  const { setOpenChargeModal, setClientDetailData, openFilteredCard, setOpenClientDetail, orderClient, setOrderClient, searchClient } = useGlobal();
   const { loadAllClients, loadAllBillings, clientData } = useFunctions();
 
   function handleClientDetail(client) {
@@ -58,7 +58,7 @@ function TableClientsExib() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {clientData.map((client) => (
+            {searchClient.map((client) => (
               <TableRow
                 key={client.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

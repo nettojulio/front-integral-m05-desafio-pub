@@ -16,7 +16,7 @@ import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
 
 function TableCobrancasExib() {
   const { loadAllBillings, loadAllClients, chargeData } = useFunctions();
-  const { openFilteredCard, openDeleteModal, setOpenDeleteModal, orderCharge, setOrderCharge, filter, setFilter, search } = useGlobal();
+  const { openFilteredCard, openDeleteModal, setOpenDeleteModal, orderCharge, setOrderCharge, filter, setFilter, searchCharge } = useGlobal();
 
   useEffect(() => {
     openFilteredCard && loadAllBillings();
@@ -106,7 +106,7 @@ function TableCobrancasExib() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {chargeData.map((charge) => (
+                  {searchCharge.map((charge) => (
                     <TableRow
                       key={charge.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
