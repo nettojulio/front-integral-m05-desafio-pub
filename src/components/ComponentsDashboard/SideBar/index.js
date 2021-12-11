@@ -60,6 +60,7 @@ export default function SideBar() {
       setValue(0);
     else if (path === "/client" && value !== 1) setValue(1);
     else if (path === "/charge" && value !== 2) setValue(2);
+    // eslint-disable-next-line
   }, [value]);
 
   const handleChange = (event, newValue) => {

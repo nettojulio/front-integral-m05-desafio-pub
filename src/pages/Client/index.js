@@ -48,7 +48,7 @@ function Client() {
         setCardNotFound(true);
       }
       setInputValue('');
-      setSearchClient(cliente);
+      return setSearchClient(cliente);
     });
   }
 

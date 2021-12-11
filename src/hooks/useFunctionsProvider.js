@@ -21,7 +21,9 @@ export default function useFunctionProvider() {
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
 
-  const { setSearchClient, setCardNotFound, setInputValue } = useGlobal();
+  const { setSearchClient, setCardNotFound, setInputValue, setOpenDeleteModal } = useGlobal();
+  const [currentCharge, setCurrentCharge] = useState({});
+
   function handleClose() {
     setOpen(false);
   }
@@ -219,8 +221,6 @@ export default function useFunctionProvider() {
     }
   }
 
-
-
   async function preloadEmail(body) {
     try {
       const response = await fetch(
@@ -319,6 +319,30 @@ export default function useFunctionProvider() {
     setCardNotFound(false);
   }
 
+  function handleDeleteCharge(charge) {
+    setOpenDeleteModal(true);
+    setCurrentCharge(charge);
+  }
+
+  function handleConfirmDeleteCharge(charge) {
+    if (charge.situacao === "Paga" || charge.situacao === "Vencida") {
+      setOpenDeleteModal(false);
+      setOpen(true);
+      setStateAlert("error");
+      setMessageAlert(
+        `Esta cobrança não pode ser excluída! Status: "${charge.situacao}" `
+      );
+      return;
+    }
+
+    deleteBillings(charge.id);
+    loadAllBillings();
+    setOpenDeleteModal(false);
+    setOpen(true);
+    setStateAlert("success");
+    setMessageAlert("Cobrança excluída com sucesso");
+  }
+
   return {
     togglePage,
     setTogglePage,
@@ -354,6 +378,10 @@ export default function useFunctionProvider() {
     editBillings,
     deleteBillings,
     handleSearch,
-    handleResetFilter
+    handleResetFilter,
+    currentCharge,
+    setCurrentCharge,
+    handleDeleteCharge,
+    handleConfirmDeleteCharge,
   };
 }

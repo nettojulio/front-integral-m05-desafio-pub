@@ -2,11 +2,12 @@ import "./style.css";
 import billingsSreen from "../../assets/billingsScreen.svg";
 import customersSettings from "../../assets/customersSettings.svg";
 import TableCobrancasExib from "../../components/ComponentsClients/TableCobrancasExib";
-import useGlobal from '../../hooks/useGlobal'
-import useFunctions from '../../hooks/useFunctions'
-import { Paper, InputBase, IconButton } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import useGlobal from "../../hooks/useGlobal";
+import useFunctions from "../../hooks/useFunctions";
+import { Paper, InputBase, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import { useEffect } from "react";
+import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
 
 function Charge() {
   const { setSearchCharge, inputValue, setInputValue, cardNotFound, setCardNotFound } = useGlobal();
@@ -44,7 +45,7 @@ function Charge() {
         setCardNotFound(true);
 
       }
-      setInputValue('');
+      setInputValue("");
       setSearchCharge(cliente);
     });
   }
@@ -63,25 +64,38 @@ function Charge() {
 
           <Paper
             component="form"
-            sx={{ p: '7px 4px', display: 'flex', alignItems: 'center', width: 318, height: 39, borderRadius: '10px' }}
+            sx={{
+              p: "7px 4px",
+              display: "flex",
+              alignItems: "center",
+              width: 318,
+              height: 39,
+              borderRadius: "10px",
+            }}
           >
             <InputBase
-              sx={{ ml: 1, flex: 1, fontSize: '14px', fontFamily: 'Nunito' }}
+              sx={{ ml: 1, flex: 1, fontSize: "14px", fontFamily: "Nunito" }}
               placeholder="Pesquisar"
-              inputProps={{ 'aria-label': 'pesquisar' }}
+              inputProps={{ "aria-label": "pesquisar" }}
               value={inputValue}
               onChange={handleSearch}
             />
-            <IconButton onClick={handleClickSearch} type="submit" sx={{ p: '0px' }} aria-label="search">
-              <SearchIcon sx={{ width: '3rem', height: '3rem' }} />
+            <IconButton
+              onClick={handleClickSearch}
+              type="submit"
+              sx={{ p: "0px" }}
+              aria-label="search"
+            >
+              <SearchIcon sx={{ width: "3rem", height: "3rem" }} />
             </IconButton>
           </Paper>
         </div>
       </div>
       <div className="card">
         <TableCobrancasExib cardNotFound={cardNotFound} />
+        <ToastAlert />
       </div>
-    </div >
+    </div>
   );
 }
 

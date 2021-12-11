@@ -41,6 +41,7 @@ function TableClientsExib({ cardNotFound }) {
     }
     // eslint-disable-next-line
   }, [orderClient]);
+  // eslint-disable-next-line
 
   return (
     <div className="table-clients">
