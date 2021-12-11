@@ -15,13 +15,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
 
   const { setClientData } = useFunctions();
-  const { setOpenFilteredCard } = useGlobal();
+  const { setOpenFilteredCard, setValue } = useGlobal();
   const navigate = useNavigate();
 
   function handlePage() {
     setOpenFilteredCard(false);
     setClientData(seeAll);
     navigate('/client');
+    setValue(1);
   }
 
 

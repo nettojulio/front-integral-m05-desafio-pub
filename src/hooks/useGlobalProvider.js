@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useFunctions from "./useFunctions";
 
 function useGlobalProvider() {
   const [signupPassword, setSignupPassword] = useState([]);
@@ -18,12 +17,10 @@ function useGlobalProvider() {
   const [filter, setFilter] = useState('idCob');
   const [orderClient, setOrderClient] = useState('asc');
   const [orderCharge, setOrderCharge] = useState('asc');
-
-
-  const { chargeData } = useFunctions();
   const [searchCharge, setSearchCharge] = useState([]);
   const [searchClient, setSearchClient] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [value, setValue] = useState(0);
 
   return {
     signupPassword,
@@ -63,7 +60,9 @@ function useGlobalProvider() {
     searchCharge,
     setSearchCharge,
     searchClient,
-    setSearchClient
+    setSearchClient,
+    value,
+    setValue
   };
 }
 

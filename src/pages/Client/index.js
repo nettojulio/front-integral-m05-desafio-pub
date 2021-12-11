@@ -67,7 +67,7 @@ function Client() {
                 </div>
                 <Paper
                   component="form"
-                  sx={{ p: '7px 4px', display: 'flex', alignItems: 'center', width: 318 }}
+                  sx={{ p: '7px 4px', display: 'flex', alignItems: 'center', width: 318, height: 39, borderRadius: '10px' }}
                 >
                   <InputBase
                     sx={{ ml: 1, flex: 1, fontSize: '14px', fontFamily: 'Nunito' }}

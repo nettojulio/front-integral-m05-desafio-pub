@@ -14,13 +14,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 function TableCard({ title, bgColor, situation, total }) {
 
   const { setChargeData } = useFunctions();
-  const { setOpenFilteredCard } = useGlobal();
+  const { setOpenFilteredCard, setValue } = useGlobal();
   const navigate = useNavigate();
 
   function handlePage() {
     setOpenFilteredCard(false);
     setChargeData(situation);
     navigate('/charge');
+    setValue(2);
   }
 
 

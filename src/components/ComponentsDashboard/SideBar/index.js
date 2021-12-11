@@ -49,8 +49,7 @@ function a11yProps(index) {
 
 export default function SideBar() {
   const navigate = useNavigate();
-  const [value, setValue] = React.useState(0);
-  const { setChangePages, setOpenClientDetail } = useGlobal();
+  const { setChangePages, setOpenClientDetail, value, setValue } = useGlobal();
 
   React.useEffect(() => {
     let path = window.location.pathname;
