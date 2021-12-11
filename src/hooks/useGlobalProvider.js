@@ -21,6 +21,7 @@ function useGlobalProvider() {
   const [searchClient, setSearchClient] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [value, setValue] = useState(0);
+  const [cardNotFound, setCardNotFound] = useState(false);
 
   return {
     signupPassword,
@@ -62,7 +63,9 @@ function useGlobalProvider() {
     searchClient,
     setSearchClient,
     value,
-    setValue
+    setValue,
+    cardNotFound,
+    setCardNotFound,
   };
 }
 

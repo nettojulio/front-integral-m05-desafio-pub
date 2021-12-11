@@ -9,30 +9,40 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useEffect } from "react";
 
 function Charge() {
-  const { searchCharge, setSearchCharge, inputValue, setInputValue } = useGlobal();
-  const { chargeData } = useFunctions();
+  const { setSearchCharge, inputValue, setInputValue, cardNotFound, setCardNotFound } = useGlobal();
+  const { chargeData, handleResetFilter, handleSearch } = useFunctions();
 
   useEffect(() => {
     setSearchCharge(chargeData);
+    console.log(chargeData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchCharge]);
-
-  function handleSearch(e) {
-    setInputValue(e.target.value);
-  }
+  }, [chargeData]);
 
   function handleClickSearch(e) {
     e.preventDefault();
     const cliente = [];
+
+    // eslint-disable-next-line
     chargeData.filter(client => {
       if (inputValue === '') {
+        setCardNotFound(false);
         setSearchCharge(chargeData)
+        // eslint-disable-next-line
         return;
+
       } else if (
         client.cliente.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
         client.id.toString().includes(inputValue)
       ) {
         cliente.push(client);
+        setCardNotFound(false);
+
+      } else if (
+        (!client.cliente.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
+          !client.id.toString().includes(inputValue)) && inputValue !== ''
+      ) {
+        setCardNotFound(true);
+
       }
       setInputValue('');
       setSearchCharge(cliente);
@@ -47,7 +57,7 @@ function Charge() {
           <span>Cobranças</span>
         </div>
         <div className="settings-cobrancas">
-          <div onClick={() => setSearchCharge(chargeData)} className="imagem-filtro">
+          <div onClick={handleResetFilter} className="imagem-filtro">
             <img src={customersSettings} alt="Search" />
           </div>
 
@@ -69,7 +79,7 @@ function Charge() {
         </div>
       </div>
       <div className="card">
-        <TableCobrancasExib />
+        <TableCobrancasExib cardNotFound={cardNotFound} />
       </div>
     </div >
   );

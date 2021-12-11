@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
+import useGlobal from './useGlobal'
 
 export default function useFunctionProvider() {
   let navigate = useNavigate();
@@ -19,6 +20,8 @@ export default function useFunctionProvider() {
   const [userData, setUserData] = useState("");
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
+
+  const { setSearchClient, setCardNotFound, setInputValue } = useGlobal();
   function handleClose() {
     setOpen(false);
   }
@@ -307,6 +310,15 @@ export default function useFunctionProvider() {
     navigate("signin");
   }
 
+  function handleSearch(e) {
+    setInputValue(e.target.value);
+  }
+
+  function handleResetFilter() {
+    setSearchClient(clientData);
+    setCardNotFound(false);
+  }
+
   return {
     togglePage,
     setTogglePage,
@@ -341,5 +353,7 @@ export default function useFunctionProvider() {
     setChargeData,
     editBillings,
     deleteBillings,
+    handleSearch,
+    handleResetFilter
   };
 }

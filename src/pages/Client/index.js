@@ -11,32 +11,41 @@ import TableClientsExib from "../../components/ComponentsClients/TableClientsExi
 import ClientDetail from "../../components/ComponentsClients/ClientDetail";
 
 function Client() {
-  const { setOpenClientModal, openClientDetail, setSearchClient, inputValue, setInputValue } = useGlobal();
-  const { clientData } = useFunctions();
+  const { setOpenClientModal, openClientDetail, setSearchClient, inputValue, setInputValue, cardNotFound, setCardNotFound } = useGlobal();
+  const { clientData, handleResetFilter, handleSearch } = useFunctions();
 
   useEffect(() => {
     setSearchClient(clientData);
+    console.log(clientData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientData]);
-
-
-  function handleSearch(e) {
-    setInputValue(e.target.value);
-  }
 
   function handleClickSearch(e) {
     e.preventDefault();
     const cliente = [];
+
+    // eslint-disable-next-line
     clientData.filter(client => {
       if (inputValue === '') {
-        setSearchClient(clientData)
+        setCardNotFound(false);
+        setSearchClient(clientData);
+        // eslint-disable-next-line
         return;
+
       } else if (
         client.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
         client.cpf.toString().includes(inputValue) ||
         client.email.includes(inputValue)
       ) {
         cliente.push(client);
+        setCardNotFound(false);
+
+      } else if (
+        (!client.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
+          !client.cpf.toString().includes(inputValue) ||
+          !client.email.includes(inputValue)) && inputValue !== ''
+      ) {
+        setCardNotFound(true);
       }
       setInputValue('');
       setSearchClient(cliente);
@@ -63,7 +72,7 @@ function Client() {
                   + Adicionar cliente
                 </button>
                 <div className="clientSettings">
-                  <img onClick={() => setSearchClient(clientData)} src={customersSettings} alt="Search" />
+                  <img onClick={handleResetFilter} src={customersSettings} alt="Search" />
                 </div>
                 <Paper
                   component="form"
@@ -80,15 +89,11 @@ function Client() {
                     <SearchIcon sx={{ width: '3rem', height: '3rem' }} />
                   </IconButton>
                 </Paper>
-                {/* <div className="input-search">
-                <span>Pesquisar</span>
-                <img src={search} alt="Search" />
-              </div> */}
               </div>
 
             </div>
           </div>
-          <TableClientsExib />
+          <TableClientsExib cardNotFound={cardNotFound} />
           <ToastAlert />
         </>
       )}
