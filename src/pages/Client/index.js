@@ -27,10 +27,9 @@ function Client() {
   function handleClickSearch(e) {
     e.preventDefault();
     const cliente = [];
-    clientData.filter(client => {
+    clientData.filter((client) => {
       if (inputValue === '') {
-        setSearchClient(clientData)
-        return;
+        return setSearchClient(clientData);
       } else if (
         client.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
         client.cpf.toString().includes(inputValue) ||
@@ -39,7 +38,7 @@ function Client() {
         cliente.push(client);
       }
       setInputValue('');
-      setSearchClient(cliente);
+      return setSearchClient(cliente);
     });
   }
 

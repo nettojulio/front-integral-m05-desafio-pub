@@ -30,7 +30,7 @@ function TableCobrancasExib() {
   useEffect(() => {
     openFilteredCard && loadAllBillings();
     loadAllClients();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -40,8 +40,7 @@ function TableCobrancasExib() {
     if (filter === "idCob") {
       orderCharge === "asc" ? handleOrderAsc() : handleOrderDesc();
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [filter, orderCharge]);
 
   function handleOrderAsc() {
