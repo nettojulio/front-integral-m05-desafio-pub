@@ -17,6 +17,8 @@ function useGlobalProvider() {
   const [filter, setFilter] = useState('idCob');
   const [orderClient, setOrderClient] = useState('asc');
   const [orderCharge, setOrderCharge] = useState('asc');
+  const [search, setSearch] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
   return {
     signupPassword,
@@ -50,7 +52,11 @@ function useGlobalProvider() {
     orderCharge,
     setOrderCharge,
     filter,
-    setFilter
+    setFilter,
+    search,
+    setSearch,
+    inputValue,
+    setInputValue
   };
 }
 

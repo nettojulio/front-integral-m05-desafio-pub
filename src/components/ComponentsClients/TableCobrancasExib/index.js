@@ -16,7 +16,7 @@ import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
 
 function TableCobrancasExib() {
   const { loadAllBillings, loadAllClients, chargeData } = useFunctions();
-  const { openFilteredCard, openDeleteModal, setOpenDeleteModal, orderCharge, setOrderCharge, filter, setFilter } = useGlobal();
+  const { openFilteredCard, openDeleteModal, setOpenDeleteModal, orderCharge, setOrderCharge, filter, setFilter, search } = useGlobal();
 
   useEffect(() => {
     openFilteredCard && loadAllBillings();
@@ -25,7 +25,6 @@ function TableCobrancasExib() {
   }, []);
 
   useEffect(() => {
-    console.log(filter, orderCharge);
     if (filter === 'clients') {
       orderCharge === 'asc' ? handleOrderAsc() : handleOrderDesc();
     }
@@ -47,7 +46,6 @@ function TableCobrancasExib() {
   function handleChangeFilter(type) {
     setFilter(type);
     setOrderCharge(orderCharge === 'asc' ? 'desc' : 'asc');
-    console.log('clicou')
   }
 
   function orderColumnAsc(a, b, by) {
