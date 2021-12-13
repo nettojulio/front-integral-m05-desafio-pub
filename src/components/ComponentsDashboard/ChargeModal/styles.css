@@ -236,10 +236,13 @@ div.status {
 }
 
 #descricao {
-  height: 8rem;
+  resize: none;
+  max-height: 8rem;
+  max-width: 48.7rem;
   font-family: "Inter";
   font-size: 1.6rem;
   line-height: 2.4rem;
+
 
   color: #202020;
 
