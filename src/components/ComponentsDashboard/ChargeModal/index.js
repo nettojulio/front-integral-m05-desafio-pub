@@ -191,6 +191,7 @@ function ChargeModal() {
                   name="nome"
                   placeholder={clientDetailData.nome}
                   className="inputCharge"
+                  readOnly="true"
                 />
               </label>
             </div>
