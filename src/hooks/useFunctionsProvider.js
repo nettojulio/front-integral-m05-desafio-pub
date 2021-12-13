@@ -167,7 +167,7 @@ export default function useFunctionProvider() {
         throw new Error(result);
       }
 
-      console.log(result);
+      // console.log(result);
     } catch (error) {
       console.log(error.message);
     }
@@ -267,7 +267,7 @@ export default function useFunctionProvider() {
         throw new Error(result);
       }
 
-      console.log(result);
+      // console.log(result);
     } catch (error) {
       console.log(error.message);
     }
@@ -292,7 +292,7 @@ export default function useFunctionProvider() {
         throw new Error(result);
       }
 
-      console.log(result);
+      // console.log(result);
     } catch (error) {
       console.log(error.message);
     }

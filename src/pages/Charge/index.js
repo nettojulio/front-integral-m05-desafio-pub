@@ -15,7 +15,7 @@ function Charge() {
 
   useEffect(() => {
     setSearchCharge(chargeData);
-    console.log(chargeData)
+    // console.log(chargeData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chargeData]);
 

@@ -16,7 +16,7 @@ function Client() {
 
   useEffect(() => {
     setSearchClient(clientData);
-    console.log(clientData)
+    // console.log(clientData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientData]);
 
