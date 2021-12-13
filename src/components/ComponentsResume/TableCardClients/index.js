@@ -10,10 +10,9 @@ import Paper from "@mui/material/Paper";
 import useFunctions from "../../../hooks/useFunctions";
 import { useNavigate } from "react-router-dom";
 import useGlobal from "../../../hooks/useGlobal";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 
 function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
-
   const { setClientData } = useFunctions();
   const { setOpenFilteredCard, setValue } = useGlobal();
   const navigate = useNavigate();
@@ -21,10 +20,9 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
   function handlePage() {
     setOpenFilteredCard(false);
     setClientData(seeAll);
-    navigate('/client');
+    navigate("/client");
     setValue(1);
   }
-
 
   return (
     <div className="container-table-clients">
@@ -42,22 +40,30 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
 
       <TableContainer
         component={Paper}
-        sx={{ width: 556, height: 300, overflow: 'hidden', border: "none", borderRadius: 0, boxShadow: "none " }}
+        sx={{
+          width: 556,
+          height: 300,
+          overflow: "hidden",
+          border: "none",
+          borderRadius: 0,
+          boxShadow: "none ",
+        }}
       >
         <Table sx={{ minWidth: 556 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>
-                Cliente
-              </TableCell>
+              <TableCell>Cliente</TableCell>
               <TableCell>ID do Clie.</TableCell>
               <TableCell>CPF</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {seeAll.length === 0
-              ? <div className="table-card-clients circular-progress"><CircularProgress sx={{ color: 'var(--pink)' }} /></div>
-              : seeAll.map((row) => (
+            {seeAll.length === 0 ? (
+              <div className="table-card-clients circular-progress">
+                <CircularProgress sx={{ color: "var(--pink)" }} />
+              </div>
+            ) : (
+              seeAll.map((row) => (
                 <TableRow
                   key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -65,15 +71,23 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
                   <TableCell
                     component="th"
                     scope="row"
-                    sx={{ whiteSpace: 'nowrap', maxWidth: 100 }}
+                    sx={{ whiteSpace: "nowrap", maxWidth: 100 }}
                     className="format-values"
                   >
                     {row.nome}
                   </TableCell>
-                  <TableCell className="format-values" align="left">{String(row.id).padStart(9, 0)}</TableCell>
-                  <TableCell className="format-values" align="left">{row.cpf}</TableCell>
+                  <TableCell className="format-values" align="left">
+                    {String(row.id).padStart(9, 0)}
+                  </TableCell>
+                  <TableCell className="format-values" align="left">
+                    {`${row.cpf.slice(0, 3)}.
+                      ${row.cpf.slice(3, 6)}.
+                      ${row.cpf.slice(6, 9)}-
+                      ${row.cpf.slice(9)}`}
+                  </TableCell>
                 </TableRow>
-              ))}
+              ))
+            )}
           </TableBody>
         </Table>
       </TableContainer>
