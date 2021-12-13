@@ -21,7 +21,6 @@ function ClientModal() {
   };
 
   const { openClientModal, setOpenClientModal } = useGlobal();
-
   const { token, setOpen, setMessageAlert, setStateAlert, loadAllClients } =
     useFunctions();
 
@@ -389,6 +388,7 @@ function ClientModal() {
                     onChange={(e) => handleChange(e.target)}
                     mask="aa"
                     alwaysShowMask={false}
+                    className="inputClient"
                   />
                 </label>
               </div>
