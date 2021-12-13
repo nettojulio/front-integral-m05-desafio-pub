@@ -89,20 +89,20 @@ function ResumeBills() {
 
   const cardTableClientsValue = [
     {
-      title: "Clientes Inadimplentes",
-      icon: defaultingCustomers,
-      bgColor: "overdue",
-      situation: overdueSituation,
-      total: overdueClientResume.length,
-      seeAll: overdueClientResume
-    },
-    {
       title: "Clientes em dia",
       icon: okCustomers,
       bgColor: "paid",
       situation: inTimeSituation,
       total: inTimeClientResume.length,
       seeAll: inTimeClientResume
+    },
+    {
+      title: "Clientes Inadimplentes",
+      icon: defaultingCustomers,
+      bgColor: "overdue",
+      situation: overdueSituation,
+      total: overdueClientResume.length,
+      seeAll: overdueClientResume
     },
   ];
 
