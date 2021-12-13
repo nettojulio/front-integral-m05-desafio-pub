@@ -190,6 +190,7 @@ function ChargeModal() {
                   type="text"
                   name="nome"
                   placeholder={clientDetailData.nome}
+                  className="inputCharge"
                 />
               </label>
             </div>
