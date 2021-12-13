@@ -111,13 +111,15 @@ function ClientDetailTable() {
                         />
                         <span>Editar</span>
                       </div>
-                      <div className="table-icons-del">
+                      <div
+                        onClick={() => handleDeleteCharge(client)}
+                        className="table-icons-del"
+                      >
                         <img
                           className="table-btn"
                           src={deleteBillings}
                           style={{ width: 16 }}
                           alt="Edit"
-                          onClick={() => handleDeleteCharge(client)}
                         />
                         <span>Deletar</span>
                       </div>
