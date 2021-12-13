@@ -29,6 +29,8 @@ function UserModal() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = useState(false);
+  const [cpfErrorMessage, setCpfErrorMessage] = useState(false);
+  const [telefoneErrorMessage, setTelefoneErrorMessage] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(false);
   const [complete, setComplete] = useState(false);
 
@@ -120,6 +122,7 @@ function UserModal() {
     }
 
     if (isNaN(formEditUserModalInputs.cpf)) {
+      setCpfErrorMessage("CPF Inválido!");
       return;
     }
 
@@ -137,11 +140,12 @@ function UserModal() {
       (formEditUserModalInputs.telefone.length < 10 &&
         formEditUserModalInputs.telefone.length !== 0)
     ) {
+      setTelefoneErrorMessage("Telefone inválido!");
       return;
     }
 
     const updateUser = {
-      nome: formEditUserModalInputs.nome,
+      nome: formEditUserModalInputs.nome.trim(),
       email: formEditUserModalInputs.email,
       cpf: formEditUserModalInputs.cpf,
       telefone: formEditUserModalInputs.telefone,
@@ -163,6 +167,8 @@ function UserModal() {
   function handleClearValidations() {
     setNameErrorMessage(false);
     setEmailErrorMessage(false);
+    setCpfErrorMessage(false);
+    setTelefoneErrorMessage(false)
     setPasswordErrorMessage(false);
   }
 
@@ -196,7 +202,7 @@ function UserModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={nameErrorMessage ? "errorSinalization" : undefined}
+                  className={nameErrorMessage && "errorSinalization"}
                 />
                 {nameErrorMessage && (
                   <p className="errorMessage">{nameErrorMessage}</p>
@@ -235,7 +241,13 @@ function UserModal() {
                   }
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
+                  className={
+                    cpfErrorMessage ? "errorSinalization" : undefined
+                  }
                 />
+                {cpfErrorMessage && (
+                  <p className="errorMessage">{cpfErrorMessage}</p>
+                )}
               </label>
               <label htmlFor="telefone" className="formLabels split">
                 Telefone
@@ -246,7 +258,13 @@ function UserModal() {
                   value={formEditUserModalInputs.telefone}
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
+                  className={
+                    telefoneErrorMessage ? "errorSinalization" : undefined
+                  }
                 />
+                {telefoneErrorMessage && (
+                  <p className="errorMessage">{telefoneErrorMessage}</p>
+                )}
               </label>
             </div>
             <div className="formGroup">
