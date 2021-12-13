@@ -43,27 +43,27 @@ function ResumeBills() {
         }),
     },
     {
-      bgColor: "overdue",
-      title: "Cobranças Vencidas",
-      img: expiredBillings,
+      bgColor: "expected",
+      title: "Cobranças Previstas",
+      img: expectedBillings,
       value: (expectedSituation
         .reduce((acc, cur) => Number(cur.valor) + acc, 0) / 100)
         .toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         }),
-    },
-    {
-      bgColor: "expected",
-      title: "Cobranças Previstas",
-      img: expectedBillings,
-      value: (overdueSituation
-        .reduce((acc, cur) => Number(cur.valor) + acc, 0) / 100)
-        .toLocaleString("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        }),
-    },
+      },
+      {
+        bgColor: "overdue",
+        title: "Cobranças Vencidas",
+        img: expiredBillings,
+        value: (overdueSituation
+          .reduce((acc, cur) => Number(cur.valor) + acc, 0) / 100)
+          .toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }),
+      },
   ];
 
   const cardTableValue = [
@@ -74,16 +74,16 @@ function ResumeBills() {
       total: paidSituation.length,
     },
     {
-      bgColor: "overdue",
-      title: "Cobranças Vencidas",
-      situation: overdueSituation,
-      total: overdueSituation.length,
-    },
-    {
       bgColor: "expected",
       title: "Cobranças Previstas",
       situation: expectedSituation,
       total: expectedSituation.length,
+    },
+    {
+      bgColor: "overdue",
+      title: "Cobranças Vencidas",
+      situation: overdueSituation,
+      total: overdueSituation.length,
     },
   ];
 
