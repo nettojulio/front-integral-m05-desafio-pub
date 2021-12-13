@@ -239,10 +239,11 @@ export default function useFunctionProvider() {
       if (!response.ok) {
         throw new Error(result);
       }
-
-      console.log(result);
     } catch (error) {
-      console.log(error.message);
+      setOpen(true);
+      setStateAlert("error");
+      setMessageAlert(error.message);
+      return error.message
     }
   }
 
