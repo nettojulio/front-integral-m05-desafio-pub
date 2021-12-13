@@ -197,19 +197,14 @@ function ChargeModal() {
             <div className="chargeFormGroup descricao">
               <label htmlFor="descricao" className="chargeFormLabels">
                 Descrição*
-                <input
+                <textarea
                   id="descricao"
                   type="descricao"
                   name="descricao"
                   placeholder="Digite a descrição"
                   value={formSignupUserModalInputs.descricao}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputCharge ${
-                    descricaoErrorMessage
-                      ? "chargeErrorSinalization"
-                      : undefined
-                  }
-                  `}
+                  className="textCharge"
                 />
                 {descricaoErrorMessage && (
                   <p className="chargeErrorMessage">{descricaoErrorMessage}</p>
