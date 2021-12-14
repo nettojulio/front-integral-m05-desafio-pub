@@ -167,7 +167,7 @@ export default function useFunctionProvider() {
         throw new Error(result);
       }
 
-      // console.log(result);
+      return result;
     } catch (error) {
       console.log(error.message);
     }
