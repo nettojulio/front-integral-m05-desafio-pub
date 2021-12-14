@@ -80,10 +80,7 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
                     {String(row.id).padStart(9, 0)}
                   </TableCell>
                   <TableCell className="format-values" align="left">
-                    {`${row.cpf.slice(0, 3)}.
-                      ${row.cpf.slice(3, 6)}.
-                      ${row.cpf.slice(6, 9)}-
-                      ${row.cpf.slice(9)}`}
+                    {`${row.cpf.slice(0, 3)}.${row.cpf.slice(3, 6)}.${row.cpf.slice(6, 9)}-${row.cpf.slice(9)}`}
                   </TableCell>
                 </TableRow>
               ))

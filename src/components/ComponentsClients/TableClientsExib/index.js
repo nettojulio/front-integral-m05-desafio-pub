@@ -83,9 +83,9 @@ function TableClientsExib({ cardNotFound }) {
                       {client.nome}
                     </button>
                   </TableCell>
-                  <TableCell align="left">{client.cpf}</TableCell>
+                  <TableCell align="left">{`${client.cpf.slice(0,3)}.${client.cpf.slice(3,6)}.${client.cpf.slice(6,9)}-${client.cpf.slice(9)}`}</TableCell>
                   <TableCell align="left">{client.email}</TableCell>
-                  <TableCell align="left">{client.telefone}</TableCell>
+                  <TableCell align="left">{`(${client.telefone.slice(0,2)}) ${client.telefone.slice(2,7)}-${client.telefone.slice(7)}`}</TableCell>
                   <TableCell align="left">
                     <div
                       className={
