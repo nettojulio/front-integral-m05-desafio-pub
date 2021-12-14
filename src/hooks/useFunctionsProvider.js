@@ -21,7 +21,7 @@ export default function useFunctionProvider() {
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
 
-  const { setSearchClient, setCardNotFound, setInputValue, setOpenDeleteModal } = useGlobal();
+  const { setSearchClient, setCardNotFound, setInputValue, setOpenDeleteModal, setOpenEditChargeModal } = useGlobal();
   const [currentCharge, setCurrentCharge] = useState({});
 
   function handleClose() {
@@ -325,6 +325,11 @@ export default function useFunctionProvider() {
     setCurrentCharge(charge);
   }
 
+  function handleEditCharge(charge) {
+    setOpenEditChargeModal(true);
+    setCurrentCharge(charge);
+  }
+
   function handleConfirmDeleteCharge(charge) {
     if (charge.situacao === "Paga" || charge.situacao === "Vencida") {
       setOpenDeleteModal(false);
@@ -383,6 +388,7 @@ export default function useFunctionProvider() {
     currentCharge,
     setCurrentCharge,
     handleDeleteCharge,
+    handleEditCharge,
     handleConfirmDeleteCharge,
   };
 }

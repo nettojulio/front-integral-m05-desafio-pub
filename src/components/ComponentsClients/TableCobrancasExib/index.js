@@ -14,13 +14,15 @@ import useFunctions from "../../../hooks/useFunctions";
 import useGlobal from "../../../hooks/useGlobal";
 import { useEffect } from "react";
 import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
+import EditChargeModal from "../../ComponentsDashboard/EditChargeModal";
 
 function TableCobrancasExib({ cardNotFound }) {
-  const { loadAllBillings, loadAllClients, chargeData, handleDeleteCharge } =
+  const { loadAllBillings, loadAllClients, chargeData, handleDeleteCharge, handleEditCharge } =
     useFunctions();
   const {
     openFilteredCard,
     openDeleteModal,
+    openEditChargeModal,
     orderCharge,
     setOrderCharge,
     filter,
@@ -159,8 +161,8 @@ function TableCobrancasExib({ cardNotFound }) {
                             charge.situacao === "Vencida"
                               ? "status-red"
                               : charge.situacao === "Pendente"
-                              ? "status-yellow"
-                              : "status-blue"
+                                ? "status-yellow"
+                                : "status-blue"
                           }
                         >
                           {charge.situacao}
@@ -168,7 +170,10 @@ function TableCobrancasExib({ cardNotFound }) {
                       </TableCell>
                       <TableCell align="left">{charge.descricao}</TableCell>
                       <TableCell>
-                        <div className="container-icon-editar">
+                        <div
+                          onClick={() => handleEditCharge(charge)}
+                          className="container-icon-editar"
+                        >
                           <img
                             src={editarIcon}
                             className="icone-editar"
