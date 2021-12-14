@@ -22,6 +22,7 @@ function useGlobalProvider() {
   const [inputValue, setInputValue] = useState('');
   const [value, setValue] = useState(0);
   const [cardNotFound, setCardNotFound] = useState(false);
+  const [openEditChargeModal, setOpenEditChargeModal] = useState(false);
 
   return {
     signupPassword,
@@ -66,6 +67,8 @@ function useGlobalProvider() {
     setValue,
     cardNotFound,
     setCardNotFound,
+    openEditChargeModal,
+    setOpenEditChargeModal,
   };
 }
 
