@@ -37,16 +37,19 @@ function Charge() {
       ) {
         cliente.push(client);
         setCardNotFound(false);
+        return setSearchCharge(cliente);
 
-      } else if (
-        (!client.cliente.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
-          !client.id.toString().includes(inputValue)) && inputValue !== ''
-      ) {
+        // } else if (
+        //   (!client.cliente.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
+        //     !client.id.toString().includes(inputValue)) && inputValue !== ''
+        // ) {
+        //   setCardNotFound(true);
+
+      } else if (cliente.length === 0) {
         setCardNotFound(true);
-
       }
       setInputValue("");
-      setSearchCharge(cliente);
+      // setSearchCharge(cliente);
     });
   }
 
