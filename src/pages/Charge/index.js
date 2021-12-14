@@ -8,6 +8,7 @@ import { Paper, InputBase, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect } from "react";
 import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
+import EditChargeModal from "../../components/ComponentsDashboard/EditChargeModal";
 
 function Charge() {
   const { setSearchCharge, inputValue, setInputValue, cardNotFound, setCardNotFound } = useGlobal();
