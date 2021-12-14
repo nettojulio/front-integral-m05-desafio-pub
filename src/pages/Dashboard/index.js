@@ -11,6 +11,7 @@ import ChargeModal from "../../components/ComponentsDashboard/ChargeModal";
 
 import "./style.css";
 import useGlobal from "../../hooks/useGlobal";
+import EditChargeModal from "../../components/ComponentsDashboard/EditChargeModal";
 
 function Dashboard({ renderPage }) {
   const {
@@ -20,6 +21,7 @@ function Dashboard({ renderPage }) {
     setOpenOptions,
     openEditClientModal,
     openChargeModal,
+    openEditChargeModal
   } = useGlobal();
 
   useEffect(() => {
@@ -40,6 +42,7 @@ function Dashboard({ renderPage }) {
         {changePages === "charge" && <Charge />}
         {openClientModal && <ClientModal />}
         {openEditClientModal && <EditClientModal />}
+        {openEditChargeModal && <EditChargeModal />}
         {openChargeModal && <ChargeModal />}
       </div>
     </div>

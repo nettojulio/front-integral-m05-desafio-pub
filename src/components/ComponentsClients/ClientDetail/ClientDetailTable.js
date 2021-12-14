@@ -17,7 +17,7 @@ import ToastAlert from "../../../components/ComponentsGlobal/ToastAlert";
 
 function ClientDetailTable() {
   const { clientDetailData, openDeleteModal } = useGlobal();
-  const { loadAllBillings, handleDeleteCharge } = useFunctions();
+  const { loadAllBillings, handleDeleteCharge, handleEditCharge } = useFunctions();
 
   useEffect(() => {
     loadAllBillings();
@@ -79,13 +79,12 @@ function ClientDetailTable() {
                   </TableCell>
                   <TableCell align="left">
                     <div
-                      className={`table-status ${
-                        client.situacao === "Paga"
+                      className={`table-status ${client.situacao === "Paga"
                           ? "paid"
                           : client.situacao === "Pendente"
-                          ? "expected"
-                          : "overdue"
-                      }`}
+                            ? "expected"
+                            : "overdue"
+                        }`}
                     >
                       {client.situacao}
                     </div>
@@ -102,7 +101,7 @@ function ClientDetailTable() {
                   </TableCell>
                   <TableCell align="left">
                     <div className="table-icons">
-                      <div className="table-icons-edit">
+                      <div onClick={() => handleEditCharge(client)} className="table-icons-edit">
                         <img
                           className="table-btn"
                           src={editBillings}
