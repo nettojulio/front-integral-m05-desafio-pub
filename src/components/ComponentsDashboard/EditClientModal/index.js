@@ -6,13 +6,11 @@ import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 import "./styles.css";
 
+
+
 function EditClientModal() {
-  const {
-    openEditClientModal,
-    setOpenEditClientModal,
-    clientDetailData,
-    setOpenClientDetail,
-  } = useGlobal();
+  const { openEditClientModal, setOpenEditClientModal, clientDetailData } = useGlobal();
+  console.log(clientDetailData.cep)
 
   const initialForm = {
     nome: clientDetailData.nome,
@@ -24,10 +22,11 @@ function EditClientModal() {
     cep: clientDetailData.cep,
     bairro: clientDetailData.bairro,
     cidade: clientDetailData.cidade,
-    uf: clientDetailData.uf,
+    uf: clientDetailData.estado,
   };
 
-  const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
+
+  const { token, setOpen, setMessageAlert, setStateAlert ,editRegisteredClient } = useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
@@ -35,66 +34,20 @@ function EditClientModal() {
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [cpfErrorMessage, setCpfErrorMessage] = useState("");
   const [telefoneErrorMessage, setTelefoneErrorMessage] = useState("");
-  const [cepErrorMessage, setCepErrorMessage] = useState("");
 
-  async function handleViaCep(e) {
-    if (e.target.value.includes("_")) {
-      return;
-    }
+  // useEffect(() => {
+  //   viacep();
+  // }, []);
 
-    try {
-      const response = await fetch(
-        `https://viacep.com.br/ws/${e.target.value}/json`
-      );
+  // async function viacep(cep) {
+  //   fetch(`https://viacep.com.br/ws/${cep}/json`)
+  //     .then((resposta) => resposta.json())
+  //     .then((dados) => console.log(dados));
+  // }
 
-      const result = await response.json();
+  /* remover*/
 
-      const complemento = {
-        nome: formEditUserModalInputs.nome,
-        email: formEditUserModalInputs.email,
-        cpf: formEditUserModalInputs.cpf,
-        telefone: formEditUserModalInputs.telefone,
-        endereco: result.logradouro,
-        complemento: formEditUserModalInputs.complemento,
-        cep: result.cep,
-        bairro: result.bairro,
-        cidade: result.localidade,
-        uf: result.uf,
-      };
-
-      setFormEditUserModalInputs(complemento);
-    } catch (error) {}
-  }
-
-  async function editRegisteredClient(body, id) {
-    try {
-      const response = await fetch(
-        `https://api-teste-desafio.herokuapp.com/clientes/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(body),
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result);
-      }
-
-      setOpenEditClientModal(false);
-      setOpenClientDetail(false);
-      setOpen(true);
-      setStateAlert("success");
-      setMessageAlert("Edições do cadastro concluídas com sucesso");
-    } catch (error) {
-      updateValidations(error);
-    }
-  }
+  
 
   function updateValidations(error) {
     if (error.message.includes("nome") || error.message.includes("Nome")) {
@@ -110,8 +63,6 @@ function EditClientModal() {
       error.message.includes("cpf")
     ) {
       setCpfErrorMessage(error.message);
-    } else if (error.message.includes("CEP")) {
-      setCepErrorMessage("CEP inválido!");
     } else {
       console.log(error.message);
     }
@@ -125,7 +76,7 @@ function EditClientModal() {
     });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     handleClearValidations();
 
@@ -178,15 +129,19 @@ function EditClientModal() {
       return;
     }
 
-    if (formEditUserModalInputs.cep.includes(" ")) {
-      formEditUserModalInputs.cep = formEditUserModalInputs.cep.trim();
-    }
-
-    if (formEditUserModalInputs.cep.includes("-")) {
+    if (formEditUserModalInputs.cep) {
       formEditUserModalInputs.cep = formEditUserModalInputs.cep.replace(
         "-",
         ""
       );
+    }
+
+    if (
+      isNaN(Number(formEditUserModalInputs.cep)) ||
+      (formEditUserModalInputs.cep.length < 8 &&
+        formEditUserModalInputs.cep.length !== 0)
+    ) {
+      return;
     }
 
     const updateUser = {
@@ -199,9 +154,10 @@ function EditClientModal() {
       cep: formEditUserModalInputs.cep,
       bairro: formEditUserModalInputs.bairro,
       cidade: formEditUserModalInputs.cidade,
-      estado: formEditUserModalInputs.uf,
+      uf: formEditUserModalInputs.estado,
     };
-
+    
+    
     editRegisteredClient(updateUser, clientDetailData.id);
   }
 
@@ -236,6 +192,7 @@ function EditClientModal() {
             </div>
           </div>
 
+
           <form className="editClientForm" onSubmit={handleSubmit}>
             <div className="editClientFormGroup">
               <label htmlFor="nome" className="editClientFormLabels">
@@ -247,9 +204,8 @@ function EditClientModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputEditClient ${
-                    nameErrorMessage ? "editClientErrorSinalization" : undefined
-                  }`}
+                  className={`inputEditClient ${nameErrorMessage ? "editClientErrorSinalization" : undefined
+                    }`}
                 />
                 {nameErrorMessage && (
                   <p className="editClientErrorMessage">{nameErrorMessage}</p>
@@ -266,11 +222,8 @@ function EditClientModal() {
                   placeholder="Digite seu email"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputEditClient ${
-                    emailErrorMessage
-                      ? "editClientErrorSinalization"
-                      : undefined
-                  }
+                  className={`inputEditClient ${emailErrorMessage ? "editClientErrorSinalization" : undefined
+                    }
                   `}
                 />
                 {emailErrorMessage && (
@@ -284,13 +237,12 @@ function EditClientModal() {
                 <InputMask
                   id="cpf"
                   name="cpf"
-                  placeholder="Digite seu CPF"
+                  placeholder="Digite seu cpf"
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
-                  className={`inputClient ${
-                    cpfErrorMessage ? "editClientErrorSinalization" : undefined
-                  }`}
+                  className={`inputClient ${cpfErrorMessage ? "editClientErrorSinalization" : undefined
+                    }`}
                 />
                 {cpfErrorMessage && (
                   <p className="editClientErrorMessage">{cpfErrorMessage}</p>
@@ -306,17 +258,14 @@ function EditClientModal() {
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
                   className={`inputEditClient
-                    ${
-                      telefoneErrorMessage
-                        ? "editClientErrorSinalization"
-                        : undefined
+                    ${telefoneErrorMessage
+                      ? "editClientErrorSinalization"
+                      : undefined
                     }
                   `}
                 />
                 {telefoneErrorMessage && (
-                  <p className="editClientErrorMessage">
-                    {telefoneErrorMessage}
-                  </p>
+                  <p className="editClientErrorMessage">{telefoneErrorMessage}</p>
                 )}
               </label>
             </div>
@@ -351,22 +300,12 @@ function EditClientModal() {
                   <InputMask
                     id="cep"
                     name="cep"
-                    placeholder="Digite seu CEP"
-                    value={formEditUserModalInputs.cep}
+                    placeholder="Digite seu cpf"
+                    value={!formEditUserModalInputs.cep ? "" : formEditUserModalInputs.cep}
                     onChange={(e) => handleChange(e.target)}
-                    onBlur={(e) => handleViaCep(e)}
                     mask="99999-999"
-                    className={`inputEditClient
-                    ${
-                      cepErrorMessage
-                        ? "editClientErrorSinalization"
-                        : undefined
-                    }
-                  `}
+                    className="inputEditClient"
                   />
-                  {cepErrorMessage && (
-                    <p className="editClientErrorMessage">{cepErrorMessage}</p>
-                  )}
                 </label>
                 <label htmlFor="bairro" className="editClientFormLabels split">
                   Bairro
@@ -397,17 +336,14 @@ function EditClientModal() {
                     className="inputEditClient"
                   />
                 </label>
-                <label
-                  htmlFor="uf"
-                  className="editClientFormLabels split ufForm"
-                >
+                <label htmlFor="uf" className="editClientFormLabels split ufForm">
                   UF
                   <input
                     id="uf"
                     type="text"
                     name="uf"
-                    placeholder="Digite sua UF"
-                    value={formEditUserModalInputs.uf}
+                    placeholder="Digite seu UF"
+                    value={formEditUserModalInputs.estado}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
                   />
@@ -422,10 +358,7 @@ function EditClientModal() {
             >
               Cancelar
             </button>
-            <button
-              onClick={(e) => handleSubmit(e)}
-              className="applyEditClientChanges"
-            >
+            <button onClick={handleSubmit} className="applyEditClientChanges">
               Aplicar
             </button>
           </div>
