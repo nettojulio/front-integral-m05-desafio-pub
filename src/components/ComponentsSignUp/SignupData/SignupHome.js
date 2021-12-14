@@ -10,9 +10,10 @@ function SignupData() {
     setOpen,
     setMessageAlert,
     setStateAlert,
+    preloadEmail,
   } = useFunctions();
 
-  function handleNextPage(e) {
+  async function handleNextPage(e) {
     e.preventDefault();
     if (!formSignUp.email || !formSignUp.nome) {
       setOpen(true);
@@ -20,6 +21,11 @@ function SignupData() {
       setMessageAlert("Erro: Existem alguns campos em branco!");
       return;
     }
+    
+    if (await preloadEmail(formSignUp)) {
+      return;
+    }
+    
     setTogglePage("signupPassword");
   }
 

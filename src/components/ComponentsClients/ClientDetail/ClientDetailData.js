@@ -1,5 +1,4 @@
 import "./style.css";
-// import useFunctions from "../../../hooks/useFunctions";
 import edit from "../../../assets/editCustomerGreen.svg";
 import useGlobal from "../../../hooks/useGlobal";
 
@@ -25,11 +24,11 @@ function ClientDetailData() {
         </div>
         <div className="personal-info">
           <h3>Telefone</h3>
-          <span>{clientDetailData.telefone}</span>
+          <span>{`(${clientDetailData.telefone.slice(0,2)}) ${clientDetailData.telefone.slice(2,7)}-${clientDetailData.telefone.slice(7)}`}</span>
         </div>
         <div className="personal-info">
           <h3>CPF</h3>
-          <span>{clientDetailData.cpf}</span>
+          <span>{`${clientDetailData.cpf.slice(0,3)}.${clientDetailData.cpf.slice(3,6)}.${clientDetailData.cpf.slice(6,9)}-${clientDetailData.cpf.slice(9)}`}</span>
         </div>
         <div className="empty-div"></div>
       </div>
@@ -49,7 +48,7 @@ function ClientDetailData() {
         </div>
         <div className="address-info">
           <h3>CEP</h3>
-          <span>{clientDetailData.cep}</span>
+          <span>{`${clientDetailData.cep.slice(0,5)}-${clientDetailData.cep.slice(5)}`}</span>
         </div>
         <div className="address-info">
           <h3>Cidade</h3>

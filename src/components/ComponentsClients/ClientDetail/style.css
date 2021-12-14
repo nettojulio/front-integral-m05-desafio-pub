@@ -117,6 +117,12 @@
   align-items: center;
 }
 
+.table-btn:hover,
+.table-icons-edit:hover,
+.table-icons-del:hover {
+  cursor: pointer;
+}
+
 .table-icons-edit span,
 .table-icons-del span {
   font-family: 'Nunito', sans-serif;
@@ -141,10 +147,6 @@
   font-family: 'Nunito', sans-serif;
   font-size: 14px;
   font-weight: 600;
-}
-
-.table-btn:hover {
-  cursor: pointer;
 }
 
 .paid {

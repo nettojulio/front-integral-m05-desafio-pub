@@ -22,7 +22,7 @@ function ChargeModal() {
     setOpenChargeModal,
     clientDetailData,
     setChargeModalValue,
-    setOpenClientDetail,
+    // setOpenClientDetail,
   } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
@@ -135,13 +135,15 @@ function ChargeModal() {
     formSignupUserModalInputs.data_vencimento = formatToDate(
       formSignupUserModalInputs.data_vencimento
     );
-    addBillings(formSignupUserModalInputs, clientDetailData.id);
+    const teste = await addBillings(formSignupUserModalInputs, clientDetailData.id);
     setOpen(true);
     setStateAlert("success");
-    loadAllClients();
     setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
-    setOpenClientDetail(false);
+    await loadAllClients();
+    teste.situacao = teste.status ? "Paga" : (!teste.status && (+ new Date(teste.data_vencimento) < + new Date()) ? "Vencida" : "Pendente")
+    clientDetailData.cobrancas.push(teste);
+    // setOpenClientDetail(false);
   }
 
   function handleClearValidations() {
@@ -190,25 +192,22 @@ function ChargeModal() {
                   type="text"
                   name="nome"
                   placeholder={clientDetailData.nome}
+                  className="inputCharge"
+                  readOnly="true"
                 />
               </label>
             </div>
             <div className="chargeFormGroup descricao">
               <label htmlFor="descricao" className="chargeFormLabels">
                 Descrição*
-                <input
+                <textarea
                   id="descricao"
                   type="descricao"
                   name="descricao"
                   placeholder="Digite a descrição"
                   value={formSignupUserModalInputs.descricao}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputCharge ${
-                    descricaoErrorMessage
-                      ? "chargeErrorSinalization"
-                      : undefined
-                  }
-                  `}
+                  className="textCharge"
                 />
                 {descricaoErrorMessage && (
                   <p className="chargeErrorMessage">{descricaoErrorMessage}</p>

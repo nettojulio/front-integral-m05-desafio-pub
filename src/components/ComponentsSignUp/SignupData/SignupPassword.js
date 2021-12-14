@@ -15,13 +15,12 @@ function SignupPassword() {
     <div className="signup-data">
       <div className="form-data">
         <h3>Escolha uma senha</h3>
-
         <form onSubmit={(e) => handleSubmitSignUp(e)}>
           <label htmlFor="senha">
             Senha*
             <input
               className="signup-input"
-              placeholder="Digite seu nome"
+              placeholder="Digite sua senha"
               type={openFirst ? "text" : "password"}
               id="senha"
               value={formSignUp.senha}
@@ -40,7 +39,7 @@ function SignupPassword() {
             Repita a senha*
             <input
               className="signup-input"
-              placeholder="Digite seu nome"
+              placeholder="Digite novamente sua senha"
               type={openSecond ? "text" : "password"}
               id="senhaRepetida"
               value={formSignUp.senhaRepetida}
@@ -59,7 +58,6 @@ function SignupPassword() {
             Cadastrar
           </button>
         </form>
-
         <span>
           Já possui uma conta? Faça seu{" "}
           <Link className="signup-a" to="/signin">

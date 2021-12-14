@@ -59,7 +59,8 @@ code {
   cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover,
+.cursor-pointer:hover {
   cursor: pointer;
 }
 
