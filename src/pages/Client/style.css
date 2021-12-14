@@ -1,18 +1,22 @@
 .clients-page {
-  background-color: var(--light-grey);
-  width: calc(100vw - 125px);
-  /* height: 100vh; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  margin: 1rem auto;
-
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
 }
 
 .container-clients-page {
-  max-width: 100vw;
+  width: 1120px;
+  margin: 33px auto;
+}
+
+.menu-clientes {
   display: flex;
+  width: 1120px;
+  height: 45px;
+  align-items: center;
   justify-content: space-between;
-  margin: 3rem;
 }
 
 .clients-page-icon,
@@ -25,7 +29,7 @@
 }
 
 .clients-page-icon span {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 26px;
   font-weight: 600;
 }
@@ -43,7 +47,7 @@
   display: flex;
 
   color: var(--light-grey);
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
   white-space: nowrap;
 }
@@ -58,7 +62,7 @@
   border-radius: 10px;
 
   color: #747488;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
 }
 

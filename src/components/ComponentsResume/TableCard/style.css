@@ -4,6 +4,12 @@
   border-radius: 30px;
 }
 
+.format-values {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .footer-table,
 .title-table {
   width: 360px;
@@ -64,6 +70,13 @@
 }
 .head-card-table-card-value span.overdue {
   color: var(--red-overdue);
+}
+
+.table-card {
+  padding: 100px 150px;
+}
+.circular-progress {
+  position: absolute;
 }
 
 .footer-table {

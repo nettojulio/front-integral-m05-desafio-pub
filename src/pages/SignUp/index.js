@@ -16,7 +16,6 @@ function SignUp() {
       {!togglePage && <SignupHome />}
       {togglePage === "signupPassword" && <SignupPassword />}
       {togglePage === "signupDone" && <SignupDone />}
-
       <ToastAlert />
     </div>
   );

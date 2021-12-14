@@ -32,14 +32,11 @@ const NavBar = () => {
     adjustName(userData);
   }, [userData]);
 
-  /*TESTE*/
   function adjustName(userName) {
-    /*TO DO - Não carrega ao acessar endereço manualmente*/
     if (!userName) {
       setDisplay({ avatar: "", complete: "" });
       return;
     }
-    /*TO DO - Não carrega ao acessar endereço manualmente*/
 
     if (userName.nome.includes(" ")) {
       const names = userName.nome.split(" ");
@@ -67,9 +64,8 @@ const NavBar = () => {
       <div className="navbar-info">
         <h1
           onClick={() => setOpenClientDetail(false)}
-          className={
-            changePages === "resume" ? '' : 'title-client'
-          }>
+          className={changePages === "resume" ? "" : "title-client"}
+        >
           {changePages === "resume"
             ? "Resumo das cobranças"
             : changePages === "client"
@@ -92,9 +88,9 @@ const NavBar = () => {
               onClick={(e) => handleModalOptions(e)}
               src={arrowDown}
               alt="Arrow Down"
+              /*Mudar Alt*/
               className="userOptionsGateway"
             />
-            {/* TESTE */}
             {openOptions && (
               <div className="userOptions">
                 <div className="arrowUpUserOptions"></div>
@@ -114,7 +110,6 @@ const NavBar = () => {
                 </div>
               </div>
             )}
-            {/* TESTE */}
           </div>
         </div>
       </div>

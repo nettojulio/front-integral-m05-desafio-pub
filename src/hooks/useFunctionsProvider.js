@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
+import useGlobal from './useGlobal'
 
 export default function useFunctionProvider() {
   let navigate = useNavigate();
@@ -19,6 +20,10 @@ export default function useFunctionProvider() {
   const [userData, setUserData] = useState("");
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
+
+  const { setSearchClient, setCardNotFound, setInputValue, setOpenDeleteModal } = useGlobal();
+  const [currentCharge, setCurrentCharge] = useState({});
+
   function handleClose() {
     setOpen(false);
   }
@@ -162,7 +167,7 @@ export default function useFunctionProvider() {
         throw new Error(result);
       }
 
-      console.log(result);
+      return result;
     } catch (error) {
       console.log(error.message);
     }
@@ -234,8 +239,60 @@ export default function useFunctionProvider() {
       if (!response.ok) {
         throw new Error(result);
       }
+    } catch (error) {
+      setOpen(true);
+      setStateAlert("error");
+      setMessageAlert(error.message);
+      return error.message
+    }
+  }
 
-      console.log(result);
+  async function editBillings(body, id) {
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/cobrancas/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      // console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async function deleteBillings(id) {
+    try {
+      const response = await fetch(
+        `https://api-teste-desafio.herokuapp.com/cobrancas/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      // console.log(result);
     } catch (error) {
       console.log(error.message);
     }
@@ -252,6 +309,39 @@ export default function useFunctionProvider() {
   function handleLogout() {
     removeToken();
     navigate("signin");
+  }
+
+  function handleSearch(e) {
+    setInputValue(e.target.value);
+  }
+
+  function handleResetFilter() {
+    setSearchClient(clientData);
+    setCardNotFound(false);
+  }
+
+  function handleDeleteCharge(charge) {
+    setOpenDeleteModal(true);
+    setCurrentCharge(charge);
+  }
+
+  function handleConfirmDeleteCharge(charge) {
+    if (charge.situacao === "Paga" || charge.situacao === "Vencida") {
+      setOpenDeleteModal(false);
+      setOpen(true);
+      setStateAlert("error");
+      setMessageAlert(
+        `Esta cobrança não pode ser excluída! Status: "${charge.situacao}" `
+      );
+      return;
+    }
+
+    deleteBillings(charge.id);
+    loadAllBillings();
+    setOpenDeleteModal(false);
+    setOpen(true);
+    setStateAlert("success");
+    setMessageAlert("Cobrança excluída com sucesso");
   }
 
   return {
@@ -284,5 +374,15 @@ export default function useFunctionProvider() {
     loadAllClients,
     preloadEmail,
     formatToDate,
+    setClientData,
+    setChargeData,
+    editBillings,
+    deleteBillings,
+    handleSearch,
+    handleResetFilter,
+    currentCharge,
+    setCurrentCharge,
+    handleDeleteCharge,
+    handleConfirmDeleteCharge,
   };
 }
