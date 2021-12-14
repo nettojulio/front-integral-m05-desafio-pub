@@ -406,8 +406,8 @@ function EditClientModal() {
                     id="uf"
                     type="text"
                     name="uf"
-                    placeholder="Digite seu UF"
-                    value={formEditUserModalInputs.estado}
+                    placeholder="Digite a UF"
+                    value={formEditUserModalInputs.uf}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
                   />
