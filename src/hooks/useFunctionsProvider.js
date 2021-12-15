@@ -28,6 +28,8 @@ export default function useFunctionProvider() {
     setOpenDeleteModal,
     setOpenDetailChargeModal,
     setOpenEditChargeModal,
+    clientDetailData,
+    searchCharge,
   } = useGlobal();
   const [currentCharge, setCurrentCharge] = useState({});
 
@@ -356,7 +358,9 @@ export default function useFunctionProvider() {
     }
 
     deleteBillings(charge.id);
-    loadAllBillings();
+    clientDetailData.cobrancas && clientDetailData.cobrancas.splice(clientDetailData.cobrancas.indexOf(clientDetailData.cobrancas.find((item) => item.id === charge.id)),1);
+    searchCharge.splice(searchCharge.indexOf(searchCharge.find((item) => item.id === charge.id)),1);
+    loadAllClients();
     setOpenDeleteModal(false);
     setOpen(true);
     setStateAlert("success");
