@@ -86,3 +86,8 @@
 
   color: var(--green);
 }
+
+.div-details{
+  background-color: hotpink;
+  cursor: pointer;
+}
