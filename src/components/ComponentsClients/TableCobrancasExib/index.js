@@ -16,8 +16,14 @@ import { useEffect } from "react";
 import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
 
 function TableCobrancasExib({ cardNotFound }) {
-  const { loadAllBillings, loadAllClients, chargeData, handleDeleteCharge, handleDetailCharge } =
-    useFunctions();
+  const {
+    loadAllBillings,
+    loadAllClients,
+    chargeData,
+    handleDeleteCharge,
+    handleDetailCharge,
+    handleEditCharge,
+  } = useFunctions();
   const {
     openFilteredCard,
     openDeleteModal,
@@ -27,11 +33,13 @@ function TableCobrancasExib({ cardNotFound }) {
     filter,
     setFilter,
     searchCharge,
+    setClientDetailData,
   } = useGlobal();
 
   useEffect(() => {
     openFilteredCard && loadAllBillings();
     loadAllClients();
+    setClientDetailData(false);
     // eslint-disable-next-line
   }, []);
 
@@ -169,7 +177,10 @@ function TableCobrancasExib({ cardNotFound }) {
                       </TableCell>
                       <TableCell className="div-details" onClick={() => handleDetailCharge(charge)} align="left">{charge.descricao}</TableCell>
                       <TableCell>
-                        <div className="container-icon-editar">
+                        <div
+                          onClick={() => handleEditCharge(charge)}
+                          className="container-icon-editar"
+                        >
                           <img
                             src={editarIcon}
                             className="icone-editar"

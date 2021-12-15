@@ -8,7 +8,7 @@ function ToastAlert() {
   return (
     <Snackbar
       open={open}
-      autoHideDuration={4000}
+      autoHideDuration={2000}
       onClose={handleClose}
       sx={{ width: "50%" }}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
