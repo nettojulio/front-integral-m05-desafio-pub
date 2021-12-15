@@ -16,7 +16,7 @@ import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
 import ToastAlert from "../../../components/ComponentsGlobal/ToastAlert";
 
 function ClientDetailTable() {
-  const { clientDetailData, openDeleteModal } = useGlobal();
+  const { clientDetailData, openDeleteModal, orderClient, setOrderClient, filter, setFilter } = useGlobal();
   const { loadAllBillings, handleDeleteCharge, handleEditCharge } =
     useFunctions();
 
@@ -24,6 +24,50 @@ function ClientDetailTable() {
     loadAllBillings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientDetailData]);
+
+
+  useEffect(() => {
+    if (filter === "dataVenc") {
+      orderClient === "asc" ? handleOrderAsc() : handleOrderDesc();
+    }
+    if (filter === "idCob") {
+      orderClient === "asc" ? handleOrderAsc() : handleOrderDesc();
+    }
+    // eslint-disable-next-line
+  }, [filter, orderClient]);
+
+  function handleOrderAsc() {
+    clientDetailData.cobrancas.sort((a, b) => orderColumnAsc(a, b, filter));
+  }
+
+  function handleOrderDesc() {
+    clientDetailData.cobrancas.sort((a, b) => orderColumnDesc(a, b, filter));
+  }
+
+  function handleChangeFilter(type) {
+    setFilter(type);
+    setOrderClient(orderClient === "asc" ? "desc" : "asc");
+  }
+
+  function orderColumnAsc(a, b, by) {
+    if (by === "dataVenc") {
+      return new Date(a.data_vencimento) - new Date(b.data_vencimento);
+    }
+
+    if (by === "idCob") {
+      return [a.id] - [b.id];
+    }
+  }
+
+  function orderColumnDesc(a, b, by) {
+    if (by === "dataVenc") {
+      return new Date(b.data_vencimento) - new Date(a.data_vencimento);
+    }
+
+    if (by === "idCob") {
+      return [b.id] - [a.id];
+    }
+  }
 
   return (
     <div>
@@ -38,13 +82,13 @@ function ClientDetailTable() {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <div className="table-filter">
+                  <div onClick={() => handleChangeFilter("idCob")} className="cursor-pointer table-filter">
                     <img src={sort} alt="Filter" />
                     <span>ID Cob.</span>
                   </div>
                 </TableCell>
                 <TableCell>
-                  <div className="table-filter">
+                  <div onClick={() => handleChangeFilter("dataVenc")} className="cursor-pointer table-filter">
                     <img src={sort} alt="Filter" />
                     <span>Data de venc.</span>
                   </div>
@@ -80,13 +124,12 @@ function ClientDetailTable() {
                   </TableCell>
                   <TableCell align="left">
                     <div
-                      className={`table-status ${
-                        client.situacao === "Paga"
-                          ? "paid"
-                          : client.situacao === "Pendente"
+                      className={`table-status ${client.situacao === "Paga"
+                        ? "paid"
+                        : client.situacao === "Pendente"
                           ? "expected"
                           : "overdue"
-                      }`}
+                        }`}
                     >
                       {client.situacao}
                     </div>
