@@ -27,6 +27,7 @@ export default function useFunctionProvider() {
     setInputValue,
     setOpenDeleteModal,
     setOpenEditChargeModal,
+    setOpenDetailChargeModal,
   } = useGlobal();
   const [currentCharge, setCurrentCharge] = useState({});
 
@@ -334,9 +335,11 @@ export default function useFunctionProvider() {
     setCurrentCharge(charge);
   }
 
-  function handleDetailCharge(charge){
+  function handleDetailCharge(charge) {
     setOpenDetailChargeModal(true);
     setCurrentCharge(charge);
+  }
+
   function handleEditCharge(charge, id_cliente) {
     setOpenEditChargeModal(true);
     setCurrentCharge({ ...charge, id_cliente });
