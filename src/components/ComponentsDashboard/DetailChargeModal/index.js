@@ -2,6 +2,7 @@ import "./style.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 import billings from "../../../assets/billings.svg";
+import close from "../../../assets/closeIcon.svg";
 
 
 function DetailChargeModal() {

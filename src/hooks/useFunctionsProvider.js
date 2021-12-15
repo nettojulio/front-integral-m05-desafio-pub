@@ -26,6 +26,7 @@ export default function useFunctionProvider() {
     setCardNotFound,
     setInputValue,
     setOpenDeleteModal,
+    setOpenDetailChargeModal,
     setOpenEditChargeModal,
   } = useGlobal();
   const [currentCharge, setCurrentCharge] = useState({});
@@ -337,6 +338,7 @@ export default function useFunctionProvider() {
   function handleDetailCharge(charge){
     setOpenDetailChargeModal(true);
     setCurrentCharge(charge);
+  }
   function handleEditCharge(charge, id_cliente) {
     setOpenEditChargeModal(true);
     setCurrentCharge({ ...charge, id_cliente });
