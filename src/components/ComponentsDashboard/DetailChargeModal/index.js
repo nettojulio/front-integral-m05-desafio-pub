@@ -2,29 +2,23 @@ import "./style.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 import billings from "../../../assets/billings.svg";
-
+import close from "../../../assets/closeIcon.svg";
 
 function DetailChargeModal() {
   const { setOpenDetailChargeModal } = useGlobal();
-  const { currentCharge} = useFunctions();
+  // const { currentCharge} = useFunctions();
 
   return (
     <div className="container-detail-charge-modal">
-        
-          <div className="close-modal">
-            <img
-              src={close}
-              alt="Fechar modal"
-              onClick={() => setOpenDetailChargeModal(false)}
-            />
-          </div>
-          <img 
-          className="billingsIcon"
-          src={billings} 
-          alt="Icone de Clientes" />
-          <span>Detalhes da Cobrança</span>
-          
-       
+      <div className="close-modal">
+        <img
+          src={close}
+          alt="Fechar modal"
+          onClick={() => setOpenDetailChargeModal(false)}
+        />
+      </div>
+      <img className="billingsIcon" src={billings} alt="Icone de Clientes" />
+      <span>Detalhes da Cobrança</span>
     </div>
   );
 }
