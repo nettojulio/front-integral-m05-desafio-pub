@@ -16,8 +16,13 @@ import { useEffect } from "react";
 import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
 
 function TableCobrancasExib({ cardNotFound }) {
-  const { loadAllBillings, loadAllClients, chargeData, handleDeleteCharge, handleEditCharge } =
-    useFunctions();
+  const {
+    loadAllBillings,
+    loadAllClients,
+    chargeData,
+    handleDeleteCharge,
+    handleEditCharge,
+  } = useFunctions();
   const {
     openFilteredCard,
     openDeleteModal,
@@ -26,11 +31,13 @@ function TableCobrancasExib({ cardNotFound }) {
     filter,
     setFilter,
     searchCharge,
+    setClientDetailData,
   } = useGlobal();
 
   useEffect(() => {
     openFilteredCard && loadAllBillings();
     loadAllClients();
+    setClientDetailData(false);
     // eslint-disable-next-line
   }, []);
 
@@ -159,8 +166,8 @@ function TableCobrancasExib({ cardNotFound }) {
                             charge.situacao === "Vencida"
                               ? "status-red"
                               : charge.situacao === "Pendente"
-                                ? "status-yellow"
-                                : "status-blue"
+                              ? "status-yellow"
+                              : "status-blue"
                           }
                         >
                           {charge.situacao}

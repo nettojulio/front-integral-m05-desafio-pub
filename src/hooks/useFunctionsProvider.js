@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
-import useGlobal from './useGlobal'
+import useGlobal from "./useGlobal";
 
 export default function useFunctionProvider() {
   let navigate = useNavigate();
@@ -21,7 +21,13 @@ export default function useFunctionProvider() {
   const [clientData, setClientData] = useState([]);
   const [chargeData, setChargeData] = useState([]);
 
-  const { setSearchClient, setCardNotFound, setInputValue, setOpenDeleteModal, setOpenEditChargeModal } = useGlobal();
+  const {
+    setSearchClient,
+    setCardNotFound,
+    setInputValue,
+    setOpenDeleteModal,
+    setOpenEditChargeModal,
+  } = useGlobal();
   const [currentCharge, setCurrentCharge] = useState({});
 
   function handleClose() {
@@ -216,6 +222,7 @@ export default function useFunctionProvider() {
       }
 
       setClientData(result);
+      return result;
     } catch (error) {
       console.log(error.message);
     }
@@ -243,7 +250,7 @@ export default function useFunctionProvider() {
       setOpen(true);
       setStateAlert("error");
       setMessageAlert(error.message);
-      return error.message
+      return error.message;
     }
   }
 
@@ -267,7 +274,9 @@ export default function useFunctionProvider() {
         throw new Error(result);
       }
 
-      // console.log(result);
+      loadAllBillings();
+      loadAllClients();
+      return result;
     } catch (error) {
       console.log(error.message);
     }
@@ -325,9 +334,9 @@ export default function useFunctionProvider() {
     setCurrentCharge(charge);
   }
 
-  function handleEditCharge(charge) {
+  function handleEditCharge(charge, id_cliente) {
     setOpenEditChargeModal(true);
-    setCurrentCharge(charge);
+    setCurrentCharge({ ...charge, id_cliente });
   }
 
   function handleConfirmDeleteCharge(charge) {
