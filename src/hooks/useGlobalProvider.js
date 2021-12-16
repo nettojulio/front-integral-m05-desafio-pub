@@ -14,6 +14,7 @@ function useGlobalProvider() {
   const [chargeModalValue, setChargeModalValue] = useState([]);
   const [openFilteredCard, setOpenFilteredCard] = useState(true);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openDetailChargeModal, setOpenDetailChargeModal] = useState(false);
   const [filter, setFilter] = useState('idCob');
   const [orderClient, setOrderClient] = useState('asc');
   const [orderCharge, setOrderCharge] = useState('asc');
@@ -65,6 +66,8 @@ function useGlobalProvider() {
     setSearchClient,
     value,
     setValue,
+    openDetailChargeModal,
+    setOpenDetailChargeModal,
     cardNotFound,
     setCardNotFound,
     openEditChargeModal,

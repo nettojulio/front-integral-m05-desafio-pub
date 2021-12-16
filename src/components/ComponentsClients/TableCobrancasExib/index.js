@@ -14,6 +14,7 @@ import useFunctions from "../../../hooks/useFunctions";
 import useGlobal from "../../../hooks/useGlobal";
 import { useEffect } from "react";
 import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
+import DetailChargeModal from "../../ComponentsDashboard/DetailChargeModal";
 
 function TableCobrancasExib({ cardNotFound }) {
   const {
@@ -21,11 +22,13 @@ function TableCobrancasExib({ cardNotFound }) {
     loadAllClients,
     chargeData,
     handleDeleteCharge,
+    handleDetailCharge,
     handleEditCharge,
   } = useFunctions();
   const {
     openFilteredCard,
     openDeleteModal,
+    openDetailChargeModal,
     orderCharge,
     setOrderCharge,
     filter,
@@ -86,6 +89,7 @@ function TableCobrancasExib({ cardNotFound }) {
 
   return (
     <>
+      {openDetailChargeModal && <DetailChargeModal />}
       {openDeleteModal ? (
         <DeleteChargeModal />
       ) : (
@@ -140,19 +144,36 @@ function TableCobrancasExib({ cardNotFound }) {
                       key={charge.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        className="div-details"
+                        onClick={() => handleDetailCharge(charge)}
+                        component="th"
+                        scope="row"
+                      >
                         {charge.cliente.nome}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell
+                        className="div-details"
+                        onClick={() => handleDetailCharge(charge)}
+                        align="left"
+                      >
                         {`${charge.id}`.padStart(9, 0)}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell
+                        className="div-details"
+                        onClick={() => handleDetailCharge(charge)}
+                        align="left"
+                      >
                         {(charge.valor / 100).toLocaleString("pt-BR", {
                           style: "currency",
                           currency: "BRL",
                         })}
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell
+                        className="div-details"
+                        onClick={() => handleDetailCharge(charge)}
+                        align="left"
+                      >
                         {new Date(charge.data_vencimento).toLocaleDateString(
                           "pt",
                           {
@@ -160,7 +181,11 @@ function TableCobrancasExib({ cardNotFound }) {
                           }
                         )}
                       </TableCell>
-                      <TableCell align="center">
+                      <TableCell
+                        className="div-details"
+                        onClick={() => handleDetailCharge(charge)}
+                        align="center"
+                      >
                         <div
                           className={
                             charge.situacao === "Vencida"
@@ -173,7 +198,13 @@ function TableCobrancasExib({ cardNotFound }) {
                           {charge.situacao}
                         </div>
                       </TableCell>
-                      <TableCell align="left">{charge.descricao}</TableCell>
+                      <TableCell
+                        className="div-details"
+                        onClick={() => handleDetailCharge(charge)}
+                        align="left"
+                      >
+                        {charge.descricao}
+                      </TableCell>
                       <TableCell>
                         <div
                           onClick={() => handleEditCharge(charge)}
@@ -213,5 +244,6 @@ function TableCobrancasExib({ cardNotFound }) {
     </>
   );
 }
+
 
 export default TableCobrancasExib;

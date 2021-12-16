@@ -26,7 +26,10 @@ export default function useFunctionProvider() {
     setCardNotFound,
     setInputValue,
     setOpenDeleteModal,
+    setOpenDetailChargeModal,
     setOpenEditChargeModal,
+    clientDetailData,
+    searchCharge,
   } = useGlobal();
   const [currentCharge, setCurrentCharge] = useState({});
 
@@ -334,6 +337,10 @@ export default function useFunctionProvider() {
     setCurrentCharge(charge);
   }
 
+  function handleDetailCharge(charge) {
+    setOpenDetailChargeModal(true);
+    setCurrentCharge(charge);
+  }
   function handleEditCharge(charge, id_cliente) {
     setOpenEditChargeModal(true);
     setCurrentCharge({ ...charge, id_cliente });
@@ -351,7 +358,9 @@ export default function useFunctionProvider() {
     }
 
     deleteBillings(charge.id);
-    loadAllBillings();
+    clientDetailData.cobrancas && clientDetailData.cobrancas.splice(clientDetailData.cobrancas.indexOf(clientDetailData.cobrancas.find((item) => item.id === charge.id)),1);
+    searchCharge.splice(searchCharge.indexOf(searchCharge.find((item) => item.id === charge.id)),1);
+    loadAllClients();
     setOpenDeleteModal(false);
     setOpen(true);
     setStateAlert("success");
@@ -399,5 +408,6 @@ export default function useFunctionProvider() {
     handleDeleteCharge,
     handleEditCharge,
     handleConfirmDeleteCharge,
+    handleDetailCharge,
   };
 }

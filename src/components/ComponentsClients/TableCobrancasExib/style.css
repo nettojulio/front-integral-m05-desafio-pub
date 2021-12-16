@@ -86,3 +86,8 @@
 
   color: var(--green);
 }
+
+.div-details{
+  
+  cursor: pointer;
+}
