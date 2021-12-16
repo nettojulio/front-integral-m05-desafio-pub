@@ -84,3 +84,7 @@ button {
 .color-card {
   color: black;
 }
+
+input:focus-visible {
+  outline: none;
+}
