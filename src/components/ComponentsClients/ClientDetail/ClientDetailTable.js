@@ -36,6 +36,11 @@ function ClientDetailTable() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientDetailData]);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d1b9df93eb928da1d3b5b2b6cf60c698fb4777e6
   useEffect(() => {
     if (filter === "dataVenc") {
       orderClient === "asc" ? handleOrderAsc() : handleOrderDesc();
