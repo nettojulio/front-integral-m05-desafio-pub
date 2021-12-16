@@ -14,6 +14,7 @@ import useFunctions from "../../../hooks/useFunctions";
 import useGlobal from "../../../hooks/useGlobal";
 import { useEffect } from "react";
 import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
+import DetailChargeModal from "../../ComponentsDashboard/DetailChargeModal";
 
 function TableCobrancasExib({ cardNotFound }) {
   const {
@@ -27,7 +28,7 @@ function TableCobrancasExib({ cardNotFound }) {
   const {
     openFilteredCard,
     openDeleteModal,
-    // openDetailChargeModal,
+    openDetailChargeModal,
     orderCharge,
     setOrderCharge,
     filter,
@@ -88,6 +89,7 @@ function TableCobrancasExib({ cardNotFound }) {
 
   return (
     <>
+      {openDetailChargeModal && <DetailChargeModal />}
       {openDeleteModal ? (
         <DeleteChargeModal />
       ) : (
@@ -242,5 +244,6 @@ function TableCobrancasExib({ cardNotFound }) {
     </>
   );
 }
+
 
 export default TableCobrancasExib;
