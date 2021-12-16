@@ -7,8 +7,10 @@ import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
+import { useNavigate } from "react-router-dom";
 
 function EditChargeModal() {
+  const navigate = useNavigate();
   const {
     editBillings,
     loadAllClients,
@@ -164,6 +166,7 @@ function EditChargeModal() {
     event.preventDefault();
     handleSubmit();
     setChargeModalValue(formSignupUserModalInputs);
+    navigate('/client')
   }
 
   return (
@@ -218,11 +221,10 @@ function EditChargeModal() {
                   placeholder="Digite a descrição"
                   value={formSignupUserModalInputs.descricao}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputCharge ${
-                    descricaoErrorMessage
-                      ? "chargeErrorSinalization"
-                      : undefined
-                  }
+                  className={`inputCharge ${descricaoErrorMessage
+                    ? "chargeErrorSinalization"
+                    : undefined
+                    }
                   `}
                 />
                 {descricaoErrorMessage && (
@@ -243,11 +245,10 @@ function EditChargeModal() {
                   value={formSignupUserModalInputs.data_vencimento}
                   onChange={(e) => handleChange(e.target)}
                   mask="99/99/9999"
-                  className={`inputCharge ${
-                    vencimentoErrorMessage
-                      ? "chargeErrorSinalization"
-                      : undefined
-                  }`}
+                  className={`inputCharge ${vencimentoErrorMessage
+                    ? "chargeErrorSinalization"
+                    : undefined
+                    }`}
                 />
                 {vencimentoErrorMessage && (
                   <p className="chargeErrorMessage">{vencimentoErrorMessage}</p>

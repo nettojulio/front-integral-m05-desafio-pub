@@ -26,6 +26,7 @@ function ClientDetailTable() {
   }, [clientDetailData]);
 
 
+
   useEffect(() => {
     if (filter === "dataVenc") {
       orderClient === "asc" ? handleOrderAsc() : handleOrderDesc();
