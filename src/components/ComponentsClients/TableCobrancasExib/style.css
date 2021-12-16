@@ -87,7 +87,11 @@
   color: var(--green);
 }
 
-.div-details{
+.div-details {
   background-color: hotpink;
   cursor: pointer;
+}
+
+.div-details:hover {
+  text-decoration: underline;
 }
