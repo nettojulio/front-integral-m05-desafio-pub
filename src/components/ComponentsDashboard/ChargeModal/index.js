@@ -117,14 +117,22 @@ function ChargeModal() {
     formSignupUserModalInputs.data_vencimento = formatToDate(
       formSignupUserModalInputs.data_vencimento
     );
-    const teste = await addBillings(formSignupUserModalInputs, clientDetailData.id);
+    const updateBillings = await addBillings(
+      formSignupUserModalInputs,
+      clientDetailData.id
+    );
     setOpen(true);
     setStateAlert("success");
     setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
     await loadAllClients();
-    teste.situacao = teste.status ? "Paga" : (!teste.status && (+ new Date(teste.data_vencimento) < + new Date()) ? "Vencida" : "Pendente")
-    clientDetailData.cobrancas.push(teste);
+    updateBillings.situacao = updateBillings.status
+      ? "Paga"
+      : !updateBillings.status &&
+        +new Date(updateBillings.data_vencimento) < +new Date()
+        ? "Vencida"
+        : "Pendente";
+    clientDetailData.cobrancas.push(updateBillings);
   }
 
   function handleClearValidations() {

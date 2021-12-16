@@ -10,12 +10,17 @@ import { useEffect } from "react";
 import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
 
 function Charge() {
-  const { setSearchCharge, inputValue, setInputValue, cardNotFound, setCardNotFound } = useGlobal();
+  const {
+    setSearchCharge,
+    inputValue,
+    setInputValue,
+    cardNotFound,
+    setCardNotFound,
+  } = useGlobal();
   const { chargeData, handleResetFilter, handleSearch } = useFunctions();
 
   useEffect(() => {
     setSearchCharge(chargeData);
-    // console.log(chargeData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chargeData]);
 
@@ -24,13 +29,12 @@ function Charge() {
     const cliente = [];
 
     // eslint-disable-next-line
-    chargeData.filter(client => {
-      if (inputValue === '') {
+    chargeData.filter((client) => {
+      if (inputValue === "") {
         setCardNotFound(false);
-        setSearchCharge(chargeData)
+        setSearchCharge(chargeData);
         // eslint-disable-next-line
         return;
-
       } else if (
         client.cliente.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
         client.id.toString().includes(inputValue)
@@ -38,18 +42,10 @@ function Charge() {
         cliente.push(client);
         setCardNotFound(false);
         return setSearchCharge(cliente);
-
-        // } else if (
-        //   (!client.cliente.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
-        //     !client.id.toString().includes(inputValue)) && inputValue !== ''
-        // ) {
-        //   setCardNotFound(true);
-
       } else if (cliente.length === 0) {
         setCardNotFound(true);
       }
       setInputValue("");
-      // setSearchCharge(cliente);
     });
   }
 
