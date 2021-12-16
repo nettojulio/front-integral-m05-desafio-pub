@@ -1,8 +1,7 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #3F3F55;
 }
 
 .containerDetailChargeModal {
@@ -14,8 +13,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 30px
-  
+  padding: 30px;
 }
 
 .backdropDetailChargeModal {
@@ -50,13 +48,11 @@
   z-index: 2;
 }
 
-
 .titleDetailChargeModalTitle {
   display: flex;
   align-items: center;
 
   width: 100%;
-  
 
   font-family: Montserrat;
   font-style: normal;
@@ -64,7 +60,7 @@
   font-size: 26px;
   line-height: 130%;
 
-  padding-left:  50px;
+  padding-left: 50px;
 }
 
 .detailChargeModalTitle {
@@ -83,56 +79,51 @@
   cursor: pointer;
 }
 
-
-.input{
+.input {
   box-shadow: none;
   border: none;
   background-color: transparent;
 }
 
-.descricao{
+.descricao {
   box-shadow: none;
   border: none;
   background-color: transparent;
-
 }
 
-.resto{
+.resto {
   width: 490px;
   height: 332px;
 }
 
-.dados{
+.dados {
   margin-bottom: 24px;
-  
 }
 
-
-.dado-vencimento{
+.dado-vencimento {
   display: flex;
   width: 550px;
-
-  
 }
-.chargenome, .dado-valor, .dado-cobranca, .dado-status, .descricao-label, .vencimento-label{
+.chargenome,
+.dado-valor,
+.dado-cobranca,
+.dado-status,
+.descricao-label,
+.vencimento-label {
   display: flex;
   flex-direction: column;
   font-family: Nunito;
-font-style: normal;
-font-weight: bold;
-font-size: 16px;
-line-height: 24px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.ultimo{
+.ultimo {
   display: flex;
   width: 100px;
 }
 
-.div-id{
+.div-id {
   width: 270px;
 }
-
-
-
-
