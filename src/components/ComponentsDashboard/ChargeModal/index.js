@@ -7,6 +7,7 @@ import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
+import BRLInputMask from '../../ComponentsGlobal/BRLInputMask';
 
 function ChargeModal() {
   const {
@@ -22,7 +23,6 @@ function ChargeModal() {
     setOpenChargeModal,
     clientDetailData,
     setChargeModalValue,
-    // setOpenClientDetail,
   } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
@@ -60,6 +60,7 @@ function ChargeModal() {
       [target.name]: target.value,
     });
   }
+
 
   async function handleSubmit() {
     handleClearValidations();
@@ -104,25 +105,6 @@ function ChargeModal() {
         setVencimentoErrorMessage("Data inválida");
         return;
       }
-
-      // if (checkExpected) {
-      //   setStatusValue(false);
-      // }
-
-      // if (checkExpected) {
-      //   const dateInput = new Date(year, month - 1, day);
-      //   const dateNow = new Date();
-      //   const diff = dateNow - dateInput;
-      //   const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-      //   if (dias <= 0) {
-      //     setStatusValue('pendente');
-      //   } else {
-      //     setStatusValue('vencido');
-      //   }
-      // } else {
-      //   setStatusValue('pago');
-      // }
     }
 
     if (formSignupUserModalInputs.valor <= 0) {
@@ -143,7 +125,6 @@ function ChargeModal() {
     await loadAllClients();
     teste.situacao = teste.status ? "Paga" : (!teste.status && (+ new Date(teste.data_vencimento) < + new Date()) ? "Vencida" : "Pendente")
     clientDetailData.cobrancas.push(teste);
-    // setOpenClientDetail(false);
   }
 
   function handleClearValidations() {
@@ -227,11 +208,10 @@ function ChargeModal() {
                   value={formSignupUserModalInputs.data_vencimento}
                   onChange={(e) => handleChange(e.target)}
                   mask="99/99/9999"
-                  className={`inputCharge ${
-                    vencimentoErrorMessage
-                      ? "chargeErrorSinalization"
-                      : undefined
-                  }`}
+                  className={`inputCharge ${vencimentoErrorMessage
+                    ? "chargeErrorSinalization"
+                    : undefined
+                    }`}
                 />
                 {vencimentoErrorMessage && (
                   <p className="chargeErrorMessage">{vencimentoErrorMessage}</p>
@@ -239,17 +219,32 @@ function ChargeModal() {
               </label>
               <label htmlFor="valor" className="chargeFormLabels split">
                 Valor:*
-                <InputMask
-                  id="valor"
-                  name="valor"
-                  type="number"
-                  placeholder="Digite o valor"
+                {/* <InputMask
+                  mask="R$ 99"
                   value={formSignupUserModalInputs.valor}
                   onChange={(e) => handleChange(e.target)}
                   className={`inputCharge
                     ${valorErrorMessage ? "chargeErrorSinalization" : undefined}
                   `}
+                /> */}
+                <BRLInputMask
+                  value={formSignupUserModalInputs.valor}
+                  onChange={(e) => handleChange(e.target)}
+                  valorErrorMessage={valorErrorMessage}
+                  formSignupUserModalInputs={formSignupUserModalInputs}
+                  setFormSignupUserModalInputs={setFormSignupUserModalInputs}
+
                 />
+                {/* <IntlCurrencyInput
+                  placeholder="Digite o valor"
+                  currency="BRL"
+                  name="valor"
+                  config={currencyConfig}
+                  onChange={handleChangeValue}
+                  className={`inputCharge
+                    ${valorErrorMessage ? "chargeErrorSinalization" : undefined}
+                  `}
+                /> */}
                 {valorErrorMessage && (
                   <p className="chargeErrorMessage">{valorErrorMessage}</p>
                 )}
