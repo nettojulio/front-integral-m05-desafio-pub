@@ -44,9 +44,9 @@ function TableClientsExib({ cardNotFound }) {
 
   useEffect(() => {
     if (orderClient === "asc") {
-      clientData.sort((a, b) => a.nome.localeCompare(b.nome));
+      clientData.sort((a, b) => (a.nome).localeCompare(b.nome));
     } else {
-      clientData.sort((a, b) => b.nome.localeCompare(a.nome));
+      clientData.sort((a, b) => (b.nome).localeCompare(a.nome));
     }
     // eslint-disable-next-line
   }, [orderClient]);

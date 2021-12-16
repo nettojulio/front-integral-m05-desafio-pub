@@ -7,6 +7,7 @@ import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
+import BRLInputMask from '../../ComponentsGlobal/BRLInputMask';
 
 function ChargeModal() {
   const {
@@ -121,7 +122,7 @@ function ChargeModal() {
     setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
     await loadAllClients();
-    updateBillings.situacao = updateBillings.status ? "Paga" : (!updateBillings.status && (+ new Date(updateBillings.data_vencimento) < + new Date()) ? "Vencida" : "Pendente")
+    updateBillings.situacao = updateBillings.status ? "Paga" : (!updateBillings.status && (+ new Date(updateBillings.data_vencimento) < + new Date()) ? "Vencida" : "Pendente");
     clientDetailData.cobrancas.push(updateBillings);
   }
 
@@ -218,16 +219,13 @@ function ChargeModal() {
               </label>
               <label htmlFor="valor" className="chargeFormLabels split">
                 Valor:*
-                <InputMask
-                  id="valor"
-                  name="valor"
-                  type="number"
-                  placeholder="Digite o valor"
+                <BRLInputMask
                   value={formSignupUserModalInputs.valor}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputCharge
-                    ${valorErrorMessage ? "chargeErrorSinalization" : undefined}
-                  `}
+                  valorErrorMessage={valorErrorMessage}
+                  formSignupUserModalInputs={formSignupUserModalInputs}
+                  setFormSignupUserModalInputs={setFormSignupUserModalInputs}
+
                 />
                 {valorErrorMessage && (
                   <p className="chargeErrorMessage">{valorErrorMessage}</p>
