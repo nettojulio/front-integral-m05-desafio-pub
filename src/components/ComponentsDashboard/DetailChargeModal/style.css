@@ -110,7 +110,8 @@
 
 .dado-vencimento{
   display: flex;
-  width: 330px;
+  width: 550px;
+
   
 }
 .chargenome, .dado-valor, .dado-cobranca, .dado-status, .descricao-label, .vencimento-label{
@@ -126,6 +127,10 @@ line-height: 24px;
 .ultimo{
   display: flex;
   width: 100px;
+}
+
+.div-id{
+  width: 270px;
 }
 
 
