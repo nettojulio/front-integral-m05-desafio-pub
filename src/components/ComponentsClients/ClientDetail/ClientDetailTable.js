@@ -16,15 +16,25 @@ import DeleteChargeModal from "../../ComponentsDashboard/DeleteChargeModal";
 import ToastAlert from "../../../components/ComponentsGlobal/ToastAlert";
 
 function ClientDetailTable() {
-  const { clientDetailData, openDeleteModal, orderClient, setOrderClient, filter, setFilter } = useGlobal();
-  const { loadAllBillings, handleDeleteCharge, handleEditCharge } =
-    useFunctions();
+  const {
+    clientDetailData,
+    openDeleteModal,
+    orderClient,
+    setOrderClient,
+    filter,
+    setFilter,
+  } = useGlobal();
+  const {
+    loadAllBillings,
+    handleDeleteCharge,
+    handleEditCharge,
+    handleDetailCharge,
+  } = useFunctions();
 
   useEffect(() => {
     loadAllBillings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientDetailData]);
-
 
   useEffect(() => {
     if (filter === "dataVenc") {
@@ -82,13 +92,19 @@ function ClientDetailTable() {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <div onClick={() => handleChangeFilter("idCob")} className="cursor-pointer table-filter">
+                  <div
+                    onClick={() => handleChangeFilter("idCob")}
+                    className="cursor-pointer table-filter"
+                  >
                     <img src={sort} alt="Filter" />
                     <span>ID Cob.</span>
                   </div>
                 </TableCell>
                 <TableCell>
-                  <div onClick={() => handleChangeFilter("dataVenc")} className="cursor-pointer table-filter">
+                  <div
+                    onClick={() => handleChangeFilter("dataVenc")}
+                    className="cursor-pointer table-filter"
+                  >
                     <img src={sort} alt="Filter" />
                     <span>Data de venc.</span>
                   </div>
@@ -108,28 +124,46 @@ function ClientDetailTable() {
                     textAlign: "center",
                   }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    className="div-details"
+                    onClick={() => handleDetailCharge(client)}
+                  >
                     {`${client.id}`.padStart(9, 0)}
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell
+                    align="left"
+                    className="div-details"
+                    onClick={() => handleDetailCharge(client)}
+                  >
                     {new Date(client.data_vencimento).toLocaleDateString("pt", {
                       timeZone: "UTC",
                     })}
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell
+                    align="left"
+                    className="div-details"
+                    onClick={() => handleDetailCharge(client)}
+                  >
                     {(client.valor / 100).toLocaleString("pt-BR", {
                       style: "currency",
                       currency: "BRL",
                     })}
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell
+                    align="left"
+                    className="div-details"
+                    onClick={() => handleDetailCharge(client)}
+                  >
                     <div
-                      className={`table-status ${client.situacao === "Paga"
-                        ? "paid"
-                        : client.situacao === "Pendente"
+                      className={`table-status ${
+                        client.situacao === "Paga"
+                          ? "paid"
+                          : client.situacao === "Pendente"
                           ? "expected"
                           : "overdue"
-                        }`}
+                      }`}
                     >
                       {client.situacao}
                     </div>
@@ -141,6 +175,8 @@ function ClientDetailTable() {
                       overflow: "hidden",
                       whiteSpace: "nowrap",
                     }}
+                    className="div-details"
+                    onClick={() => handleDetailCharge(client)}
                   >
                     {client.descricao}
                   </TableCell>
