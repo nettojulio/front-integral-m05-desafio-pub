@@ -7,10 +7,7 @@ import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
-import { useNavigate } from "react-router-dom";
-
 function EditChargeModal() {
-  const navigate = useNavigate();
   const {
     editBillings,
     loadAllClients,
@@ -166,7 +163,6 @@ function EditChargeModal() {
     event.preventDefault();
     handleSubmit();
     setChargeModalValue(formSignupUserModalInputs);
-    navigate('/client')
   }
 
   return (

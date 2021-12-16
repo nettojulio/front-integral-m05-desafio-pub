@@ -14,8 +14,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 function TableCard({ title, bgColor, situation, total }) {
 
   const { setChargeData } = useFunctions();
-  const { setOpenFilteredCard, setValue } = useGlobal();
+  const { setOpenFilteredCard, setValue, loader, setLoader } = useGlobal();
   const navigate = useNavigate();
+
+  const clearLoad = setTimeout(() => {
+    setLoader(false);
+    clearInterval(clearLoad)
+  }, 2000)
 
   function handlePage() {
     setOpenFilteredCard(false);
@@ -49,7 +54,7 @@ function TableCard({ title, bgColor, situation, total }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {situation.length === 0
+            {loader
               ? <div className="table-card circular-progress"><CircularProgress sx={{ color: 'var(--pink)' }} /></div>
               : situation.map((row) => (
                 <TableRow
