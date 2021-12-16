@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
 import closeIcon from "../../../assets/closeIcon.svg";
 import billings from "../../../assets/billings.svg";
@@ -7,30 +7,38 @@ import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
+import { useNavigate } from "react-router-dom";
 
-function ChargeModal() {
+function EditChargeModal() {
+  const navigate = useNavigate();
   const {
-    addBillings,
+    editBillings,
+    loadAllClients,
     formatToDate,
     setOpen,
     setMessageAlert,
     setStateAlert,
-    loadAllClients,
+    currentCharge,
   } = useFunctions();
   const {
-    openChargeModal,
-    setOpenChargeModal,
+    openEditChargeModal,
+    setOpenEditChargeModal,
     clientDetailData,
+    setClientDetailData,
     setChargeModalValue,
-    // setOpenClientDetail,
+    setOpenClientDetail,
   } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
   const initialForm = {
-    descricao: "",
-    data_vencimento: "",
-    valor: "",
-    status: true,
+    descricao: currentCharge.descricao,
+    data_vencimento: new Date(currentCharge.data_vencimento).toLocaleDateString(
+      "pt",
+      {
+        timeZone: "UTC",
+      }
+    ),
+    valor: currentCharge.valor / 100,
   };
 
   const [checkPaid, setCheckPaid] = useState(true);
@@ -40,6 +48,17 @@ function ChargeModal() {
   const [descricaoErrorMessage, setDescricaoErrorMessage] = useState("");
   const [vencimentoErrorMessage, setVencimentoErrorMessage] = useState("");
   const [valorErrorMessage, setValorErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (currentCharge.status) {
+      setCheckPaid(true);
+      setCheckExpected(false);
+    } else {
+      setCheckPaid(false);
+      setCheckExpected(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function handleCheckPaid() {
     setCheckPaid(true);
@@ -104,25 +123,6 @@ function ChargeModal() {
         setVencimentoErrorMessage("Data inválida");
         return;
       }
-
-      // if (checkExpected) {
-      //   setStatusValue(false);
-      // }
-
-      // if (checkExpected) {
-      //   const dateInput = new Date(year, month - 1, day);
-      //   const dateNow = new Date();
-      //   const diff = dateNow - dateInput;
-      //   const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-      //   if (dias <= 0) {
-      //     setStatusValue('pendente');
-      //   } else {
-      //     setStatusValue('vencido');
-      //   }
-      // } else {
-      //   setStatusValue('pago');
-      // }
     }
 
     if (formSignupUserModalInputs.valor <= 0) {
@@ -135,15 +135,25 @@ function ChargeModal() {
     formSignupUserModalInputs.data_vencimento = formatToDate(
       formSignupUserModalInputs.data_vencimento
     );
-    const teste = await addBillings(formSignupUserModalInputs, clientDetailData.id);
+    editBillings(formSignupUserModalInputs, currentCharge.id);
+
+    if (clientDetailData) {
+      const allClients = await loadAllClients();
+      const attClient = allClients.filter(
+        (client) => client.id === currentCharge.id_cliente
+      );
+
+      if (clientDetailData === attClient[0]) {
+        setOpenClientDetail(false);
+      } else {
+        setClientDetailData(attClient[0]);
+      }
+    }
+
     setOpen(true);
     setStateAlert("success");
-    setMessageAlert("Cobrança cadastrada com sucesso");
-    setOpenChargeModal(false);
-    await loadAllClients();
-    teste.situacao = teste.status ? "Paga" : (!teste.status && (+ new Date(teste.data_vencimento) < + new Date()) ? "Vencida" : "Pendente")
-    clientDetailData.cobrancas.push(teste);
-    // setOpenClientDetail(false);
+    setMessageAlert("Cobrança editada com sucesso");
+    setOpenEditChargeModal(false);
   }
 
   function handleClearValidations() {
@@ -156,26 +166,27 @@ function ChargeModal() {
     event.preventDefault();
     handleSubmit();
     setChargeModalValue(formSignupUserModalInputs);
+    navigate('/client')
   }
 
   return (
-    openChargeModal && (
-      <div className="containerChargeModal">
-        <div className="backdropChargeModal" />
-        <div className="chargeModal">
-          <div className="titleChargeModalContainer">
-            <div className="titleChargeModalTitle">
+    openEditChargeModal && (
+      <div className="containerEditChargeModal">
+        <div className="backdropEditChargeModal" />
+        <div className="editChargeModal">
+          <div className="titleEditChargeModalContainer">
+            <div className="titleEditChargeModalTitle">
               <img
                 className="billingsIcon"
                 src={billings}
                 alt="Ícone de Clientes"
               />
-              <span className="chargeModalTitle">Cadastro de Cobrança</span>
+              <span className="editChargeModalTitle">Edição de Cobrança</span>
             </div>
 
-            <div className="closeChargeModal">
+            <div className="closeEditChargeModal">
               <img
-                onClick={() => setOpenChargeModal(false)}
+                onClick={() => setOpenEditChargeModal(false)}
                 src={closeIcon}
                 alt="Fechar"
               />
@@ -191,23 +202,30 @@ function ChargeModal() {
                   id="nome"
                   type="text"
                   name="nome"
-                  placeholder={clientDetailData.nome}
+                  placeholder={
+                    clientDetailData
+                      ? clientDetailData.nome
+                      : currentCharge.cliente.nome
+                  }
                   className="inputCharge"
-                  readOnly="true"
                 />
               </label>
             </div>
             <div className="chargeFormGroup descricao">
               <label htmlFor="descricao" className="chargeFormLabels">
                 Descrição*
-                <textarea
+                <input
                   id="descricao"
                   type="descricao"
                   name="descricao"
                   placeholder="Digite a descrição"
                   value={formSignupUserModalInputs.descricao}
                   onChange={(e) => handleChange(e.target)}
-                  className="textCharge"
+                  className={`inputCharge ${descricaoErrorMessage
+                    ? "chargeErrorSinalization"
+                    : undefined
+                    }
+                  `}
                 />
                 {descricaoErrorMessage && (
                   <p className="chargeErrorMessage">{descricaoErrorMessage}</p>
@@ -227,11 +245,10 @@ function ChargeModal() {
                   value={formSignupUserModalInputs.data_vencimento}
                   onChange={(e) => handleChange(e.target)}
                   mask="99/99/9999"
-                  className={`inputCharge ${
-                    vencimentoErrorMessage
-                      ? "chargeErrorSinalization"
-                      : undefined
-                  }`}
+                  className={`inputCharge ${vencimentoErrorMessage
+                    ? "chargeErrorSinalization"
+                    : undefined
+                    }`}
                 />
                 {vencimentoErrorMessage && (
                   <p className="chargeErrorMessage">{vencimentoErrorMessage}</p>
@@ -271,7 +288,7 @@ function ChargeModal() {
           </form>
           <div className="splitChargeButtonsContainer">
             <button
-              onClick={() => setOpenChargeModal(false)}
+              onClick={() => setOpenEditChargeModal(false)}
               className="cancelEditChargeChanges"
             >
               Cancelar
@@ -286,4 +303,4 @@ function ChargeModal() {
   );
 }
 
-export default ChargeModal;
+export default EditChargeModal;

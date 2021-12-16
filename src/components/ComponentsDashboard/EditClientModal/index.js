@@ -24,9 +24,10 @@ function EditClientModal() {
     cep: clientDetailData.cep,
     bairro: clientDetailData.bairro,
     cidade: clientDetailData.cidade,
-    uf: clientDetailData.uf,
+    uf: clientDetailData.estado,
   };
 
+  console.log(clientDetailData);
   const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
@@ -402,12 +403,13 @@ function EditClientModal() {
                   className="editClientFormLabels split ufForm"
                 >
                   UF
-                  <input
+                  <InputMask
                     id="uf"
                     type="text"
                     name="uf"
-                    placeholder="Digite sua UF"
-                    value={formEditUserModalInputs.uf}
+                    mask="aa"
+                    placeholder="Digite a UF"
+                    value={formEditUserModalInputs.uf.trim()}
                     onChange={(e) => handleChange(e.target)}
                     className="inputEditClient"
                   />

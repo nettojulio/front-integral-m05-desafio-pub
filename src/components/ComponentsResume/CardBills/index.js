@@ -1,8 +1,8 @@
-import './style.css';
+import "./style.css";
 function CardBills({ bgColor, title, img, value }) {
   return (
     <div className="container-card-bills">
-      <div className={`card-bills ${bgColor}`} >
+      <div className={`card-bills ${bgColor}`}>
         <img src={img} alt={`${bgColor} bills`} />
         <div className="info-card-bills">
           <h3 className="paid-bills color-card">{title}</h3>
@@ -10,7 +10,7 @@ function CardBills({ bgColor, title, img, value }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default CardBills;

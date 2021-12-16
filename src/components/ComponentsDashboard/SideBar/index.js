@@ -49,8 +49,7 @@ function a11yProps(index) {
 
 export default function SideBar() {
   const navigate = useNavigate();
-  const [value, setValue] = React.useState(0);
-  const { setChangePages, setOpenClientDetail } = useGlobal();
+  const { setChangePages, setOpenClientDetail, value, setValue } = useGlobal();
 
   React.useEffect(() => {
     let path = window.location.pathname;
@@ -61,6 +60,7 @@ export default function SideBar() {
       setValue(0);
     else if (path === "/client" && value !== 1) setValue(1);
     else if (path === "/charge" && value !== 2) setValue(2);
+    // eslint-disable-next-line
   }, [value]);
 
   const handleChange = (event, newValue) => {

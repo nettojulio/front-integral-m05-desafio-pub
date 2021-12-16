@@ -68,6 +68,10 @@
   color: var(--green-paid);
 }
 
+.table-card-clients {
+  padding: 120px 250px;
+}
+
 .footer-table-clients {
   display: flex;
   align-items: center;

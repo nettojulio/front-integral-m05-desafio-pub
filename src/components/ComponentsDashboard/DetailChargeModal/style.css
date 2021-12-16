@@ -1,0 +1,138 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #3F3F55;
+}
+
+.containerDetailChargeModal {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 30px
+  
+}
+
+.backdropDetailChargeModal {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: rgba(145, 154, 150, 0.3);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1;
+}
+
+.detailChargeModal {
+  position: relative;
+  width: 600px;
+  height: 461px;
+
+  background: #ffffff;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+
+.titleDetailChargeModalTitle {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 130%;
+
+  padding-left:  50px;
+}
+
+.detailChargeModalTitle {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 130%;
+
+  color: #3f3f55;
+}
+
+.closeDetailChargeModal {
+  margin-top: 25px;
+  margin-left: 500px;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+
+.input{
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+.descricao{
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+
+}
+
+.resto{
+  width: 490px;
+  height: 332px;
+}
+
+.dados{
+  margin-bottom: 24px;
+  
+}
+
+
+.dado-vencimento{
+  display: flex;
+  width: 550px;
+
+  
+}
+.chargenome, .dado-valor, .dado-cobranca, .dado-status, .descricao-label, .vencimento-label{
+  display: flex;
+  flex-direction: column;
+  font-family: Nunito;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 24px;
+}
+
+.ultimo{
+  display: flex;
+  width: 100px;
+}
+
+.div-id{
+  width: 270px;
+}
+
+
+
+

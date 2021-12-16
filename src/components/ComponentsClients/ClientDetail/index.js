@@ -1,12 +1,12 @@
 import "./style.css";
 import customerScreen from "../../../assets/customerScreen.svg";
-import ClientDetailData from './ClientDetailData';
-import ClientDetailCharge from './ClientDetailCharge';
-// import useFunctions from "../../../hooks/useFunctions";
+import ClientDetailData from "./ClientDetailData";
+import ClientDetailCharge from "./ClientDetailCharge";
 import useGlobal from "../../../hooks/useGlobal";
+import DetailChargeModal from "../../ComponentsDashboard/DetailChargeModal";
 
 function Client() {
-  const { clientDetailData } = useGlobal();
+  const { clientDetailData, openDetailChargeModal } = useGlobal();
 
   return (
     <div className="client-page">
@@ -16,6 +16,7 @@ function Client() {
       </div>
       <ClientDetailData />
       <ClientDetailCharge />
+      {openDetailChargeModal && <DetailChargeModal />}
     </div>
   );
 }
