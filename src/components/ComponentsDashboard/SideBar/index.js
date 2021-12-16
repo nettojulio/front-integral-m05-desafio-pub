@@ -50,9 +50,9 @@ function a11yProps(index) {
 export default function SideBar() {
   const navigate = useNavigate();
   const { setChangePages, setOpenClientDetail, value, setValue } = useGlobal();
+  let path = window.location.pathname;
 
   React.useEffect(() => {
-    let path = window.location.pathname;
     if (
       (path === "/resume" || path === "/" || path === "/dashboard") &&
       value !== 0
@@ -60,8 +60,8 @@ export default function SideBar() {
       setValue(0);
     else if (path === "/client" && value !== 1) setValue(1);
     else if (path === "/charge" && value !== 2) setValue(2);
-    // eslint-disable-next-line
-  }, [value]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [path]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

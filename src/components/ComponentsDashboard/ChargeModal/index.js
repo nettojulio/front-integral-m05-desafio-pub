@@ -22,7 +22,6 @@ function ChargeModal() {
     setOpenChargeModal,
     clientDetailData,
     setChargeModalValue,
-    // setOpenClientDetail,
   } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
@@ -104,25 +103,6 @@ function ChargeModal() {
         setVencimentoErrorMessage("Data inválida");
         return;
       }
-
-      // if (checkExpected) {
-      //   setStatusValue(false);
-      // }
-
-      // if (checkExpected) {
-      //   const dateInput = new Date(year, month - 1, day);
-      //   const dateNow = new Date();
-      //   const diff = dateNow - dateInput;
-      //   const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-      //   if (dias <= 0) {
-      //     setStatusValue('pendente');
-      //   } else {
-      //     setStatusValue('vencido');
-      //   }
-      // } else {
-      //   setStatusValue('pago');
-      // }
     }
 
     if (formSignupUserModalInputs.valor <= 0) {
@@ -135,15 +115,22 @@ function ChargeModal() {
     formSignupUserModalInputs.data_vencimento = formatToDate(
       formSignupUserModalInputs.data_vencimento
     );
-    const updateBillings = await addBillings(formSignupUserModalInputs, clientDetailData.id);
+    const updateBillings = await addBillings(
+      formSignupUserModalInputs,
+      clientDetailData.id
+    );
     setOpen(true);
     setStateAlert("success");
     setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
     await loadAllClients();
-    updateBillings.situacao = updateBillings.status ? "Paga" : (!updateBillings.status && (+ new Date(updateBillings.data_vencimento) < + new Date()) ? "Vencida" : "Pendente")
+    updateBillings.situacao = updateBillings.status
+      ? "Paga"
+      : !updateBillings.status &&
+        +new Date(updateBillings.data_vencimento) < +new Date()
+      ? "Vencida"
+      : "Pendente";
     clientDetailData.cobrancas.push(updateBillings);
-    // setOpenClientDetail(false);
   }
 
   function handleClearValidations() {

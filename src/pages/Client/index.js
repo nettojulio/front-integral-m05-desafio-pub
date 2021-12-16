@@ -24,7 +24,6 @@ function Client() {
 
   useEffect(() => {
     setSearchClient(clientData);
-    // console.log(clientData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientData]);
 
@@ -39,13 +38,6 @@ function Client() {
         setSearchClient(clientData);
         // eslint-disable-next-line
         return;
-      // } else if (
-      //   (!client.nome.toLowerCase().includes(inputValue.toLowerCase()) &&
-      //     !client.cpf.toString().includes(inputValue) &&
-      //     !client.email.includes(inputValue)) &&
-      //   inputValue !== ""
-      // ) {
-      //   setCardNotFound(true);
       } else if (
         client.nome.toLowerCase().includes(inputValue.toLowerCase()) ||
         client.cpf.toString().includes(inputValue) ||
@@ -54,7 +46,7 @@ function Client() {
         setCardNotFound(false);
         cliente.push(client);
         return setSearchClient(cliente);
-      } else if (cliente.length === 0){
+      } else if (cliente.length === 0) {
         setCardNotFound(true);
       }
       setInputValue("");
