@@ -12,6 +12,18 @@ function useGlobalProvider() {
   const [openOptions, setOpenOptions] = useState(false);
   const [clientDetailData, setClientDetailData] = useState([]);
   const [chargeModalValue, setChargeModalValue] = useState([]);
+  const [openFilteredCard, setOpenFilteredCard] = useState(true);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openDetailChargeModal, setOpenDetailChargeModal] = useState(false);
+  const [filter, setFilter] = useState('idCob');
+  const [orderClient, setOrderClient] = useState('asc');
+  const [orderCharge, setOrderCharge] = useState('asc');
+  const [searchCharge, setSearchCharge] = useState([]);
+  const [searchClient, setSearchClient] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [value, setValue] = useState(0);
+  const [cardNotFound, setCardNotFound] = useState(false);
+  const [openEditChargeModal, setOpenEditChargeModal] = useState(false);
 
   return {
     signupPassword,
@@ -35,7 +47,31 @@ function useGlobalProvider() {
     clientDetailData,
     setClientDetailData,
     chargeModalValue,
-    setChargeModalValue
+    setChargeModalValue,
+    openFilteredCard,
+    setOpenFilteredCard,
+    openDeleteModal,
+    setOpenDeleteModal,
+    orderClient,
+    setOrderClient,
+    orderCharge,
+    setOrderCharge,
+    filter,
+    setFilter,
+    inputValue,
+    setInputValue,
+    searchCharge,
+    setSearchCharge,
+    searchClient,
+    setSearchClient,
+    value,
+    setValue,
+    openDetailChargeModal,
+    setOpenDetailChargeModal,
+    cardNotFound,
+    setCardNotFound,
+    openEditChargeModal,
+    setOpenEditChargeModal,
   };
 }
 

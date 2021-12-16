@@ -1,0 +1,91 @@
+.container-delete-charge-modal {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+}
+
+.backdrop-delete-charge-modal {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: rgba(145, 154, 150, 0.3);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1;
+}
+
+.card-delete-charge-modal {
+  background-color: #ffffff;
+  display: flex;
+  width: 600px;
+  height: 400px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.4rem;
+  border-radius: 30px;
+}
+
+.close-modal {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+}
+
+.card-delete-charge-modal span {
+  margin: auto;
+  color: #cc7800;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.button-choice {
+  display: flex;
+  align-items: center;
+}
+
+.button-choice {
+  border-radius: 4px;
+}
+
+.button-delete-charge {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 73px;
+  margin-top: 27px;
+}
+
+.button-choice.cancel {
+  margin-right: 51px;
+}
+
+.button-choice.cancel {
+  background-color: #f2d6d0;
+  color: #ae1100;
+}
+
+.button-choice.confirm {
+  background-color: #acd9c5;
+  color: #034a2a;
+}

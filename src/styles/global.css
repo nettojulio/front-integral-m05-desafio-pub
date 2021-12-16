@@ -59,7 +59,8 @@ code {
   cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover,
+.cursor-pointer:hover {
   cursor: pointer;
 }
 
@@ -82,4 +83,8 @@ button {
 
 .color-card {
   color: black;
+}
+
+input:focus-visible {
+  outline: none;
 }

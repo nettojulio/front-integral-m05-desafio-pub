@@ -7,18 +7,22 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import sort from '../../../assets/sortIconHeaders.svg';
+import useFunctions from "../../../hooks/useFunctions";
+import { useNavigate } from "react-router-dom";
+import useGlobal from "../../../hooks/useGlobal";
+import CircularProgress from "@mui/material/CircularProgress";
 
-function TableCardClients({ title, icon, bgColor, txtColor }) {
-  function createData(client, dataValue, value) {
-    return { client, dataValue, value };
+function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
+  const { setClientData } = useFunctions();
+  const { setOpenFilteredCard, setValue } = useGlobal();
+  const navigate = useNavigate();
+
+  function handlePage() {
+    setOpenFilteredCard(false);
+    setClientData(seeAll);
+    navigate("/client");
+    setValue(1);
   }
-  const rows = [
-    createData("Sara Silva", "03/02/2021", "R$ 1000,00"),
-    createData("Carlos Prado", "04/03/2021", "R$ 400,00"),
-    createData("Lara Brito", "21/03/2021", "R$ 900,00"),
-    createData("Soraia Neves", "08/03/2021", "R$ 700,00"),
-  ];
 
   return (
     <div className="container-table-clients">
@@ -29,42 +33,64 @@ function TableCardClients({ title, icon, bgColor, txtColor }) {
             <span className="head-card-table-clients-title">{title}</span>
           </div>
           <div className={`head-card-table-clients-card-value ${bgColor}`}>
-            <span className={bgColor}>08</span>
+            <span className={bgColor}>{String(total).padStart(2, 0)}</span>
           </div>
         </div>
       </div>
 
-      <TableContainer component={Paper} sx={{ width: 556, border: "none", borderRadius: 0, boxShadow: "none " }}>
+      <TableContainer
+        component={Paper}
+        sx={{
+          width: 556,
+          height: 300,
+          overflow: "hidden",
+          border: "none",
+          borderRadius: 0,
+          boxShadow: "none ",
+        }}
+      >
         <Table sx={{ minWidth: 556 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>
-                <img src={sort} alt="Filter" />
-                Cliente
-              </TableCell>
-              <TableCell>Data de Vencimento</TableCell>
-              <TableCell>Valor</TableCell>
+              <TableCell>Cliente</TableCell>
+              <TableCell>ID do Clie.</TableCell>
+              <TableCell>CPF</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.client}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.client}
-                </TableCell>
-                <TableCell align="left">{row.dataValue}</TableCell>
-                <TableCell align="left">{row.value}</TableCell>
-              </TableRow>
-            ))}
+            {seeAll.length === 0 ? (
+              <div className="table-card-clients circular-progress">
+                <CircularProgress sx={{ color: "var(--pink)" }} />
+              </div>
+            ) : (
+              seeAll.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    sx={{ whiteSpace: "nowrap", maxWidth: 100 }}
+                    className="format-values"
+                  >
+                    {row.nome}
+                  </TableCell>
+                  <TableCell className="format-values" align="left">
+                    {String(row.id).padStart(9, 0)}
+                  </TableCell>
+                  <TableCell className="format-values" align="left">
+                    {`${row.cpf.slice(0, 3)}.${row.cpf.slice(3, 6)}.${row.cpf.slice(6, 9)}-${row.cpf.slice(9)}`}
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
           </TableBody>
         </Table>
       </TableContainer>
 
       <div className="footer-table-clients">
-        <span>Ver todos</span>
+        <span onClick={handlePage}>Ver todos</span>
       </div>
     </div>
   );
