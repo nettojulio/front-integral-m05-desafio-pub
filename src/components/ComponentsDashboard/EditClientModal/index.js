@@ -191,9 +191,6 @@ function EditClientModal() {
       );
     }
 
-    if (formEditUserModalInputs.uf.lentgh !== 2) {
-      setUfErrorMessage("Campo inválido")
-    }
 
     const updateUser = {
       nome: formEditUserModalInputs.nome,
@@ -411,18 +408,8 @@ function EditClientModal() {
                     placeholder="Digite a UF"
                     value={formEditUserModalInputs.uf.trim()}
                     onChange={(e) => handleChange(e.target)}
-                    className={`inputEditClient
-                    ${ufErrorMessage
-                        ? "editClientErrorSinalization"
-                        : undefined
-                      }
-                  `}
+                    className="inputEditClient"
                   />
-                  {ufErrorMessage && (
-                    <p className="editClientErrorMessage">
-                      {ufErrorMessage}
-                    </p>
-                  )}
                 </label>
               </div>
             </div>
