@@ -4,11 +4,11 @@ import SignupStatusBar from "../../components/ComponentsSignUp/SignupStatusBar";
 import SignupHome from "../../components/ComponentsSignUp/SignupData/SignupHome";
 import SignupPassword from "../../components/ComponentsSignUp/SignupData/SignupPassword";
 import SignupDone from "../../components/ComponentsSignUp/SignupData/SignupDone";
-import useFunctions from "../../hooks/useFunctions";
+import useGlobal from "../../hooks/useGlobal";
 import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
 
 function SignUp() {
-  const { togglePage } = useFunctions();
+  const { togglePage } = useGlobal();
 
   return (
     <div className="signup">

@@ -7,15 +7,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import useFunctions from "../../../hooks/useFunctions";
 import { useNavigate } from "react-router-dom";
 import useGlobal from "../../../hooks/useGlobal";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
-  const { setClientData } = useFunctions();
-  const { setOpenFilteredCard, setValue } = useGlobal();
+  const { setClientData, setOpenFilteredCard, setValue, loader, setLoader } =
+    useGlobal();
   const navigate = useNavigate();
+
+  const clearLoad = setTimeout(() => {
+    setLoader(false);
+    clearInterval(clearLoad);
+  }, 2000);
 
   function handlePage() {
     setOpenFilteredCard(false);
@@ -58,7 +62,7 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {seeAll.length === 0 ? (
+            {loader ? (
               <div className="table-card-clients circular-progress">
                 <CircularProgress sx={{ color: "var(--pink)" }} />
               </div>
@@ -80,7 +84,10 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
                     {String(row.id).padStart(9, 0)}
                   </TableCell>
                   <TableCell className="format-values" align="left">
-                    {`${row.cpf.slice(0, 3)}.${row.cpf.slice(3, 6)}.${row.cpf.slice(6, 9)}-${row.cpf.slice(9)}`}
+                    {`${row.cpf.slice(0, 3)}.${row.cpf.slice(
+                      3,
+                      6
+                    )}.${row.cpf.slice(6, 9)}-${row.cpf.slice(9)}`}
                   </TableCell>
                 </TableRow>
               ))

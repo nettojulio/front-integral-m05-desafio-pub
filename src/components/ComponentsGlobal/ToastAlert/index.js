@@ -1,9 +1,11 @@
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import useFunctions from "../../../hooks/useFunctions";
+import useGlobal from "../../../hooks/useGlobal";
 
 function ToastAlert() {
-  const { open, handleClose, messageAlert, stateAlert } = useFunctions();
+  const { handleClose } = useFunctions();
+  const { open, messageAlert, stateAlert } = useGlobal();
 
   return (
     <Snackbar

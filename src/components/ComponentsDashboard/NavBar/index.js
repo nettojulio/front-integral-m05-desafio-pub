@@ -8,13 +8,13 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useState, useEffect } from "react";
 
 const NavBar = () => {
-  const { handleLogout, userData, loadUserProfile } = useFunctions();
+  const { handleLogout, loadUserProfile } = useFunctions();
 
   const {
+    userData,
     openUserModal,
     setOpenUserModal,
     changePages,
-
     openOptions,
     setOpenOptions,
     openClientDetail,

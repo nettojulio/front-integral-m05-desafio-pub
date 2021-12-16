@@ -1,27 +1,16 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLocalStorage } from "react-use";
 import useGlobal from "./useGlobal";
 
 export default function useFunctionProvider() {
   let navigate = useNavigate();
-  const [token, setToken, removeToken] = useLocalStorage("token", "");
-  const [open, setOpen] = useState(false);
-  const [formSignUp, setFormSignUp] = useState({
-    nome: "",
-    email: "",
-    senha: "",
-    senhaRepetida: "",
-  });
-  const [formsLogin, SetFormsLogin] = useState({ email: "", senha: "" });
-  const [messageAlert, setMessageAlert] = useState(false);
-  const [stateAlert, setStateAlert] = useState("success");
-  const [togglePage, setTogglePage] = useState("");
-  const [userData, setUserData] = useState("");
-  const [clientData, setClientData] = useState([]);
-  const [chargeData, setChargeData] = useState([]);
 
   const {
+    setOpen,
+    formSignUp,
+    setFormSignUp,
+    token,
+    setToken,
+    removeToken,
     setSearchClient,
     setCardNotFound,
     setInputValue,
@@ -30,8 +19,16 @@ export default function useFunctionProvider() {
     setOpenEditChargeModal,
     clientDetailData,
     searchCharge,
+    formsLogin,
+    setMessageAlert,
+    setStateAlert,
+    setTogglePage,
+    setUserData,
+    clientData,
+    setClientData,
+    setChargeData,
+    setCurrentCharge,
   } = useGlobal();
-  const [currentCharge, setCurrentCharge] = useState({});
 
   function handleClose() {
     setOpen(false);
@@ -341,6 +338,7 @@ export default function useFunctionProvider() {
     setOpenDetailChargeModal(true);
     setCurrentCharge(charge);
   }
+
   function handleEditCharge(charge, id_cliente) {
     setOpenEditChargeModal(true);
     setCurrentCharge({ ...charge, id_cliente });
@@ -358,8 +356,17 @@ export default function useFunctionProvider() {
     }
 
     deleteBillings(charge.id);
-    clientDetailData.cobrancas && clientDetailData.cobrancas.splice(clientDetailData.cobrancas.indexOf(clientDetailData.cobrancas.find((item) => item.id === charge.id)),1);
-    searchCharge.splice(searchCharge.indexOf(searchCharge.find((item) => item.id === charge.id)),1);
+    clientDetailData.cobrancas &&
+      clientDetailData.cobrancas.splice(
+        clientDetailData.cobrancas.indexOf(
+          clientDetailData.cobrancas.find((item) => item.id === charge.id)
+        ),
+        1
+      );
+    searchCharge.splice(
+      searchCharge.indexOf(searchCharge.find((item) => item.id === charge.id)),
+      1
+    );
     loadAllClients();
     setOpenDeleteModal(false);
     setOpen(true);
@@ -368,46 +375,24 @@ export default function useFunctionProvider() {
   }
 
   return {
-    togglePage,
-    setTogglePage,
-    formSignUp,
-    setFormSignUp,
+    handleClose,
     handleFormInput,
     handleSubmitSignUp,
-    open,
-    setOpen,
-    handleClose,
-    messageAlert,
-    setMessageAlert,
-    formsLogin,
-    SetFormsLogin,
     handleLogin,
-    token,
-    setToken,
     loadUserProfile,
-    handleLogout,
-    userData,
-    setUserData,
-    stateAlert,
-    setStateAlert,
-    clientData,
-    chargeData,
     addBillings,
     loadAllBillings,
     loadAllClients,
     preloadEmail,
-    formatToDate,
-    setClientData,
-    setChargeData,
     editBillings,
     deleteBillings,
+    formatToDate,
+    handleLogout,
     handleSearch,
     handleResetFilter,
-    currentCharge,
-    setCurrentCharge,
     handleDeleteCharge,
+    handleDetailCharge,
     handleEditCharge,
     handleConfirmDeleteCharge,
-    handleDetailCharge,
   };
 }
