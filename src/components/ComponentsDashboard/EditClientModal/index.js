@@ -27,7 +27,7 @@ function EditClientModal() {
     uf: clientDetailData.estado,
   };
 
-  console.log(clientDetailData)
+  console.log(clientDetailData);
   const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
@@ -37,7 +37,6 @@ function EditClientModal() {
   const [cpfErrorMessage, setCpfErrorMessage] = useState("");
   const [telefoneErrorMessage, setTelefoneErrorMessage] = useState("");
   const [cepErrorMessage, setCepErrorMessage] = useState("");
-  const [ufErrorMessage, setUfErrorMessage] = useState("");
 
   async function handleViaCep(e) {
     if (e.target.value.includes("_")) {
@@ -65,7 +64,7 @@ function EditClientModal() {
       };
 
       setFormEditUserModalInputs(complemento);
-    } catch (error) { }
+    } catch (error) {}
   }
 
   async function editRegisteredClient(body, id) {
@@ -191,7 +190,6 @@ function EditClientModal() {
       );
     }
 
-
     const updateUser = {
       nome: formEditUserModalInputs.nome,
       email: formEditUserModalInputs.email,
@@ -250,8 +248,9 @@ function EditClientModal() {
                   placeholder="Digite seu nome"
                   value={formEditUserModalInputs.nome}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputEditClient ${nameErrorMessage ? "editClientErrorSinalization" : undefined
-                    }`}
+                  className={`inputEditClient ${
+                    nameErrorMessage ? "editClientErrorSinalization" : undefined
+                  }`}
                 />
                 {nameErrorMessage && (
                   <p className="editClientErrorMessage">{nameErrorMessage}</p>
@@ -268,10 +267,11 @@ function EditClientModal() {
                   placeholder="Digite seu email"
                   value={formEditUserModalInputs.email}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputEditClient ${emailErrorMessage
-                    ? "editClientErrorSinalization"
-                    : undefined
-                    }
+                  className={`inputEditClient ${
+                    emailErrorMessage
+                      ? "editClientErrorSinalization"
+                      : undefined
+                  }
                   `}
                 />
                 {emailErrorMessage && (
@@ -289,8 +289,9 @@ function EditClientModal() {
                   value={formEditUserModalInputs.cpf}
                   onChange={(e) => handleChange(e.target)}
                   mask="999.999.999-99"
-                  className={`inputClient ${cpfErrorMessage ? "editClientErrorSinalization" : undefined
-                    }`}
+                  className={`inputClient ${
+                    cpfErrorMessage ? "editClientErrorSinalization" : undefined
+                  }`}
                 />
                 {cpfErrorMessage && (
                   <p className="editClientErrorMessage">{cpfErrorMessage}</p>
@@ -306,9 +307,10 @@ function EditClientModal() {
                   onChange={(e) => handleChange(e.target)}
                   mask="(99) 99999-9999"
                   className={`inputEditClient
-                    ${telefoneErrorMessage
-                      ? "editClientErrorSinalization"
-                      : undefined
+                    ${
+                      telefoneErrorMessage
+                        ? "editClientErrorSinalization"
+                        : undefined
                     }
                   `}
                 />
@@ -356,10 +358,11 @@ function EditClientModal() {
                     onBlur={(e) => handleViaCep(e)}
                     mask="99999-999"
                     className={`inputEditClient
-                    ${cepErrorMessage
+                    ${
+                      cepErrorMessage
                         ? "editClientErrorSinalization"
                         : undefined
-                      }
+                    }
                   `}
                   />
                   {cepErrorMessage && (
