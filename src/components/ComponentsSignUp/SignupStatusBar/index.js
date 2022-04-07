@@ -9,10 +9,10 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import CircleIcon from "@mui/icons-material/Circle";
 import Typography from "@mui/material/Typography";
-import useFunctions from "../../../hooks/useFunctions";
+import useGlobal from "../../../hooks/useGlobal";
 
 export default function CustomizedTimeline() {
-  const { togglePage } = useFunctions();
+  const { togglePage } = useGlobal();
 
   return (
     <div className="container-signup">

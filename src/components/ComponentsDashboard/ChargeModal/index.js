@@ -7,22 +7,22 @@ import emptyRadio from "../../../assets/emptyRadio.svg";
 import "./styles.css";
 import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
+import BRLInputMask from '../../ComponentsGlobal/BRLInputMask';
 
 function ChargeModal() {
   const {
     addBillings,
     formatToDate,
-    setOpen,
-    setMessageAlert,
-    setStateAlert,
     loadAllClients,
   } = useFunctions();
   const {
+    setOpen,
+    setMessageAlert,
+    setStateAlert,
     openChargeModal,
     setOpenChargeModal,
     clientDetailData,
     setChargeModalValue,
-    // setOpenClientDetail,
   } = useGlobal();
   const [statusValue, setStatusValue] = useState(true);
 
@@ -104,25 +104,6 @@ function ChargeModal() {
         setVencimentoErrorMessage("Data inválida");
         return;
       }
-
-      // if (checkExpected) {
-      //   setStatusValue(false);
-      // }
-
-      // if (checkExpected) {
-      //   const dateInput = new Date(year, month - 1, day);
-      //   const dateNow = new Date();
-      //   const diff = dateNow - dateInput;
-      //   const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-      //   if (dias <= 0) {
-      //     setStatusValue('pendente');
-      //   } else {
-      //     setStatusValue('vencido');
-      //   }
-      // } else {
-      //   setStatusValue('pago');
-      // }
     }
 
     if (formSignupUserModalInputs.valor <= 0) {
@@ -135,15 +116,14 @@ function ChargeModal() {
     formSignupUserModalInputs.data_vencimento = formatToDate(
       formSignupUserModalInputs.data_vencimento
     );
-    const teste = await addBillings(formSignupUserModalInputs, clientDetailData.id);
+    const updateBillings = await addBillings(formSignupUserModalInputs, clientDetailData.id);
     setOpen(true);
     setStateAlert("success");
     setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
     await loadAllClients();
-    teste.situacao = teste.status ? "Paga" : (!teste.status && (+ new Date(teste.data_vencimento) < + new Date()) ? "Vencida" : "Pendente")
-    clientDetailData.cobrancas.push(teste);
-    // setOpenClientDetail(false);
+    updateBillings.situacao = updateBillings.status ? "Paga" : (!updateBillings.status && (+ new Date(updateBillings.data_vencimento) < + new Date()) ? "Vencida" : "Pendente");
+    clientDetailData.cobrancas.push(updateBillings);
   }
 
   function handleClearValidations() {
@@ -239,16 +219,13 @@ function ChargeModal() {
               </label>
               <label htmlFor="valor" className="chargeFormLabels split">
                 Valor:*
-                <InputMask
-                  id="valor"
-                  name="valor"
-                  type="number"
-                  placeholder="Digite o valor"
+                <BRLInputMask
                   value={formSignupUserModalInputs.valor}
                   onChange={(e) => handleChange(e.target)}
-                  className={`inputCharge
-                    ${valorErrorMessage ? "chargeErrorSinalization" : undefined}
-                  `}
+                  valorErrorMessage={valorErrorMessage}
+                  formSignupUserModalInputs={formSignupUserModalInputs}
+                  setFormSignupUserModalInputs={setFormSignupUserModalInputs}
+
                 />
                 {valorErrorMessage && (
                   <p className="chargeErrorMessage">{valorErrorMessage}</p>

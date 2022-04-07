@@ -20,9 +20,8 @@ function ClientModal() {
     uf: "",
   };
 
-  const { openClientModal, setOpenClientModal } = useGlobal();
-  const { token, setOpen, setMessageAlert, setStateAlert, loadAllClients } =
-    useFunctions();
+  const { openClientModal, setOpenClientModal, token, setOpen, setMessageAlert, setStateAlert } = useGlobal();
+  const { loadAllClients } = useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);

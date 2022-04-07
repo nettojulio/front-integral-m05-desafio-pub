@@ -7,15 +7,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router";
-import useFunctions from "../../../hooks/useFunctions";
 import useGlobal from "../../../hooks/useGlobal";
 import CircularProgress from '@mui/material/CircularProgress';
 
 function TableCard({ title, bgColor, situation, total }) {
 
-  const { setChargeData } = useFunctions();
-  const { setOpenFilteredCard, setValue } = useGlobal();
+  const { setOpenFilteredCard, setValue, loader, setLoader, setChargeData } = useGlobal();
   const navigate = useNavigate();
+
+  const clearLoad = setTimeout(() => {
+    setLoader(false);
+    clearInterval(clearLoad)
+  }, 2000)
 
   function handlePage() {
     setOpenFilteredCard(false);
@@ -49,7 +52,7 @@ function TableCard({ title, bgColor, situation, total }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {situation.length === 0
+            {loader
               ? <div className="table-card circular-progress"><CircularProgress sx={{ color: 'var(--pink)' }} /></div>
               : situation.map((row) => (
                 <TableRow

@@ -9,9 +9,11 @@ import defaultingCustomers from "../../assets/defaultingCustomers.svg";
 import okCustomers from "../../assets/okCustomers.svg";
 import { useEffect } from "react";
 import useFunctions from "../../hooks/useFunctions";
+import useGlobal from "../../hooks/useGlobal";
 
 function ResumeBills() {
-  const { chargeData, clientData, loadAllBillings, loadAllClients } = useFunctions();
+  const { loadAllBillings, loadAllClients } = useFunctions();
+  const { chargeData, clientData } = useGlobal();
 
 
   const paidSituation = chargeData.filter(item => item.situacao === "Paga");

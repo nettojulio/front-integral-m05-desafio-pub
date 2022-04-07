@@ -5,8 +5,8 @@ import useGlobal from "../../../hooks/useGlobal";
 import useFunctions from "../../../hooks/useFunctions";
 
 function DeleteChargeModal() {
-  const { setOpenDeleteModal } = useGlobal();
-  const { currentCharge, handleConfirmDeleteCharge } = useFunctions();
+  const { setOpenDeleteModal, currentCharge } = useGlobal();
+  const { handleConfirmDeleteCharge } = useFunctions();
 
   return (
     <div className="container-delete-charge-modal">

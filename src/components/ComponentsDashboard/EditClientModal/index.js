@@ -3,7 +3,6 @@ import InputMask from "react-input-mask";
 import closeIcon from "../../../assets/closeIcon.svg";
 import customerScreen from "../../../assets/customerScreen.svg";
 import useGlobal from "../../../hooks/useGlobal";
-import useFunctions from "../../../hooks/useFunctions";
 import "./styles.css";
 
 function EditClientModal() {
@@ -12,6 +11,10 @@ function EditClientModal() {
     setOpenEditClientModal,
     clientDetailData,
     setOpenClientDetail,
+    token,
+    setOpen,
+    setMessageAlert,
+    setStateAlert,
   } = useGlobal();
 
   const initialForm = {
@@ -26,9 +29,6 @@ function EditClientModal() {
     cidade: clientDetailData.cidade,
     uf: clientDetailData.estado,
   };
-
-  console.log(clientDetailData);
-  const { token, setOpen, setMessageAlert, setStateAlert } = useFunctions();
 
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
