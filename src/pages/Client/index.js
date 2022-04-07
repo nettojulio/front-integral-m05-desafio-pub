@@ -19,8 +19,9 @@ function Client() {
     setInputValue,
     cardNotFound,
     setCardNotFound,
+    clientData, 
   } = useGlobal();
-  const { clientData, handleResetFilter, handleSearch } = useFunctions();
+  const { handleResetFilter, handleSearch } = useFunctions();
 
   useEffect(() => {
     setSearchClient(clientData);

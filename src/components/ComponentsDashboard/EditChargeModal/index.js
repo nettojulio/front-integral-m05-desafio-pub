@@ -12,12 +12,12 @@ function EditChargeModal() {
     editBillings,
     loadAllClients,
     formatToDate,
+  } = useFunctions();
+  const {
     setOpen,
     setMessageAlert,
     setStateAlert,
     currentCharge,
-  } = useFunctions();
-  const {
     openEditChargeModal,
     setOpenEditChargeModal,
     clientDetailData,

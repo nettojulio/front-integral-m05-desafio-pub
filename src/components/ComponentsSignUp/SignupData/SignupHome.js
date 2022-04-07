@@ -1,17 +1,21 @@
 import "./style.css";
 import useFunctions from "../../../hooks/useFunctions";
+import useGlobal from "../../../hooks/useGlobal";
 import { Link } from "react-router-dom";
 
 function SignupData() {
   const {
-    formSignUp,
     handleFormInput,
+    preloadEmail,
+  } = useFunctions();
+  
+  const {
+    formSignUp,
     setTogglePage,
     setOpen,
     setMessageAlert,
     setStateAlert,
-    preloadEmail,
-  } = useFunctions();
+  } = useGlobal();
 
   async function handleNextPage(e) {
     e.preventDefault();

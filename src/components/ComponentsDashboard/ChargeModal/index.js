@@ -13,12 +13,12 @@ function ChargeModal() {
   const {
     addBillings,
     formatToDate,
-    setOpen,
-    setMessageAlert,
-    setStateAlert,
     loadAllClients,
   } = useFunctions();
   const {
+    setOpen,
+    setMessageAlert,
+    setStateAlert,
     openChargeModal,
     setOpenChargeModal,
     clientDetailData,
@@ -117,21 +117,17 @@ function ChargeModal() {
     formSignupUserModalInputs.data_vencimento = formatToDate(
       formSignupUserModalInputs.data_vencimento
     );
-    const updateBillings = await addBillings(
-      formSignupUserModalInputs,
-      clientDetailData.id
-    );
+
+    const updateBillings = await addBillings(formSignupUserModalInputs, clientDetailData.id);
+
     setOpen(true);
     setStateAlert("success");
     setMessageAlert("Cobrança cadastrada com sucesso");
     setOpenChargeModal(false);
     await loadAllClients();
-    updateBillings.situacao = updateBillings.status
-      ? "Paga"
-      : !updateBillings.status &&
-        +new Date(updateBillings.data_vencimento) < +new Date()
-        ? "Vencida"
-        : "Pendente";
+    
+    updateBillings.situacao = updateBillings.status ? "Paga" : (!updateBillings.status && (+ new Date(updateBillings.data_vencimento) < + new Date()) ? "Vencida" : "Pendente");
+
     clientDetailData.cobrancas.push(updateBillings);
   }
 
@@ -227,6 +223,7 @@ function ChargeModal() {
               </label>
               <label htmlFor="valor" className="chargeFormLabels split">
                 Valor:*
+
                 {/* <InputMask
                   mask="R$ 99"
                   value={formSignupUserModalInputs.valor}

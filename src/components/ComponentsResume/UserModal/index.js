@@ -18,8 +18,8 @@ function UserModal() {
     confirmarSenha: "",
   };
 
-  const { token, userData, loadUserProfile } = useFunctions();
-  const { openUserModal, setOpenUserModal } = useGlobal();
+  const { loadUserProfile } = useFunctions();
+  const { openUserModal, setOpenUserModal, token, userData } = useGlobal();
   const [formEditUserModalInputs, setFormEditUserModalInputs] =
     useState(initialForm);
   const [visibleTypingPassword, setVisibleTypingPassword] = useState(false);

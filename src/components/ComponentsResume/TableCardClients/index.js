@@ -7,14 +7,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import useFunctions from "../../../hooks/useFunctions";
 import { useNavigate } from "react-router-dom";
 import useGlobal from "../../../hooks/useGlobal";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
-  const { setClientData } = useFunctions();
-  const { setOpenFilteredCard, setValue, loader, setLoader } = useGlobal();
+
+  const { setClientData, setOpenFilteredCard, setValue, loader, setLoader } = useGlobal();
+
   const navigate = useNavigate();
 
   const clearLoad = setTimeout(() => {
@@ -85,7 +85,10 @@ function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
                     {String(row.id).padStart(9, 0)}
                   </TableCell>
                   <TableCell className="format-values" align="left">
-                    {`${row.cpf.slice(0, 3)}.${row.cpf.slice(3, 6)}.${row.cpf.slice(6, 9)}-${row.cpf.slice(9)}`}
+                    {`${row.cpf.slice(0, 3)}.${row.cpf.slice(
+                      3,
+                      6
+                    )}.${row.cpf.slice(6, 9)}-${row.cpf.slice(9)}`}
                   </TableCell>
                 </TableRow>
               ))

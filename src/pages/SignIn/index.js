@@ -1,23 +1,25 @@
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useFunctions from "../../hooks/useFunctions";
+import useGlobal from "../../hooks/useGlobal";
 import eye from "../../assets/eye.svg";
 import eyeHide from "../../assets/eye-hide.svg";
 import ToastAlert from "../../components/ComponentsGlobal/ToastAlert";
 import { useNavigate } from "react-router";
 
 function SignIn() {
-  const [openPass, setOpenPass] = useState(false);
   const {
+    openPass,
+    setOpenPass,
     setOpen,
     setMessageAlert,
-    handleLogin,
     formsLogin,
     SetFormsLogin,
     token,
     setStateAlert,
-  } = useFunctions();
+  } = useGlobal();
+  const { handleLogin } = useFunctions();
   let navigate = useNavigate();
 
   useEffect(() => {

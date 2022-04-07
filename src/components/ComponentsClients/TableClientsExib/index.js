@@ -1,6 +1,6 @@
 import "./style.css";
 import addBilling from "../../../assets/addBilling.svg";
-import noResults from '../../../assets/noResults.svg';
+import noResults from "../../../assets/noResults.svg";
 import sortIconHeaders from "../../../assets/sortIconHeaders.svg";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,8 +14,17 @@ import useFunctions from "../../../hooks/useFunctions";
 import { useEffect } from "react";
 
 function TableClientsExib({ cardNotFound }) {
-  const { setOpenChargeModal, setClientDetailData, openFilteredCard, setOpenClientDetail, orderClient, setOrderClient, searchClient } = useGlobal();
-  const { loadAllClients, loadAllBillings, clientData } = useFunctions();
+  const {
+    setOpenChargeModal,
+    setClientDetailData,
+    openFilteredCard,
+    setOpenClientDetail,
+    orderClient,
+    setOrderClient,
+    searchClient,
+    clientData,
+  } = useGlobal();
+  const { loadAllClients, loadAllBillings } = useFunctions();
 
   function handleClientDetail(client) {
     setOpenClientDetail(true);
@@ -34,7 +43,7 @@ function TableClientsExib({ cardNotFound }) {
   }, []);
 
   useEffect(() => {
-    if (orderClient === 'asc') {
+    if (orderClient === "asc") {
       clientData.sort((a, b) => (a.nome).localeCompare(b.nome));
     } else {
       clientData.sort((a, b) => (b.nome).localeCompare(a.nome));
@@ -45,8 +54,11 @@ function TableClientsExib({ cardNotFound }) {
 
   return (
     <div className="table-clients">
-      <TableContainer component={Paper} sx={{ borderRadius: "30px", minWidth: '1120px' }}>
-        {cardNotFound ?
+      <TableContainer
+        component={Paper}
+        sx={{ borderRadius: "30px", minWidth: "1120px" }}
+      >
+        {cardNotFound ? (
           <>
             <div className="card-not-found">
               <img src={noResults} alt="Nenhum resultado encontrado" />
@@ -54,11 +66,17 @@ function TableClientsExib({ cardNotFound }) {
               <p>Verifique se a escrita está correta</p>
             </div>
           </>
-          :
+        ) : (
           <Table sx={{ width: "111.6rem" }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell className="cursor-pointer" onClick={() => setOrderClient(orderClient === 'asc' ? 'desc' : 'asc')} sx={{ display: "flex", alignItems: "center" }}>
+                <TableCell
+                  className="cursor-pointer"
+                  onClick={() =>
+                    setOrderClient(orderClient === "asc" ? "desc" : "asc")
+                  }
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
                   <img src={sortIconHeaders} alt="" />
                   Cliente
                 </TableCell>
@@ -83,9 +101,20 @@ function TableClientsExib({ cardNotFound }) {
                       {client.nome}
                     </button>
                   </TableCell>
-                  <TableCell align="left">{`${client.cpf.slice(0,3)}.${client.cpf.slice(3,6)}.${client.cpf.slice(6,9)}-${client.cpf.slice(9)}`}</TableCell>
+                  <TableCell align="left">{`${client.cpf.slice(
+                    0,
+                    3
+                  )}.${client.cpf.slice(3, 6)}.${client.cpf.slice(
+                    6,
+                    9
+                  )}-${client.cpf.slice(9)}`}</TableCell>
                   <TableCell align="left">{client.email}</TableCell>
-                  <TableCell align="left">{`(${client.telefone.slice(0,2)}) ${client.telefone.slice(2,7)}-${client.telefone.slice(7)}`}</TableCell>
+                  <TableCell align="left">{`(${client.telefone.slice(
+                    0,
+                    2
+                  )}) ${client.telefone.slice(2, 7)}-${client.telefone.slice(
+                    7
+                  )}`}</TableCell>
                   <TableCell align="left">
                     <div
                       className={
@@ -114,7 +143,7 @@ function TableClientsExib({ cardNotFound }) {
               ))}
             </TableBody>
           </Table>
-        }
+        )}
       </TableContainer>
     </div>
   );

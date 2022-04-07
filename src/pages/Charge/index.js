@@ -16,8 +16,9 @@ function Charge() {
     setInputValue,
     cardNotFound,
     setCardNotFound,
+    chargeData,
   } = useGlobal();
-  const { chargeData, handleResetFilter, handleSearch } = useFunctions();
+  const { handleResetFilter, handleSearch } = useFunctions();
 
   useEffect(() => {
     setSearchCharge(chargeData);

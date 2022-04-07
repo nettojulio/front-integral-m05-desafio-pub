@@ -7,14 +7,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router";
-import useFunctions from "../../../hooks/useFunctions";
 import useGlobal from "../../../hooks/useGlobal";
 import CircularProgress from '@mui/material/CircularProgress';
 
 function TableCard({ title, bgColor, situation, total }) {
 
-  const { setChargeData } = useFunctions();
-  const { setOpenFilteredCard, setValue, loader, setLoader } = useGlobal();
+  const { setOpenFilteredCard, setValue, loader, setLoader, setChargeData } = useGlobal();
+
   const navigate = useNavigate();
 
   const clearLoad = setTimeout(() => {

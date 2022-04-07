@@ -2,14 +2,12 @@ import "./style.css";
 import { useState } from "react";
 
 import useGlobal from "../../../hooks/useGlobal";
-import useFunctions from "../../../hooks/useFunctions";
 import billings from "../../../assets/billings.svg";
 import closeIcon from "../../../assets/closeIcon.svg";
 
 function DetailChargeModal() {
-  const { setOpenDetailChargeModal, openDetailChargeModal, clientDetailData } =
+  const { setOpenDetailChargeModal, openDetailChargeModal, clientDetailData, currentCharge } =
     useGlobal();
-  const { currentCharge } = useFunctions();
 
   const initialForm = {
     descricao: currentCharge.descricao,

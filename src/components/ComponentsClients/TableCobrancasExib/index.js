@@ -20,12 +20,13 @@ function TableCobrancasExib({ cardNotFound }) {
   const {
     loadAllBillings,
     loadAllClients,
-    chargeData,
     handleDeleteCharge,
     handleDetailCharge,
     handleEditCharge,
   } = useFunctions();
+  
   const {
+    chargeData,
     openFilteredCard,
     openDeleteModal,
     openDetailChargeModal,
