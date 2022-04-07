@@ -44,6 +44,7 @@ function useGlobalProvider() {
   const [chargeData, setChargeData] = useState([]);
   const [currentCharge, setCurrentCharge] = useState({});
 
+
   return {
     signupPassword,
     setSignupPassword,

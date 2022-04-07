@@ -12,14 +12,15 @@ import useGlobal from "../../../hooks/useGlobal";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function TableCardClients({ title, icon, bgColor, situation, total, seeAll }) {
-  const { setClientData, setOpenFilteredCard, setValue, loader, setLoader } =
-    useGlobal();
+
+  const { setClientData, setOpenFilteredCard, setValue, loader, setLoader } = useGlobal();
+
   const navigate = useNavigate();
 
   const clearLoad = setTimeout(() => {
     setLoader(false);
-    clearInterval(clearLoad);
-  }, 2000);
+    clearInterval(clearLoad)
+  }, 2000)
 
   function handlePage() {
     setOpenFilteredCard(false);

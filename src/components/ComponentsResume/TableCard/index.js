@@ -13,6 +13,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 function TableCard({ title, bgColor, situation, total }) {
 
   const { setOpenFilteredCard, setValue, loader, setLoader, setChargeData } = useGlobal();
+
   const navigate = useNavigate();
 
   const clearLoad = setTimeout(() => {
